@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('role');
+            $table->string('first_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('university')->nullable();
+            $table->string('email');
+            $table->string('contact_number')->nullable();
             $table->timestamps();
         });
     }
