@@ -19,8 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(StudentController::class)->group(function(){
-    Route::get('/student/dashboard', 'dashboard');
+Route::middleware(['auth'])->group(function(){
+
+    Route::controller(StudentController::class)->group(function(){
+        Route::get('/student/dashboard', 'dashboard');
+        Route::get('/student/view', 'view');
+        Route::get('/student/edit', 'edit');
+    });
+    
 });
 
 Auth::routes();
