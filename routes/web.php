@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/student/dashboard', 'dashboard');
         Route::get('/student/view', 'view');
         Route::get('/student/edit', 'edit');
+        Route::post('/student', 'update');
     });
     
 });
