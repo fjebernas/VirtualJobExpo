@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('customcss')
+    <link rel="stylesheet" href="/css/student/edit.css">
+@endsection
+    
+@section('customjs')
+    <script src="/js/student/edit.js" type="module"></script>
+@endsection
+
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>EDIT PROFILE</h1>

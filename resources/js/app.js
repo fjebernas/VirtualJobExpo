@@ -6,6 +6,8 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import jQuery from 'jquery';
+import Swal from 'sweetalert2';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin

@@ -15,6 +15,12 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <link rel="stylesheet" href="/css/common.css">
+    @yield('commonjs')
+
+    <script src="/js/common.js"></script>
+    @yield('customjs')
 </head>
 <body>
     <div id="app">
