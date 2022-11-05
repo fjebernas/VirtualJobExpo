@@ -21,6 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(JobPostController::class)->group(function(){
+    Route::get('/job-posts', 'index');
+});
+
+Auth::routes();
+
 Route::middleware(['auth'])->group(function(){
 
     Route::middleware(['student.only'])->group(function(){
@@ -47,7 +53,7 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('/company/profile/edit', 'edit');
                 
                 Route::controller(JobPostController::class)->group(function(){
-                    Route::get('/company/job-post', 'index');
+                    Route::get('/company/job-post', 'indexOwned');
                     Route::get('/company/job-post/create', 'create');
                     Route::post('/company/job-post', 'store');
                     Route::delete('/company/job-post/{id}', 'destroy');
@@ -57,5 +63,3 @@ Route::middleware(['auth'])->group(function(){
     });
     
 });
-
-Auth::routes();

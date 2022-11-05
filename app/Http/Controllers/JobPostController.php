@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 class JobPostController extends Controller
 {
     public function index() {
+        return view('job-posts.index')
+            ->with('job_posts', JobPost::all());
+    }
+
+    public function indexOwned() {
         $company_id = Company::where('email', Auth::user()->email)->value('id');
         $job_posts = JobPost::where('company_id', $company_id)->get();
 
