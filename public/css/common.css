@@ -1,0 +1,7 @@
+.toast {
+    box-shadow: none !important;
+}
+
+.toast-message {
+    font-size: 1rem !important;
+}

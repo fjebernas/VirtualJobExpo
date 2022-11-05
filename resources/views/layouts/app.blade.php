@@ -19,10 +19,23 @@
     <link rel="stylesheet" href="/css/common.css">
     @yield('commonjs')
 
-    <script src="/js/common.js"></script>
+    <script src="/js/common.js" type="module"></script>
     @yield('customjs')
 </head>
 <body>
+    <span class="d-none" id="toast-data-holder" 
+        data-msg="
+            @if (session('notification') !== null)
+                {{ session('notification')['message'] }}
+            @endif
+        "
+        data-type="
+            @if (session('notification') !== null)
+                {{ session('notification')['type'] }}
+            @endif
+        ">
+    </span>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">

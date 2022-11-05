@@ -4,10 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
-import jQuery from 'jquery';
-import Swal from 'sweetalert2';
+import './bootstrap'
+import { createApp } from 'vue'
+import $ from 'jquery'
+import Swal from 'sweetalert2'
+
+window.$ = $
+window.Swal = Swal
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
