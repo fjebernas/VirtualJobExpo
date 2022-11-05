@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Student;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -32,8 +33,13 @@ class RegisterController extends Controller
      * 
      */
     public function redirectTo() {
-        if (Auth::user()->role == "student") {
+        if (Auth::user()->role == "student") 
+        {
             return "/student/dashboard";
+        } 
+        else if (Auth::user()->role == "company") 
+        {
+            return "/company/dashboard";
         }
     }
 
@@ -70,9 +76,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Student::create([
-            'email' => $data['email'],
-        ]);
+        if ($data['role'] == "student") 
+        {
+            Student::create([
+                'email' => $data['email'],
+            ]);
+        }
+        else if ($data['role'] == "company")
+        {
+            Company::create([
+                'email' => $data['email'],
+            ]);
+        }
+        
 
         return User::create([
             'email' => $data['email'],

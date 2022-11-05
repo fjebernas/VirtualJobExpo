@@ -74,7 +74,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/student/dashboard">Dashboard</a>
+                                    @if (Auth::user()->role == "student")
+                                        <a class="dropdown-item" href="/student/dashboard">Dashboard</a>
+                                    @elseif (Auth::user()->role == "company")
+                                        <a class="dropdown-item" href="/company/dashboard">Dashboard</a>
+                                    @endif
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

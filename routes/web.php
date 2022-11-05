@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,13 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/student/view', 'view');
         Route::get('/student/edit', 'edit');
         Route::post('/student', 'update');
+    });
+
+    Route::controller(CompanyController::class)->group(function(){
+        Route::get('/company/dashboard', 'dashboard');
+        Route::get('/company/view', 'view');
+        Route::get('/company/edit', 'edit');
+        Route::post('/company', 'update');
     });
     
 });
