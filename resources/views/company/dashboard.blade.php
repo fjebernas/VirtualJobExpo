@@ -14,5 +14,7 @@
 
         <a href="/company/view">View Profile</a>
         <a href="/company/edit">Edit Profile</a>
+        <a href="/company/job-post/">See all my job posts</a>
+        <a href="/company/job-post/create">Create a job post</a>
     </div>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,12 @@ Route::middleware(['auth'])->group(function(){
             Route::get('/company/view', 'view');
             Route::get('/company/edit', 'edit');
             Route::post('/company', 'update');
+
+            Route::controller(JobPostController::class)->group(function(){
+                Route::get('/company/job-post/', 'index');
+                Route::get('/company/job-post/create', 'create');
+                Route::post('/company/job-post/', 'store');
+            });
         });
     });
     
