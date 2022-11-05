@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

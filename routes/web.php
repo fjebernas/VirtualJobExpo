@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function(){
 
             Route::middleware(['details.set'])->group(function(){
                 Route::get('/student/dashboard', 'dashboard');
-                Route::get('/student/profile/', 'index');
+                Route::get('/student/profile', 'index');
                 Route::get('/student/profile/edit', 'edit');
             });
         });
@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function(){
     Route::middleware(['company.only'])->group(function(){
         Route::controller(CompanyController::class)->group(function(){
             Route::get('/company/setup', 'setup');
-            Route::post('/company/profile/', 'update');
+            Route::post('/company/profile', 'update');
 
             Route::middleware(['details.set'])->group(function(){
                 Route::get('/company/dashboard', 'dashboard');
@@ -47,9 +47,10 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('/company/profile/edit', 'edit');
                 
                 Route::controller(JobPostController::class)->group(function(){
-                    Route::get('/company/job-post/', 'index');
+                    Route::get('/company/job-post', 'index');
                     Route::get('/company/job-post/create', 'create');
-                    Route::post('/company/job-post/', 'store');
+                    Route::post('/company/job-post', 'store');
+                    Route::delete('/company/job-post/{id}', 'destroy');
                 });
             });
         });

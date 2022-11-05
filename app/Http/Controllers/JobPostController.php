@@ -43,4 +43,15 @@ class JobPostController extends Controller
             ]
         );
     }
+
+    public function destroy($id) {
+        JobPost::where('id', $id)->delete();
+
+        return redirect('/company/job-post')
+            ->with('notification', [
+                'message' => 'Job post deleted',
+                'type' => 'success'
+            ]
+        );
+    }
 }

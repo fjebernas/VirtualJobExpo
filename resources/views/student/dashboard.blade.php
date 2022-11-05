@@ -12,7 +12,7 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>STUDENT DASHBOARD</h1>
 
-        <a href="/student/profile/">View Profile</a>
+        <a href="/student/profile">View Profile</a>
         <a href="/student/profile/edit">Edit Profile</a>
     </div>
 @endsection

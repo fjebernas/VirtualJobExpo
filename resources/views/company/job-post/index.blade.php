@@ -21,6 +21,7 @@
                     <th scope="col">Level</th>
                     <th scope="col">Employment</th>
                     <th scope="col">Salary range</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,10 +35,17 @@
                         <td>
                             ₱ {{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
                         </td>
+                        <td>
+                            <form action="/company/job-post/{{ $job_post->id }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <i class="text-muted">No job posts</i>
                         </td>
                     </tr>
