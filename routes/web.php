@@ -22,18 +22,22 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::controller(StudentController::class)->group(function(){
-        Route::get('/student/dashboard', 'dashboard');
-        Route::get('/student/view', 'view');
-        Route::get('/student/edit', 'edit');
-        Route::post('/student', 'update');
+    Route::middleware(['student'])->group(function(){
+        Route::controller(StudentController::class)->group(function(){
+            Route::get('/student/dashboard', 'dashboard');
+            Route::get('/student/view', 'view');
+            Route::get('/student/edit', 'edit');
+            Route::post('/student', 'update');
+        });
     });
 
-    Route::controller(CompanyController::class)->group(function(){
-        Route::get('/company/dashboard', 'dashboard');
-        Route::get('/company/view', 'view');
-        Route::get('/company/edit', 'edit');
-        Route::post('/company', 'update');
+    Route::middleware(['company'])->group(function(){
+        Route::controller(CompanyController::class)->group(function(){
+            Route::get('/company/dashboard', 'dashboard');
+            Route::get('/company/view', 'view');
+            Route::get('/company/edit', 'edit');
+            Route::post('/company', 'update');
+        });
     });
     
 });
