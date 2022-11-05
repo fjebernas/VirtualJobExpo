@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    public function setup() {
+        return view('student.setup');
+    }
+
     public function dashboard() {
         return view('student.dashboard');
     }
@@ -34,7 +38,7 @@ class StudentController extends Controller
                 'contact_number' => $request->contact_number,
             ]);
 
-        return redirect('/student/profile/edit')
+        return redirect('/student/dashboard')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
