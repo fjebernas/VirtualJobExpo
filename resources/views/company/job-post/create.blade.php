@@ -31,13 +31,21 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="level" class="form-label fw-bold fs-5">Level</label>
-                        <input name="level" type="text" class="form-control" id="level">
+                        <label for="level" class="form-label fw-bold fs-5">Job level</label>
+                        <select name="level" class="form-control">
+                            <option value="entry-level">Entry-level</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="senior">Senior</option>
+                            <option value="internship">Internship</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="employment" class="form-label fw-bold fs-5">Employment</label>
-                        <input name="employment" type="text" class="form-control" id="employment">
+                        <select name="employment" class="form-control">
+                            <option value="part-time">Part-time</option>
+                            <option value="full-time">Full-time</option>
+                        </select>
                     </div>
 
                     <h6 class="pb-2 m-0 fw-bold fs-5">Salary range:</h6>

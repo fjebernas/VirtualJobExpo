@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\JobPost;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class JobPostController extends Controller
 {
     public function index() {
-        return view('company.job-post.index');
+        $company_id = Company::where('email', Auth::user()->email)->value('id');
+        $job_posts = JobPost::where('company_id', $company_id)->get();
+
+        return view('company.job-post.index')
+            ->with('job_posts', $job_posts);
     }
 
     public function create() {

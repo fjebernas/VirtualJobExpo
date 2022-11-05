@@ -55,7 +55,7 @@
 
                     <div class="mb-3">
                         <label for="contact_number" class="form-label fw-bold fs-5">Contact number</label>
-                        <input name="contact_number" value="@isset($student->contact_number) {{ $student->contact_number }} @endisset" type="number" class="form-control" id="contact_number">
+                        <input name="contact_number" value=@isset($student->contact_number) {{ $student->contact_number }} @else null @endisset type="number" class="form-control" id="contact_number">
                     </div>
 
                     <button name="" type="submit" class="btn btn-warning align-self-end">Save changes</button>
