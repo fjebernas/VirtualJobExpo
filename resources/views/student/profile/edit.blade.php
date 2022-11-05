@@ -16,7 +16,7 @@
             <div class="card-header">
                 View Profile
             </div>
-            <form action="/student" method="post">
+            <form action="/student/profile" method="post">
                 @csrf
 
                 <div class="card-body d-flex flex-column">

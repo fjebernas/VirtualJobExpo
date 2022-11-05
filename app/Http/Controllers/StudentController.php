@@ -12,13 +12,13 @@ class StudentController extends Controller
         return view('student.dashboard');
     }
 
-    public function view() {
-        return view('student.view')
+    public function index() {
+        return view('student.profile.index')
                 ->with('student', Student::where('email', Auth::user()->email)->firstOrFail());
     }
 
     public function edit() {
-        return view('student.edit')
+        return view('student.profile.edit')
                 ->with('student', Student::where('email', Auth::user()->email)->firstOrFail());;
     }
 
@@ -34,7 +34,7 @@ class StudentController extends Controller
                 'contact_number' => $request->contact_number,
             ]);
 
-        return redirect('/student/edit')
+        return redirect('/student/profile/edit')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'

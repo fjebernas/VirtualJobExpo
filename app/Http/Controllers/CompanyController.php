@@ -12,13 +12,13 @@ class CompanyController extends Controller
         return view('company.dashboard');
     }
 
-    public function view() {
-        return view('company.view')
+    public function index() {
+        return view('company.profile.index')
                 ->with('company', Company::where('email', Auth::user()->email)->firstOrFail());
     }
 
     public function edit() {
-        return view('company.edit')
+        return view('company.profile.edit')
                 ->with('company', Company::where('email', Auth::user()->email)->firstOrFail());
     }
 
@@ -31,7 +31,7 @@ class CompanyController extends Controller
                 'contact_number' => $request->contact_number,
             ]);
 
-        return redirect('/company/edit')
+        return redirect('/company/profile/edit')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'

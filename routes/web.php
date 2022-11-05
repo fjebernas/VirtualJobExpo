@@ -26,18 +26,18 @@ Route::middleware(['auth'])->group(function(){
     Route::middleware(['student'])->group(function(){
         Route::controller(StudentController::class)->group(function(){
             Route::get('/student/dashboard', 'dashboard');
-            Route::get('/student/view', 'view');
-            Route::get('/student/edit', 'edit');
-            Route::post('/student', 'update');
+            Route::get('/student/profile/', 'index');
+            Route::get('/student/profile/edit', 'edit');
+            Route::post('/student/profile/', 'update');
         });
     });
 
     Route::middleware(['company'])->group(function(){
         Route::controller(CompanyController::class)->group(function(){
             Route::get('/company/dashboard', 'dashboard');
-            Route::get('/company/view', 'view');
-            Route::get('/company/edit', 'edit');
-            Route::post('/company', 'update');
+            Route::get('/company/profile/', 'index');
+            Route::get('/company/profile/edit', 'edit');
+            Route::post('/company/profile/', 'update');
 
             Route::controller(JobPostController::class)->group(function(){
                 Route::get('/company/job-post/', 'index');
