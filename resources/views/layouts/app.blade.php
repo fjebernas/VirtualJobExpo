@@ -68,17 +68,20 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                @if (Auth::user()->role == "student")
+                                    <a class="nav-link" href="/student/dashboard">Dashboard</a>
+                                @elseif (Auth::user()->role == "company")
+                                    <a class="nav-link" href="/company/dashboard">Dashboard</a>
+                                @endif
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->email }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if (Auth::user()->role == "student")
-                                        <a class="dropdown-item" href="/student/dashboard">Dashboard</a>
-                                    @elseif (Auth::user()->role == "company")
-                                        <a class="dropdown-item" href="/company/dashboard">Dashboard</a>
-                                    @endif
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
