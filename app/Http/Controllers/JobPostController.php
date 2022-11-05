@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class JobPostController extends Controller
     public function store(Request $request) {
         JobPost::create([
             'position' => $request->position,
-            'company' => Auth::user()->name,
+            'company' => Company::where('email', Auth::user()->email)->value('name'),
             'location' => $request->location,
             'level' => $request->level,
             'employment' => $request->employment,
@@ -30,7 +31,7 @@ class JobPostController extends Controller
             'company_id' => Auth::user()->id,
         ]);
 
-        return redirect('/company/job-post/create')
+        return redirect('/company/dashboard')
             ->with('notification', [
                 'message' => 'Job post created',
                 'type' => 'success'

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::middleware(['student'])->group(function(){
+    Route::middleware(['student.only'])->group(function(){
         Route::controller(StudentController::class)->group(function(){
             Route::get('/student/dashboard', 'dashboard');
             Route::get('/student/profile/', 'index');
@@ -32,8 +32,10 @@ Route::middleware(['auth'])->group(function(){
         });
     });
 
-    Route::middleware(['company'])->group(function(){
+    Route::middleware(['company.only'])->group(function(){
         Route::controller(CompanyController::class)->group(function(){
+            Route::get('/company/setup', 'setup');
+
             Route::get('/company/dashboard', 'dashboard');
             Route::get('/company/profile/', 'index');
             Route::get('/company/profile/edit', 'edit');

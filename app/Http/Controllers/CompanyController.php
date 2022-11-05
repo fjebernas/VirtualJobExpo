@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+    public function setup() {
+        return view('company.setup');
+    }
+
     public function dashboard() {
         return view('company.dashboard');
     }
@@ -31,7 +35,7 @@ class CompanyController extends Controller
                 'contact_number' => $request->contact_number,
             ]);
 
-        return redirect('/company/profile/edit')
+        return redirect('/company/dashboard')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
