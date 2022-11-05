@@ -14,7 +14,7 @@
 
         <div class="card bg-light mt-3" style="min-width: 42rem;">
             <div class="card-header">
-                View Profile
+                Edit Profile
             </div>
             <form action="/company/profile/" method="POST">
                 @csrf
