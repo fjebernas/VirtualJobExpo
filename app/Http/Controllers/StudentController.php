@@ -35,7 +35,7 @@ class StudentController extends Controller
                 'contact_number' => $request->contact_number,
             ]);
 
-        return redirect('/student/dashboard')
+        return redirect('/student/edit')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'

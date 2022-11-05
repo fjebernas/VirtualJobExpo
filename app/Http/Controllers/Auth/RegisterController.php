@@ -71,7 +71,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         Student::create([
-            'role' => $data['role'],
             'email' => $data['email'],
         ]);
 
