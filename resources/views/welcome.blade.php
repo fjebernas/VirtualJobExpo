@@ -9,9 +9,10 @@
 @endsection
 
 @section('content')
+    <img id="background-image" src="/img/background.jpg" alt="" srcset="">
     <div class="row banner">
         <div class="col d-flex flex-column justify-content-center align-items-center">
-            <h1 class="fs-1">Get your dream job. 
+            <h1 class="fs-1 text-white">Get your dream job. 
                 <div class="fw-bolder">
                     Now.
                 </div>
@@ -26,60 +27,62 @@
             <img src="/img/buildings.png" alt="" srcset="">
         </div>
     </div>
-    <div class="d-flex flex-column mt-5">
-        <h1 class="text-center pb-5">OUR TOP EMPLOYERS</h1>
+    <div class="top-employers d-flex flex-column">
+        <h1 class="text-center mb-5 fs-3" style="z-index: 999">
+            OUR TOP EMPLOYERS
+        </h1>
         <div class="companies-container d-flex justify-content-center align-items-center flex-wrap">
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
             <div class="company d-flex flex-column justify-content-center align-items-center">
                 <img src="/img/google.png" width="70" alt="" srcset="">
-                <h3 class="pt-2">Google</h3>
+                <h5 class="pt-2">Google</h5>
             </div>
         </div>
     </div>

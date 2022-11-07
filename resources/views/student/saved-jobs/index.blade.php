@@ -11,7 +11,7 @@
 @section('content')
     <h1 class="text-center">SAVED JOBS</h1>
 
-    <div class="row gx-4">
+    <div class="row gx-4 mt-4">
         <div class="col">
             @forelse ($saved_jobs as $saved_job)
                 <div class="card w-100 mb-2">
@@ -20,7 +20,7 @@
                         <p class="card-text">{{ $saved_job->company }}</p>
                         <div class="d-flex">
                             <button class="btn btn-primary" style="margin-right: 5px;">View more details</button>
-                            <form action="/student/job-post/{{ $saved_job->job_post_id }}" method="POST">
+                            <form action="/student/job-post/{{ $saved_job->id }}" method="POST">
                                 @csrf
                                 @method('delete')
 
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             @empty
-                <h2 class="text-center fs-3 text-muted fts-italic">No saved jobs</h2>
+                <h2 class="text-center fs-4 text-muted fst-italic align-self-center">No saved jobs</h2>
             @endforelse
         </div>
         <div class="col job-details-panel">
