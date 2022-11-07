@@ -1,0 +1,14 @@
+.banner {
+    height: 60vh;
+}
+
+.btn-register {
+    background-color: #FF5D00;
+    color: #fff;
+    border: none;
+}
+
+.companies-container {
+    row-gap: 30px;
+    column-gap: 50px;
+}

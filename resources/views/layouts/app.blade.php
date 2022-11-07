@@ -37,7 +37,7 @@
         ">
     </span>
 
-    <div id="app">
+    <div id="app" class="d-flex flex-column">
         <nav class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark">
             <div class="container">
                 <a class="navbar-brand fs-3 text-white" href="{{ url('/') }}">
@@ -110,6 +110,15 @@
                 @yield('content')
             </div>
         </main>
+
+        <footer class="pb-2 mb-0 mt-auto text-center">
+            <hr>
+            <div class="d-flex justify-content-center flex-wrap pt-1">
+                <p class="text-muted p-0 m-0">&copy; 2022 Developed by Francis Bernas.</p>
+                <p class="text-muted p-0 m-0">&nbsp; This is a simulation of "lotto" game. This is made only to practice my webdev skills.</p>
+            </div>
+            <p class="text-muted p-0 mt-2">Lotto 6/42, Mega Lotto 6/45, Ultra Lotto 6/58 & Swertres are registered trademark of PSCO. I do not own them.</p>
+        </footer>
     </div>
 </body>
 </html>

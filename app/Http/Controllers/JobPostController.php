@@ -14,16 +14,18 @@ class JobPostController extends Controller
 {
     public function index() {
         // if student, return with saved jobs
-        if (Auth::user()->role == 'student') {
-            $student = Student::where('email', Auth::user()->email)
-                                                    ->firstOrFail();
-            $saved_jobs_id = SavedJob::where('student_id', $student->id)
-                                    ->pluck('job_post_id')
-                                    ->toArray();
-
-            return view('job-posts.index')
-                ->with('job_posts', JobPost::all())
-                ->with('saved_job_posts_id', $saved_jobs_id);
+        if (Auth::check()) {
+            if (Auth::user()->role == 'student') {
+                $student = Student::where('email', Auth::user()->email)
+                                                        ->firstOrFail();
+                $saved_jobs_id = SavedJob::where('student_id', $student->id)
+                                        ->pluck('job_post_id')
+                                        ->toArray();
+    
+                return view('job-posts.index')
+                    ->with('job_posts', JobPost::all())
+                    ->with('saved_job_posts_id', $saved_jobs_id);
+            }
         }
 
         return view('job-posts.index')
