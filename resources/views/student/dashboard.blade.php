@@ -14,5 +14,6 @@
 
         <a href="/student/profile">View Profile</a>
         <a href="/student/profile/edit">Edit Profile</a>
+        <a href="/student/saved-jobs">Saved Jobs</a>
     </div>
 @endsection

@@ -17,7 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="/css/common.css">
-    @yield('commonjs')
+    @yield('customcss')
 
     <script src="/js/common.js" type="module"></script>
     @yield('customjs')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobPostController;
+use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,14 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('/student/profile/edit', 'edit');
             });
         });
+
+        Route::controller(SavedJobController::class)->group(function(){
+            Route::middleware(['details.set'])->group(function(){
+                Route::get('/student/saved-jobs', 'index');
+                Route::post('/student/job-post', 'store');
+                Route::delete('/student/job-post/{job_post_id}', 'destroy');
+            });
+        });
     });
 
     Route::middleware(['company.only'])->group(function(){
@@ -51,13 +60,15 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('/company/dashboard', 'dashboard');
                 Route::get('/company/profile/', 'index');
                 Route::get('/company/profile/edit', 'edit');
-                
-                Route::controller(JobPostController::class)->group(function(){
-                    Route::get('/company/job-post', 'indexOwned');
-                    Route::get('/company/job-post/create', 'create');
-                    Route::post('/company/job-post', 'store');
-                    Route::delete('/company/job-post/{id}', 'destroy');
-                });
+            });
+        });
+
+        Route::middleware(['details.set'])->group(function(){
+            Route::controller(JobPostController::class)->group(function(){
+                Route::get('/company/job-post', 'indexOwned');
+                Route::get('/company/job-post/create', 'create');
+                Route::post('/company/job-post', 'store');
+                Route::delete('/company/job-post/{id}', 'destroy');
             });
         });
     });

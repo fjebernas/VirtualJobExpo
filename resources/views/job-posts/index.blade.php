@@ -13,21 +13,41 @@
 
     <div class="d-flex justify-content-center flex-wrap">
         @forelse ($job_posts as $job_post)
-        <div class="card mx-3" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $job_post->position }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->company }}</h6>
-                <ul>
-                    <li>{{ $job_post->level }}</li>
-                    <li>{{ $job_post->employment }}</li>
-                    <li>₱ {{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</li>
-                </ul>
-                <a href="#" class="card-link">Apply now</a>
-                <a href="#" class="card-link">Save</a>
+            <div class="card mx-3 mt-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $job_post->position }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->company }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
+                    <ul>
+                        <li>{{ $job_post->level }}</li>
+                        <li>{{ $job_post->employment }}</li>
+                        <li>₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</li>
+                    </ul>
+                    <div class="d-flex flex-wrap buttons-container">
+                        @if (Auth::user()->role == 'student')
+                            <a href="#" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                            @if (in_array($job_post->id, $saved_job_posts_id))
+                                <form action="/student/job-post/{{ $job_post->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+
+                                    <button name="job_post_id" type="submit" class="btn btn-danger">Remove</button>
+                                </form>
+                            @else
+                                <form action="/student/job-post" method="POST">
+                                    @csrf
+
+                                    <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning">Save</button>
+                                </form>
+                            @endif
+                        @else
+                            {{-- No buttons to show if user is not student --}}
+                        @endif
+                    </div>
+                </div>
             </div>
-        </div>
         @empty
-            
+            <h2 class="fs-4 text-center text-muted fst-italic">No available jobs as of now</h2>
         @endforelse
     </div>
 @endsection
