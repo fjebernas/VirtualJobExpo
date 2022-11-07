@@ -12,7 +12,7 @@
     <h1 class="text-center">ALL YOUR JOB POSTS</h1>
 
     <div class="table-responsive">
-        <table class="table text-center table-bordered">
+        <table class="table text-center table-bordered bg-white mt-4">
             <thead class="bg-dark text-white">
                 <tr>
                     <th scope="col">id</th>
