@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('customcss')
-    <link rel="stylesheet" href="/css/student/edit.css">
+    <link rel="stylesheet" href="/css/student/profile/edit.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/student/edit.js" type="module"></script>
+    <script src="/js/student/profile/edit.js" type="module"></script>
 @endsection
 
 @section('content')
-    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>EDIT PROFILE</h1>
 
-        <div class="card bg-light mt-3" style="min-width: 42rem;">
+        <div class="card bg-light mt-3 w-100" style="max-width: 42rem">
             <div class="card-header">
                 View Profile
             </div>

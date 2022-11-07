@@ -21,7 +21,10 @@ return new class extends Migration
             $table->string('level')->nullable();
             $table->string('employment')->nullable();
             $table->json('salary_range')->nullable();
-            $table->integer('company_id');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

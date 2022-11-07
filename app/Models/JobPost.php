@@ -20,6 +20,6 @@ class JobPost extends Model
         'level',
         'employment',
         'salary_range',
-        'company_id',
+        'user_id',
     ];
 }

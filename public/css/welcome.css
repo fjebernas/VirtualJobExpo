@@ -13,16 +13,6 @@
     column-gap: 50px;
 }
 
-#background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: -999;
-    filter: brightness(0.4) blur(0px);
-    border-bottom: 5px solid darkblue;
-}
-
 .top-employers {
     margin-top: 100px;
 }

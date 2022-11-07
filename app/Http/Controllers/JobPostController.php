@@ -31,10 +31,7 @@ class JobPostController extends Controller
     }
 
     public function indexOwned() {
-        $company_id = Company::where('email', Auth::user()->email)
-                            ->value('id');
-        $job_posts = JobPost::where('company_id', $company_id)
-                            ->get();
+        $job_posts = JobPost::where('user_id', Auth::user()->id)->get();
 
         return view('company.job-post.index')
             ->with('job_posts', $job_posts);
@@ -56,7 +53,7 @@ class JobPostController extends Controller
                                 'low' => $request->salary_range[0],
                                 'high' => $request->salary_range[1],
                             ],
-            'company_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect('/company/dashboard')
