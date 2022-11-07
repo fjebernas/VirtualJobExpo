@@ -12,8 +12,8 @@ class SavedJobController extends Controller
 {
     public function index()
     {
-        $student_id = Student::where('email', Auth::user()->email)->value('id');
-        $saved_jobs = SavedJob::where('student_id', $student_id)->get();
+        $saved_jobs_reference = SavedJob::where('user_id', Auth::user()->id)->pluck('job_post_id')->toArray();
+        $saved_jobs = JobPost::whereIn('id', $saved_jobs_reference)->get();
 
         return view('student.saved-jobs.index')
             ->with('saved_jobs', $saved_jobs);
@@ -23,15 +23,10 @@ class SavedJobController extends Controller
     {
         $job_post = JobPost::where('id', $request->job_post_id)
                             ->firstOrFail();
-        $student = Student::where('email', Auth::user()->email)
-                            ->firstOrFail();
 
         SavedJob::create([
-            'position' => $job_post->position,
-            'company' => $job_post->company,
             'job_post_id' => $job_post->id,
-            'student_last_name' => $student->last_name,
-            'student_id' => $student->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect()->back()

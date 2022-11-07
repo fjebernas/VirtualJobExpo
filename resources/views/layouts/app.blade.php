@@ -38,7 +38,7 @@
     </span>
 
     <div id="app" class="d-flex flex-column">
-        <nav class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark">
+        <nav class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark position-fixed w-100" style="z-index: 999">
             <div class="container">
                 <a class="navbar-brand fs-3 text-white" href="{{ url('/') }}">
                     <span class="app-name-abbrv fw-bolder">VJE</span>
@@ -105,7 +105,7 @@
             </div>
         </nav>
 
-        <main class="py-5">
+        <main class="py-5" style="margin-top: 70px">
             <div class="container-md d-flex flex-column">
                 @yield('content')
             </div>

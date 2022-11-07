@@ -15,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('saved_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('position');
-            $table->string('company');
             $table->integer('job_post_id');
-            $table->string('student_last_name');
-            $table->integer('student_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

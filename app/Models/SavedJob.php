@@ -10,10 +10,7 @@ class SavedJob extends Model
     use HasFactory;
 
     protected $fillable = [
-        'position',
-        'company',
         'job_post_id',
-        'student_last_name',
-        'student_id',
+        'user_id',
     ];
 }
