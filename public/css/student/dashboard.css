@@ -1,0 +1,40 @@
+.greeting {
+    height: 150px;
+    background-color: #acd0fa;
+    color:#0262cf;
+    border-radius: 10px;
+}
+
+.cards-container {
+    column-gap: 20px;
+}
+
+.card {
+    width: 170px;
+    height: 150px;
+    border: none;
+    transition: 100ms ease-in-out;
+}
+
+.card:hover {
+    filter: brightness(0.95);
+}
+
+.view-profile.card {
+    background-color: rgb(226, 253, 226);
+    color: green;
+}
+
+.edit-profile.card {
+    background-color: rgb(253, 245, 223);
+    color: orange;
+}
+
+.saved-jobs.card {
+    background-color: rgb(250, 239, 255);
+    color: violet;
+}
+.jobs-applied.card {
+    background-color: #e8eeff;
+    color: darkblue;
+}

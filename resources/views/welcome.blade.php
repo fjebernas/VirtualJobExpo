@@ -15,7 +15,11 @@
                 <div class="fw-bolder">
                     Now.
                 </div>
-                <a class="btn btn-primary py-2 px-4 mt-3 fs-5 btn-register" href="/register">Register now</a>
+                @guest
+                    <a class="btn btn-primary py-2 px-4 mt-3 fs-5 btn-register" href="/register">Register now</a>
+                @else
+                    <a class="btn btn-primary py-2 px-4 mt-3 fs-5 btn-register" href="/{{ Auth::user()->role }}/dashboard">Go to Dashboard</a>
+                @endguest
             </h1>
         </div>
         <div class="col d-flex flex-column justify-content-center align-items-center">

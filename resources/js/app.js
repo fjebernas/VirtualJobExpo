@@ -8,6 +8,7 @@ import './bootstrap'
 import { createApp } from 'vue'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
+import 'boxicons'
 
 window.$ = $
 window.Swal = Swal

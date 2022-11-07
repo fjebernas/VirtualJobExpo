@@ -10,10 +10,41 @@
 
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h1>STUDENT DASHBOARD</h1>
+        <div class="greeting row w-100 d-flex align-items-center px-3">
+            <div>
+                <h1>Welcome, {{ Auth::user()->email }}.</h1>
+                <h2 class="fs-5">Lorem ipsum dolor sit amet consectetur.</h2>
+            </div>
+        </div>
 
-        <a href="/student/profile">View Profile</a>
-        <a href="/student/profile/edit">Edit Profile</a>
-        <a href="/student/saved-jobs">Saved Jobs</a>
+        <div class="cards-container d-flex flex-wrap mt-5">
+            <a href="/student/profile" class="text-decoration-none">
+                <div class="card view-profile d-flex justify-content-center align-items-center">
+                    <box-icon name='news' size='90px' color='green'></box-icon>
+                    <h3 class="fs-5">View Profile</h3>
+                </div>
+            </a>
+
+            <a href="/student/profile/edit" class="text-decoration-none">
+                <div class="card edit-profile d-flex justify-content-center align-items-center">
+                    <box-icon name='edit-alt' size='90px' color='orange'></box-icon>
+                    <h3 class="fs-5">Edit Profile</h3>
+                </div>
+            </a>
+
+            <a href="/student/saved-jobs" class="text-decoration-none">
+                <div class="card saved-jobs d-flex justify-content-center align-items-center">
+                    <box-icon name='spreadsheet' size='90px' color='violet'></box-icon>
+                    <h3 class="fs-5">Saved Jobs</h3>
+                </div>
+            </a>
+
+            <a href="#" class="text-decoration-none">
+                <div class="card jobs-applied d-flex justify-content-center align-items-center">
+                    <box-icon name='briefcase' size='90px' color='darkblue'></box-icon>
+                    <h3 class="fs-5">Jobs Applied</h3>
+                </div>
+            </a>
+        </div>
     </div>
 @endsection
