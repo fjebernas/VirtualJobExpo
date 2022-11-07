@@ -17,6 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/layouts/app.css">
     @yield('customcss')
 
     <script src="/js/common.js" type="module"></script>
@@ -37,9 +38,10 @@
     </span>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand fs-3 text-white" href="{{ url('/') }}">
+                    <span class="app-name-abbrv fw-bolder">VJE</span>
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
