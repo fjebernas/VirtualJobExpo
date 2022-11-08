@@ -12,7 +12,7 @@
     <h1 class="text-center">SAVED JOBS</h1>
 
     <div class="gx-4 mt-4 d-flex flex-wrap justify-content-center wrapper">
-        <div class="saved-jobs-container order-md-first order-sm-last order-last">
+        <div class="saved-jobs-container order-xxl-first order-last">
             @forelse ($job_posts_from_saved_jobs as $job_post_from_saved_job)
                 <div class="card w-100 mb-2">
                     <div class="card-body row">
@@ -34,7 +34,7 @@
                 <h2 class="text-center fs-4 text-muted fst-italic align-self-center">No saved jobs</h2>
             @endforelse
         </div>
-        <div class="job-details-panel order-md-last order-sm-first order-first">
+        <div class="job-details-panel order-xxl-last order-first">
             
         </div>
     </div>

@@ -30,7 +30,7 @@ class JobApplicationController extends Controller
             'student_id' => Auth::user()->student->id,
         ]);
         
-        return redirect()->back()
+        return redirect('/job-posts')
             ->with('notification', [
                 'message' => 'Job application submitted',
                 'type' => 'success'
