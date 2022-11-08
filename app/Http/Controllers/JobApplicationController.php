@@ -11,7 +11,7 @@ class JobApplicationController extends Controller
 {
     public function create($job_post_id) 
     {
-        return view('job-application.create')
+        return view('student.job-application.create')
             ->with('job_post', JobPost::where('id', $job_post_id)->firstOrFail());
     }
 
