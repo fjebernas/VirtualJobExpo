@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="cards-container d-flex flex-wrap mt-5">
+        <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
             <a href="/student/profile" class="text-decoration-none">
                 <div class="card view-profile d-flex justify-content-center align-items-center">
                     <box-icon name='news' size='90px' color='green'></box-icon>

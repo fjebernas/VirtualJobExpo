@@ -44,7 +44,7 @@ class JobPostController extends Controller
     public function store(Request $request) {
         JobPost::create([
             'position' => $request->position,
-            'company' => Company::where('email', Auth::user()->email)
+            'company' => Company::where('user_id', Auth::user()->id)
                                 ->value('name'),
             'location' => $request->location,
             'level' => $request->level,
