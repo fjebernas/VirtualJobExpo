@@ -22,4 +22,8 @@ class JobPost extends Model
         'salary_range',
         'company_id',
     ];
+
+    protected $hidden = [
+        'pivot',
+    ];
 }
