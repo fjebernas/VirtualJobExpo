@@ -105,13 +105,13 @@
             </div>
         </nav>
 
-        <main class="py-5" style="margin-top: 70px">
+        <main class="py-5 col" style="margin-top: 70px">
             <div class="container-md d-flex flex-column">
                 @yield('content')
             </div>
         </main>
 
-        <footer class="pb-2 mb-0 mt-auto text-center">
+        <footer class="pb-2 m-0 text-center">
             <hr>
             <div class="d-flex justify-content-center flex-wrap pt-1">
                 <p class="text-muted p-0 m-0">&copy; 2022 Developed by Francis Bernas.</p>

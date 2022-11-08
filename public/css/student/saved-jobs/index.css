@@ -1,4 +1,18 @@
+.wrapper {
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.saved-jobs-container {
+    width: 600px;
+    height: 52vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .job-details-panel {
-    height: 50vh;
+    width: 600px;
+    height: 52vh;
     background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
 }
