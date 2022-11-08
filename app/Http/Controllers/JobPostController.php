@@ -20,7 +20,7 @@ class JobPostController extends Controller
             {
                 return view('job-posts.index')
                     ->with('job_posts', JobPost::all())
-                    ->with('saved_jobs_id', Auth::user()->student->savedJobs->pluck('id')->toArray());
+                    ->with('saved_jobs_id', Auth::user()->student->jobPostsFromSavedJobs->pluck('id')->toArray());
             }
         }
 

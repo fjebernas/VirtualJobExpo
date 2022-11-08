@@ -16,7 +16,7 @@
             <div class="card-header">
                 Job post
             </div>
-            <form action="/company/job-post" method="POST">
+            <form action="/company/job-posts" method="POST">
                 @csrf
 
                 <div class="card-body d-flex flex-column">

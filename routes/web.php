@@ -46,8 +46,8 @@ Route::middleware(['auth'])->group(function()
         Route::controller(SavedJobController::class)->group(function(){
             Route::middleware(['details.set'])->group(function(){
                 Route::get('/student/saved-jobs', 'index');
-                Route::post('/student/job-post', 'store');
-                Route::delete('/student/job-post/{job_post_id}', 'destroy');
+                Route::post('/student/saved-jobs', 'store');
+                Route::delete('/student/saved-jobs/{job_post_id}', 'destroy');
             });
         });
 
@@ -75,10 +75,10 @@ Route::middleware(['auth'])->group(function()
 
         Route::middleware(['details.set'])->group(function(){
             Route::controller(JobPostController::class)->group(function(){
-                Route::get('/company/job-post', 'indexOwned');
-                Route::get('/company/job-post/create', 'create');
-                Route::post('/company/job-post', 'store');
-                Route::delete('/company/job-post/{id}', 'destroy');
+                Route::get('/company/job-posts', 'indexOwned');
+                Route::get('/company/job-posts/create', 'create');
+                Route::post('/company/job-posts', 'store');
+                Route::delete('/company/job-posts/{id}', 'destroy');
             });
         });
     });

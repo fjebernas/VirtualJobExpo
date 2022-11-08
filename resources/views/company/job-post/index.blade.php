@@ -36,7 +36,7 @@
                             ₱ {{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
                         </td>
                         <td>
-                            <form action="/company/job-post/{{ $job_post->id }}" method="POST">
+                            <form action="/company/job-posts/{{ $job_post->id }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete</button>

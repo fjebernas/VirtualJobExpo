@@ -27,16 +27,14 @@
                         @isset($saved_jobs_id)
                             <a href="/student/job-applications/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
                             @if (in_array($job_post->id, $saved_jobs_id))
-                                <form action="/student/job-post/{{ $job_post->id }}" method="POST">
+                                <form action="/student/saved-jobs/{{ $job_post->id }}" method="POST">
                                     @csrf
                                     @method('delete')
-
                                     <button name="job_post_id" type="submit" class="btn btn-danger">Remove</button>
                                 </form>
                             @else
-                                <form action="/student/job-post" method="POST">
+                                <form action="/student/saved-jobs" method="POST">
                                     @csrf
-
                                     <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning">Save</button>
                                 </form>
                             @endif

@@ -21,7 +21,7 @@ class Student extends Model
         'user_id',
     ];
 
-    public function savedJobs() 
+    public function jobPostsFromSavedJobs() 
     {
         return $this->belongsToMany(
             JobPost::class, 'saved_jobs'
