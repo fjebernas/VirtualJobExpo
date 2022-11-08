@@ -16,14 +16,11 @@ class JobPostController extends Controller
     {
         // if student, return with saved jobs
         if (Auth::check()) {
-            if (Auth::user()->role == 'student') {
-                $saved_jobs_reference = Auth::user()->student->savedJobs
-                                                    ->pluck('job_post_id')
-                                                    ->toArray();
-    
+            if (Auth::user()->role == 'student') 
+            {
                 return view('job-posts.index')
                     ->with('job_posts', JobPost::all())
-                    ->with('saved_jobs_reference', $saved_jobs_reference);
+                    ->with('saved_jobs_id', Auth::user()->student->savedJobs->pluck('id')->toArray());
             }
         }
 
