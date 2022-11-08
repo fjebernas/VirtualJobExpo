@@ -18,7 +18,7 @@ class SavedJobController extends Controller
 
     public function store(Request $request) 
     {
-        SavedJob::create([
+        SavedJob::firstOrCreate([
             'job_post_id' => $request->job_post_id,
             'student_id' => Auth::user()->student->id,
         ]);
