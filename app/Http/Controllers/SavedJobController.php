@@ -12,13 +12,8 @@ class SavedJobController extends Controller
 {
     public function index()
     {
-        $saved_jobs_reference = Auth::user()->student->savedJobs
-                                                    ->pluck('job_post_id')
-                                                    ->toArray();
-        $saved_jobs = JobPost::whereIn('id', $saved_jobs_reference)->get();
-
         return view('student.saved-jobs.index')
-            ->with('saved_jobs', $saved_jobs);
+            ->with('saved_jobs', Auth::user()->student->savedJobPosts);
     }
 
     public function store(Request $request) 
