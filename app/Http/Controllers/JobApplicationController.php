@@ -12,7 +12,8 @@ class JobApplicationController extends Controller
     public function index()
     {
         return view('student.job-application.index')
-            ->with('job_applications', Auth::user()->student->jobPostsApplied);
+            ->with('job_applications', Auth::user()->student->jobApplications)
+            ->with('job_posts_applied', Auth::user()->student->jobPostsApplied);
     }
 
     public function create($job_post_id) 
@@ -29,9 +30,21 @@ class JobApplicationController extends Controller
             'student_id' => Auth::user()->student->id,
         ]);
         
-        return redirect('/')
+        return redirect()->back()
             ->with('notification', [
                 'message' => 'Job application submitted',
+                'type' => 'success'
+            ]
+        );
+    }
+
+    public function destroy($job_application_id)
+    {
+        JobApplication::where('id', $job_application_id)->delete();
+
+        return redirect()->back()
+            ->with('notification', [
+                'message' => 'Job application withdrew',
                 'type' => 'success'
             ]
         );

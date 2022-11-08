@@ -26,11 +26,11 @@
                 @forelse ($job_applications as $job_application)
                     <tr>
                         <td>{{ $job_application->id }}</td>
-                        <td>{{ $job_application->position }}</td>
-                        <td>{{ $job_application->company }}</td>
-                        <td>{{ $job_application->status }}</td>
+                        <td>{{ $job_posts_applied[$loop->index]->position }}</td>
+                        <td>{{ $job_posts_applied[$loop->index]->company }}</td>
+                        <td class="fst-italic" style="color: rgb(0, 202, 0)">{{ $job_application->status }}</td>
                         <td>
-                            <form action="/company/job-post/{{ $job_application->id }}" method="POST">
+                            <form action="/student/job-applications/{{ $job_application->id }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Withdraw</button>

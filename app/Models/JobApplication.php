@@ -11,6 +11,7 @@ class JobApplication extends Model
 
     protected $fillable = [
         'pitch',
+        'status',
         'job_post_id',
         'student_id',
     ];

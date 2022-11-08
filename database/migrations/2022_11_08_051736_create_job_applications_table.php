@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
             $table->text('pitch');
+            $table->string('status')
+                ->default('Received');
             $table->foreignId('job_post_id')
                 ->constrained()
                 ->onUpdate('cascade')

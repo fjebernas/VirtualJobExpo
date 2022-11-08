@@ -40,7 +40,7 @@
             <div class="card-header">
                 Job Application
             </div>
-            <form action="/student/job-application/{{ $job_post->id }}" method="POST">
+            <form action="/student/job-applications/{{ $job_post->id }}" method="POST">
                 @csrf
 
                 <div class="card-body d-flex flex-column">
