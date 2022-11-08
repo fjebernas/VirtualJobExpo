@@ -12,7 +12,9 @@ class SavedJobController extends Controller
 {
     public function index()
     {
-        $saved_jobs_reference = SavedJob::where('user_id', Auth::user()->id)->pluck('job_post_id')->toArray();
+        $saved_jobs_reference = Auth::user()->student->savedJobs
+                                                    ->pluck('job_post_id')
+                                                    ->toArray();
         $saved_jobs = JobPost::whereIn('id', $saved_jobs_reference)->get();
 
         return view('student.saved-jobs.index')
@@ -21,12 +23,9 @@ class SavedJobController extends Controller
 
     public function store(Request $request) 
     {
-        $job_post = JobPost::where('id', $request->job_post_id)
-                            ->firstOrFail();
-
         SavedJob::create([
-            'job_post_id' => $job_post->id,
-            'user_id' => Auth::user()->id,
+            'job_post_id' => $request->job_post_id,
+            'student_id' => Auth::user()->student->id,
         ]);
 
         return redirect()->back()
@@ -40,6 +39,7 @@ class SavedJobController extends Controller
     public function destroy($job_post_id) 
     {
         SavedJob::where('job_post_id', $job_post_id)
+                ->where('student_id', Auth::user()->student->id)
                 ->delete();
 
         return redirect()->back()

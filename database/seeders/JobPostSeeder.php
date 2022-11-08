@@ -22,7 +22,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Entry level',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '15000', 'high' => '20000'),
-            'user_id' => '4',
+            'company_id' => '2',
         ]);
 
         JobPost::create([
@@ -32,7 +32,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Intermediate',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '25000', 'high' => '45000'),
-            'user_id' => '3',
+            'company_id' => '1',
         ]);
 
         JobPost::create([
@@ -42,7 +42,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Entry level',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '18000', 'high' => '22000'),
-            'user_id' => '3',
+            'company_id' => '1',
         ]);
 
         JobPost::create([
@@ -52,7 +52,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Entry level',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '20000', 'high' => '25000'),
-            'user_id' => '4',
+            'company_id' => '2',
         ]);
 
         JobPost::create([
@@ -62,7 +62,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Senior',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '80000', 'high' => '120000'),
-            'user_id' => '3',
+            'company_id' => '1',
         ]);
 
         JobPost::create([
@@ -72,7 +72,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Senior level',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '80000', 'high' => '100000'),
-            'user_id' => '4',
+            'company_id' => '2',
         ]);
 
         JobPost::create([
@@ -82,7 +82,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Intermediate',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '50000', 'high' => '70000'),
-            'user_id' => '4',
+            'company_id' => '2',
         ]);
 
         JobPost::create([
@@ -92,7 +92,7 @@ class JobPostSeeder extends Seeder
             'level' => 'Senior',
             'employment' => 'Full-time',
             'salary_range' => array('low' => '100000', 'high' => '130000'),
-            'user_id' => '3',
+            'company_id' => '1',
         ]);
     }
 }

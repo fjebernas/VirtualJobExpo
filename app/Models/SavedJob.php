@@ -11,6 +11,6 @@ class SavedJob extends Model
 
     protected $fillable = [
         'job_post_id',
-        'user_id',
+        'student_id',
     ];
 }

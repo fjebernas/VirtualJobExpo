@@ -20,4 +20,11 @@ class Student extends Model
         'contact_number',
         'user_id',
     ];
+
+    public function savedJobs() 
+    {
+        return $this->hasMany(
+            SavedJob::class
+        );
+    }
 }

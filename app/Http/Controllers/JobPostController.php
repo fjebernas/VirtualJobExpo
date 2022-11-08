@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class JobPostController extends Controller
 {
-    public function index() {
+    public function index() 
+    {
         // if student, return with saved jobs
         if (Auth::check()) {
             if (Auth::user()->role == 'student') {
-                $saved_jobs_reference = SavedJob::where('user_id', Auth::user()->id)
-                                        ->pluck('job_post_id')
-                                        ->toArray();
+                $saved_jobs_reference = Auth::user()->student->savedJobs
+                                                    ->pluck('job_post_id')
+                                                    ->toArray();
     
                 return view('job-posts.index')
                     ->with('job_posts', JobPost::all())
@@ -30,22 +31,21 @@ class JobPostController extends Controller
             ->with('job_posts', JobPost::all());
     }
 
-    public function indexOwned() {
-        $job_posts = JobPost::where('user_id', Auth::user()->id)->get();
-
+    public function indexOwned() 
+    {
         return view('company.job-post.index')
-            ->with('job_posts', $job_posts);
+            ->with('job_posts', Auth::user()->company->jobPosts);
     }
 
     public function create() {
         return view('company.job-post.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
         JobPost::create([
             'position' => $request->position,
-            'company' => Company::where('user_id', Auth::user()->id)
-                                ->value('name'),
+            'company' => Auth::user()->company->name,
             'location' => $request->location,
             'level' => $request->level,
             'employment' => $request->employment,
@@ -53,7 +53,7 @@ class JobPostController extends Controller
                                 'low' => $request->salary_range[0],
                                 'high' => $request->salary_range[1],
                             ],
-            'user_id' => Auth::user()->id,
+            'company_id' => Auth::user()->company->id,
         ]);
 
         return redirect('/company/dashboard')
@@ -64,7 +64,8 @@ class JobPostController extends Controller
         );
     }
 
-    public function destroy($id) {
+    public function destroy($id) 
+    {
         JobPost::where('id', $id)
                 ->delete();
 

@@ -16,4 +16,10 @@ class Company extends Model
         'contact_number',
         'user_id',
     ];
+
+    public function jobPosts() {
+        return $this->hasMany(
+            JobPost::class
+        );
+    }
 }
