@@ -9,34 +9,36 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
-    public function setup() {
+    public function setup() 
+    {
         return view('company.setup');
     }
 
-    public function dashboard() {
+    public function dashboard() 
+    {
         return view('company.dashboard');
     }
 
-    public function index() {
+    public function index() 
+    {
         return view('company.profile.index')
-                ->with('company', Company::where('user_id', Auth::user()->id)
-                                                            ->firstOrFail());
+                ->with('company', Auth::user()->company);
     }
 
-    public function edit() {
+    public function edit() 
+    {
         return view('company.profile.edit')
-                ->with('company', Company::where('user_id', Auth::user()->id)
-                                                            ->firstOrFail());
+                ->with('company', Auth::user()->company);
     }
 
-    public function update(Request $request) {
-        Company::where('user_id', Auth::user()->id)
-            ->update([
-                'name' => $request->name,
-                'industry' => $request->industry,
-                'address' => $request->address,
-                'contact_number' => $request->contact_number,
-            ]);
+    public function update(Request $request) 
+    {
+        Auth::user()->company->update([
+            'name' => $request->name,
+            'industry' => $request->industry,
+            'address' => $request->address,
+            'contact_number' => $request->contact_number,
+        ]);
 
         return redirect('/company/dashboard')
             ->with('notification', [
