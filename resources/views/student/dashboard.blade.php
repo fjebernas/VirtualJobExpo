@@ -39,7 +39,7 @@
                 </div>
             </a>
 
-            <a href="#" class="text-decoration-none">
+            <a href="/student/job-applications" class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
                     <box-icon name='briefcase' size='90px' color='darkblue'></box-icon>
                     <h3 class="fs-5">Jobs Applied</h3>

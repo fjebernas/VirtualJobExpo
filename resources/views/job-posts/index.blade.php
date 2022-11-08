@@ -25,7 +25,7 @@
                     </ul>
                     <div class="d-flex flex-wrap buttons-container">
                         @isset($saved_jobs_id)
-                            <a href="/job-application/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                            <a href="/student/job-application/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
                             @if (in_array($job_post->id, $saved_jobs_id))
                                 <form action="/student/job-post/{{ $job_post->id }}" method="POST">
                                     @csrf

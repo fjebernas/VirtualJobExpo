@@ -1,11 +1,11 @@
 @extends('layouts.app')
     
 @section('customcss')
-    <link rel="stylesheet" href="/css/job-application/create.css">
+    <link rel="stylesheet" href="/css/student/job-application/create.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/job-application/create.js" type="module"></script>
+    <script src="/js/student/job-application/create.js" type="module"></script>
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
             <div class="card-header">
                 Job Application
             </div>
-            <form action="/job-application/{{ $job_post->id }}" method="POST">
+            <form action="/student/job-application/{{ $job_post->id }}" method="POST">
                 @csrf
 
                 <div class="card-body d-flex flex-column">

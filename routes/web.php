@@ -53,8 +53,9 @@ Route::middleware(['auth'])->group(function()
 
         Route::controller(JobApplicationController::class)->group(function(){
             Route::middleware(['details.set'])->group(function(){
-                Route::get('/job-application/create/{job_post_id}', 'create');
-                Route::post('/job-application/{job_post_id}', 'store');
+                Route::get('/student/job-applications', 'index');
+                Route::get('/student/job-application/create/{job_post_id}', 'create');
+                Route::post('/student/job-application/{job_post_id}', 'store');
             });
         });
     });

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class JobApplicationController extends Controller
 {
+    public function index()
+    {
+        return view('student.job-application.index')
+            ->with('job_applications', Auth::user()->student->jobPostsApplied);
+    }
+
     public function create($job_post_id) 
     {
         return view('student.job-application.create')

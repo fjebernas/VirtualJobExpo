@@ -21,9 +21,24 @@ class Student extends Model
         'user_id',
     ];
 
-    public function savedJobs() {
+    public function savedJobs() 
+    {
         return $this->belongsToMany(
             JobPost::class, 'saved_jobs'
+        );
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(
+            JobApplication::class
+        );
+    }
+
+    public function jobPostsApplied()
+    {
+        return $this->belongsToMany(
+            JobPost::class, 'job_applications'
         );
     }
 }
