@@ -24,8 +24,8 @@
                         <li>₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</li>
                     </ul>
                     <div class="d-flex flex-wrap buttons-container">
-                        @if (Auth::user()->role == 'student')
-                            <a href="#" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                        @isset($saved_jobs_id)
+                            <a href="/job-application/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
                             @if (in_array($job_post->id, $saved_jobs_id))
                                 <form action="/student/job-post/{{ $job_post->id }}" method="POST">
                                     @csrf
@@ -42,7 +42,7 @@
                             @endif
                         @else
                             {{-- No buttons to show if user is not student --}}
-                        @endif
+                        @endisset
                     </div>
                 </div>
             </div>

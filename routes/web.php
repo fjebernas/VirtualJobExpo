@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\StudentController;
@@ -28,8 +29,8 @@ Route::controller(JobPostController::class)->group(function(){
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function(){
-
+Route::middleware(['auth'])->group(function()
+{
     Route::middleware(['student.only'])->group(function(){
         Route::controller(StudentController::class)->group(function(){
             Route::get('/student/setup', 'setup');
@@ -47,6 +48,13 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('/student/saved-jobs', 'index');
                 Route::post('/student/job-post', 'store');
                 Route::delete('/student/job-post/{job_post_id}', 'destroy');
+            });
+        });
+
+        Route::controller(JobApplicationController::class)->group(function(){
+            Route::middleware(['details.set'])->group(function(){
+                Route::get('/job-application/create/{job_post_id}', 'create');
+                Route::post('/job-application/{job_post_id}', 'store');
             });
         });
     });
