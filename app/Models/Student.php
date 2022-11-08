@@ -18,5 +18,6 @@ class Student extends Model
         'university',
         'email',
         'contact_number',
+        'user_id',
     ];
 }

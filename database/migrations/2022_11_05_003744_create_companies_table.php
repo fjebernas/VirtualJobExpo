@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('industry')->nullable();
             $table->string('address')->nullable();
-            $table->string('email');
             $table->string('contact_number')->nullable();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

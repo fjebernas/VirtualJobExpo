@@ -18,18 +18,18 @@ class StudentController extends Controller
 
     public function index() {
         return view('student.profile.index')
-                ->with('student', Student::where('email', Auth::user()->email)
+                ->with('student', Student::where('user_id', Auth::user()->id)
                                         ->firstOrFail());
     }
 
     public function edit() {
         return view('student.profile.edit')
-                ->with('student', Student::where('email', Auth::user()->email)
+                ->with('student', Student::where('user_id', Auth::user()->id)
                                         ->firstOrFail());;
     }
 
     public function update(Request $request) {
-        Student::where('email', Auth::user()->email)
+        Student::where('user_id', Auth::user()->id)
             ->update([
                 'first_name' => $request->first_name,
                 'middle_name' => $request->middle_name,

@@ -13,7 +13,7 @@ class Company extends Model
         'name',
         'industry',
         'address',
-        'email',
         'contact_number',
+        'user_id',
     ];
 }

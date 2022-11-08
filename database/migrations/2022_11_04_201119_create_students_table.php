@@ -21,8 +21,11 @@ return new class extends Migration
             $table->date('birthdate')->nullable();
             $table->string('gender')->nullable();
             $table->string('university')->nullable();
-            $table->string('email');
             $table->string('contact_number')->nullable();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

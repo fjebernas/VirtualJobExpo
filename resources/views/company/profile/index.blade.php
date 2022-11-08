@@ -40,9 +40,7 @@
 
                 <h5 class="card-title fw-bold">Email</h5>
                 <p class="card-text">
-                    @isset($company->email)
-                        {{ $company->email }}
-                    @endisset
+                    {{ Auth::user()->email }}
                 </p>
 
                 <h5 class="card-title fw-bold">Contact number</h5>

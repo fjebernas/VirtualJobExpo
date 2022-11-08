@@ -21,7 +21,7 @@ class EnsureUserDetailsAreSet
     {
         if (Auth::user()->role == 'student')
         {
-            $student = Student::where('email', Auth::user()->email)->firstOrFail();
+            $student = Student::where('user_id', Auth::user()->id)->firstOrFail();
             if (isset($student->first_name,
                     $student->middle_name,
                     $student->last_name,
@@ -38,7 +38,7 @@ class EnsureUserDetailsAreSet
         }
         else if (Auth::user()->role == 'company')
         {
-            $company = Company::where('email', Auth::user()->email)->firstOrFail();
+            $company = Company::where('user_id', Auth::user()->id)->firstOrFail();
             if (isset($company->name,
                     $company->industry,
                     $company->address,

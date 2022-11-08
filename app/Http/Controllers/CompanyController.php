@@ -19,18 +19,18 @@ class CompanyController extends Controller
 
     public function index() {
         return view('company.profile.index')
-                ->with('company', Company::where('email', Auth::user()->email)
+                ->with('company', Company::where('user_id', Auth::user()->id)
                                                             ->firstOrFail());
     }
 
     public function edit() {
         return view('company.profile.edit')
-                ->with('company', Company::where('email', Auth::user()->email)
+                ->with('company', Company::where('user_id', Auth::user()->id)
                                                             ->firstOrFail());
     }
 
     public function update(Request $request) {
-        Company::where('email', Auth::user()->email)
+        Company::where('user_id', Auth::user()->id)
             ->update([
                 'name' => $request->name,
                 'industry' => $request->industry,

@@ -61,9 +61,7 @@
 
                 <h5 class="card-title fw-bold">Email</h5>
                 <p class="card-text">
-                    @isset($student->email)
-                        {{ $student->email }}
-                    @endisset
+                    {{ Auth::user()->email }}
                 </p>
 
                 <h5 class="card-title fw-bold">Contact number</h5>

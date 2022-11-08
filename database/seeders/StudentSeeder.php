@@ -17,6 +17,12 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'email' => 'francis@user.com',
+            'role' => 'student',
+            'password' => Hash::make('wangan00'),
+        ]);
+
         Student::create([
             'first_name' => 'Francis Joseph',
             'middle_name' => 'Enriquez',
@@ -25,16 +31,16 @@ class StudentSeeder extends Seeder
             'gender' => 'male',
             'university' => 'Polytechnic University of the Philippines',
             'contact_number' => '09511929716',
-            'email' => 'francis@user.com',
-        ]);
-
-        User::create([
-            'email' => 'francis@user.com',
-            'role' => 'student',
-            'password' => Hash::make('wangan00'),
+            'user_id' => '1',
         ]);
 
         // =============================================================================
+
+        User::create([
+            'email' => 'ganyu@user.com',
+            'role' => 'student',
+            'password' => Hash::make('wangan00'),
+        ]);
 
         Student::create([
             'first_name' => 'Ganyu',
@@ -44,13 +50,7 @@ class StudentSeeder extends Seeder
             'gender' => 'female',
             'university' => 'University of Liyue',
             'contact_number' => '09277382901',
-            'email' => 'ganyu@user.com',
-        ]);
-
-        User::create([
-            'email' => 'ganyu@user.com',
-            'role' => 'student',
-            'password' => Hash::make('wangan00'),
+            'user_id' => '2',
         ]);
     }
 }
