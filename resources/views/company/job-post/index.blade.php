@@ -9,9 +9,80 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">ALL YOUR JOB POSTS</h1>
+    <h1 class="text-center">YOUR JOB POSTS</h1>
 
-    <div class="table-responsive">
+    @forelse ($job_posts as $job_post)
+        <div class="py-3">
+            <div class="card bg-light mt-3 w-100" style="max-width: 60rem;">
+                <div class="card-header bg-dark text-white">
+                    Job post:
+                </div>
+                <div class="card-body row">
+                    <div class="col">
+                        <p>
+                            <span class="fw-bold">Position: </span> {{ $job_post->position }}
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p>
+                            <span class="fw-bold">Location: </span> {{ $job_post->location }}
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p>
+                            <span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <form action="/company/job-posts/{{ $job_post->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Delete job post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-center table-bordered bg-white mt-4">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Pitch</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($job_applications_received as $job_application_received)
+                            @if ($job_application_received->job_post_id == $job_post->id)
+                                <tr>
+                                    <td>{{ $job_application_received->name }}</td>
+                                    <td>{{ $job_application_received->email }}</td>
+                                    <td>{{ $job_application_received->pitch }}</td>
+                                    <td>
+                                        {{-- action --}}
+                                    </td>
+                                </tr>
+                            @endif
+                        @empty
+                            <tr>
+                                <td colspan="4">
+                                    <i class="text-muted">No applications yet</i>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @if (!$loop->last)
+            <hr>
+        @endif
+    @empty
+        empty wtf
+    @endforelse
+
+    {{-- <div class="table-responsive">
         <table class="table text-center table-bordered bg-white mt-4">
             <thead class="bg-dark text-white">
                 <tr>
@@ -33,7 +104,7 @@
                         <td>{{ $job_post->level }}</td>
                         <td>{{ $job_post->employment }}</td>
                         <td>
-                            ₱ {{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
+                            ₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
                         </td>
                         <td>
                             <form action="/company/job-posts/{{ $job_post->id }}" method="POST">
@@ -52,5 +123,5 @@
                 @endforelse
             </tbody>
         </table>
-    </div>
+    </div> --}}
 @endsection

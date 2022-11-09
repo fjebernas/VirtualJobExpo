@@ -28,10 +28,16 @@ class JobPostController extends Controller
             ->with('job_posts', JobPost::all());
     }
 
+    /*
+     *
+     *  For company only
+     * 
+     */ 
     public function indexOwned() 
     {
         return view('company.job-post.index')
-            ->with('job_posts', Auth::user()->company->jobPosts);
+            ->with('job_posts', Auth::user()->company->jobPosts)
+            ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived);
     }
 
     public function create() {

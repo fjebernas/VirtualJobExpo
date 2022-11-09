@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
             $table->text('pitch');
             $table->string('status')
                 ->default('Received');

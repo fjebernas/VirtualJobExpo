@@ -17,9 +17,17 @@ class Company extends Model
         'user_id',
     ];
 
-    public function jobPosts() {
+    public function jobPosts() 
+    {
         return $this->hasMany(
             JobPost::class
+        );
+    }
+
+    public function jobApplicationsReceived()
+    {
+        return $this->hasManyThrough(
+            JobApplication::class, JobPost::class
         );
     }
 }
