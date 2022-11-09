@@ -114,10 +114,10 @@
         <footer class="pb-2 m-0 text-center">
             <hr>
             <div class="d-flex justify-content-center flex-wrap pt-1">
-                <p class="text-muted p-0 m-0">&copy; 2022 Developed by Francis Bernas.</p>
-                <p class="text-muted p-0 m-0">&nbsp; This is a simulation of "lotto" game. This is made only to practice my webdev skills.</p>
+                <p class="text-muted p-0 m-0">&copy; 2022 Developed by <strong>Francis Bernas.</strong></p>
+                <p class="text-muted p-0 m-0">&nbsp; VJE Virtual Job Expo</p>
             </div>
-            <p class="text-muted p-0 mt-2">Lotto 6/42, Mega Lotto 6/45, Ultra Lotto 6/58 & Swertres are registered trademark of PSCO. I do not own them.</p>
+            <p class="text-muted p-0 mt-2">"Unless someone like you cares a whole awful lot, Nothing is going to get better." - <i>Dr. Seuss</i></p>
         </footer>
     </div>
 </body>

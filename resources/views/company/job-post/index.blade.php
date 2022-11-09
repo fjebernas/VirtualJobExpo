@@ -28,7 +28,7 @@
                             <p><span class="fw-bold">Employment: </span> {{ $job_post->employment }}</p>
                         </div>
                         <div class="col-4">
-                            <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</p>
+                            <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
                         <div class="col-3">
                             <form class="d-flex justify-content-end" action="/company/job-posts/{{ $job_post->id }}" method="POST">

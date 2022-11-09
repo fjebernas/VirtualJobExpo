@@ -21,7 +21,7 @@
                     <ul>
                         <li>{{ $job_post->level }}</li>
                         <li>{{ $job_post->employment }}</li>
-                        <li>₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</li>
+                        <li>₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</li>
                     </ul>
                     <div class="d-flex flex-wrap buttons-container">
                         @isset($saved_jobs)
