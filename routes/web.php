@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function()
     Route::middleware(['student.only'])->group(function(){
         Route::controller(StudentController::class)->group(function(){
             Route::get('/student/setup', 'setup');
-            Route::post('/student/profile', 'update');
+            Route::patch('/student/profile', 'update');
 
             Route::middleware(['details.set'])->group(function(){
                 Route::get('/student/dashboard', 'dashboard');
@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function()
                 Route::get('/student/job-applications', 'index');
                 Route::get('/student/job-applications/create/{job_post_id}', 'create');
                 Route::post('/student/job-applications/{job_post_id}', 'store');
-                Route::delete('/student/job-applications/{job_post_id}', 'destroy');
+                Route::delete('/student/job-applications/{job_application_id}', 'destroy');
             });
         });
     });
@@ -64,7 +64,7 @@ Route::middleware(['auth'])->group(function()
     Route::middleware(['company.only'])->group(function(){
         Route::controller(CompanyController::class)->group(function(){
             Route::get('/company/setup', 'setup');
-            Route::post('/company/profile', 'update');
+            Route::patch('/company/profile', 'update');
 
             Route::middleware(['details.set'])->group(function(){
                 Route::get('/company/dashboard', 'dashboard');
@@ -79,6 +79,12 @@ Route::middleware(['auth'])->group(function()
                 Route::get('/company/job-posts/create', 'create');
                 Route::post('/company/job-posts', 'store');
                 Route::delete('/company/job-posts/{id}', 'destroy');
+            });
+        });
+
+        Route::controller(JobApplicationController::class)->group(function(){
+            Route::middleware(['details.set'])->group(function(){
+                Route::patch('/company/job-applications/{job_application_id}', 'update');
             });
         });
     });

@@ -63,8 +63,7 @@ class JobPostController extends Controller
             ->with('notification', [
                 'message' => 'Job post created',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 
     public function destroy($id) 
@@ -76,7 +75,6 @@ class JobPostController extends Controller
             ->with('notification', [
                 'message' => 'Job post deleted',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 }

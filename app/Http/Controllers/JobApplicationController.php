@@ -36,8 +36,7 @@ class JobApplicationController extends Controller
             ->with('notification', [
                 'message' => 'Job application submitted',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 
     public function destroy($job_application_id)
@@ -48,7 +47,20 @@ class JobApplicationController extends Controller
             ->with('notification', [
                 'message' => 'Job application withdrew',
                 'type' => 'success'
-            ]
-        );
+            ]);
+    }
+
+    public function update(Request $request, $job_application_id)
+    {
+        JobApplication::where('id', $job_application_id)
+                    ->update([
+                        'status' => $request->status
+                    ]);
+
+        return redirect()->back()
+            ->with('notification', [
+                'message' => 'Updated job application status',
+                'type' => 'success'
+            ]);
     }
 }

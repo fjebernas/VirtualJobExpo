@@ -41,7 +41,6 @@ class StudentController extends Controller
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 }

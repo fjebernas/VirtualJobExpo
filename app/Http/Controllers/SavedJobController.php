@@ -27,8 +27,7 @@ class SavedJobController extends Controller
             ->with('notification', [
                 'message' => 'Job saved successfully',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 
     public function destroy($job_post_id) 
@@ -41,7 +40,6 @@ class SavedJobController extends Controller
             ->with('notification', [
                 'message' => 'Removed from saved jobs',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 }

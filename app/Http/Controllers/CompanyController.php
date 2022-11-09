@@ -44,7 +44,6 @@ class CompanyController extends Controller
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
-            ]
-        );
+            ]);
     }
 }
