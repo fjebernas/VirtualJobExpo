@@ -18,6 +18,7 @@
             </div>
             <form action="/student/profile" method="POST">
                 @csrf
+                @method('patch')
 
                 <div class="card-body d-flex flex-column">
                     <div class="mb-3">

@@ -37,7 +37,12 @@ class JobPostController extends Controller
     {
         return view('company.job-post.index')
             ->with('job_posts', Auth::user()->company->jobPosts)
-            ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived);
+            ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived)
+            ->with('statuses', [
+                                'Received',
+                                'Shortlisted',
+                                'Not qualified',
+                            ]);
     }
 
     public function create() {
