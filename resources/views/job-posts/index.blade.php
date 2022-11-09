@@ -24,9 +24,14 @@
                         <li>₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}</li>
                     </ul>
                     <div class="d-flex flex-wrap buttons-container">
-                        @isset($saved_jobs_id)
-                            <a href="/student/job-applications/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
-                            @if (in_array($job_post->id, $saved_jobs_id))
+                        @isset($saved_jobs)
+                            @if (in_array($job_post->id, $job_applications))
+                                <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
+                            @else
+                                <a href="/student/job-applications/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                            @endif
+
+                            @if (in_array($job_post->id, $saved_jobs))
                                 <form action="/student/saved-jobs/{{ $job_post->id }}" method="POST">
                                     @csrf
                                     @method('delete')

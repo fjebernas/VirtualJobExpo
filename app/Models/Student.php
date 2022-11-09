@@ -21,10 +21,10 @@ class Student extends Model
         'user_id',
     ];
 
-    public function jobPostsFromSavedJobs() 
+    public function savedJobs()
     {
-        return $this->belongsToMany(
-            JobPost::class, 'saved_jobs'
+        return $this->hasMany(
+            SavedJob::class
         );
     }
 
@@ -32,6 +32,13 @@ class Student extends Model
     {
         return $this->hasMany(
             JobApplication::class
+        );
+    }
+
+    public function jobPostsFromSavedJobs() 
+    {
+        return $this->belongsToMany(
+            JobPost::class, 'saved_jobs'
         );
     }
 
