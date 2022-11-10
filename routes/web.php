@@ -56,13 +56,12 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                      */
                     Route::withoutMiddleware(['details.set'])->group(function(){
                         Route::get('/setup', 'setup')->name('setup');
-                        Route::patch('/profile', 'update')->name('update_profile');
+                        Route::resource('students', StudentController::class)->only([
+                            'show', 'edit', 'update',
+                        ]);
                     });
-                    
-        
+
                     Route::get('/dashboard', 'dashboard')->name('dashboard');
-                    Route::get('/profile', 'index')->name('profile');
-                    Route::get('/profile/edit', 'edit')->name('edit_profile');
                 });
         
                 /**

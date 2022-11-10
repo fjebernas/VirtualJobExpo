@@ -16,18 +16,18 @@ class StudentController extends Controller
         return view('student.dashboard');
     }
 
-    public function index() {
+    public function show($student_id) {
         return view('student.profile.index')
-                ->with('student', Auth::user()->student);
+                ->with('student', Student::where('id', $student_id)->firstOrFail());
     }
 
-    public function edit() {
+    public function edit($student_id) {
         return view('student.profile.edit')
-                ->with('student', Auth::user()->student);
+                ->with('student', Student::where('id', $student_id)->firstOrFail());
     }
 
-    public function update(Request $request) {
-        Auth::user()->student->update([
+    public function update(Request $request, $student_id) {
+        Student::where('id', $student_id)->update([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,
