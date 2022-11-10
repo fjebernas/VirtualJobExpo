@@ -35,7 +35,7 @@ class RegisterController extends Controller
     public function redirectTo() {
         if (Auth::user()->role == "student") 
         {
-            return "/student/setup";
+            return route('student.setup');
         } 
         else if (Auth::user()->role == "company") 
         {

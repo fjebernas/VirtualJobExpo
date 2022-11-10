@@ -74,11 +74,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                @if (Auth::user()->role == "student")
-                                    <a class="nav-link" href="/student/dashboard">Dashboard</a>
-                                @elseif (Auth::user()->role == "company")
-                                    <a class="nav-link" href="/company/dashboard">Dashboard</a>
-                                @endif
+                                <a class="nav-link" href="{{ route(Auth::user()->role . '.dashboard') }}">Dashboard</a>
                             </li>
 
                             <li class="nav-item dropdown">

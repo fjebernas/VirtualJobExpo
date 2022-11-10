@@ -16,7 +16,7 @@
             <div class="card-header">
                 Initial setup
             </div>
-            <form action="/student/profile" method="POST">
+            <form action={{ route('student.update_profile') }} method="POST">
                 @csrf
                 @method('patch')
 

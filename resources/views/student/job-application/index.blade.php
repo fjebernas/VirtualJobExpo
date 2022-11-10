@@ -28,9 +28,25 @@
                         <td>{{ $job_application->id }}</td>
                         <td>{{ $job_posts_applied[$loop->index]->position }}</td>
                         <td>{{ $job_posts_applied[$loop->index]->company }}</td>
-                        <td class="fst-italic" style="color: rgb(0, 202, 0)">{{ $job_application->status }}</td>
+                        <td class="fst-italic fw-bold">
+                            @switch($job_application->status)
+                                @case('Received')
+                                    <span class="text-info">
+                                    @break
+                                @case('Shortlisted')
+                                    <span class="text-success">
+                                    @break
+                                @case('Not qualified')
+                                    <span class="text-danger">
+                                    @break
+                                @default
+                                    <span class="text-warning">Unknown status
+                            @endswitch
+                                        {{ $job_application->status }}
+                                    </span>
+                        </td>
                         <td>
-                            <form action="/student/job-applications/{{ $job_application->id }}" method="POST">
+                            <form action={{ route('student.destroy_job_application', $job_application->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Withdraw</button>

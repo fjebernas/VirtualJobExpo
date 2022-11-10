@@ -29,34 +29,67 @@ Route::controller(JobPostController::class)->group(function(){
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function()
+Route::middleware(['auth', 'details.set'])->group(function()
 {
+    /**
+     * Student routes
+     *
+     * 
+     */
     Route::middleware(['student.only'])->group(function(){
-        Route::controller(StudentController::class)->group(function(){
-            Route::get('/student/setup', 'setup');
-            Route::patch('/student/profile', 'update');
-
-            Route::middleware(['details.set'])->group(function(){
-                Route::get('/student/dashboard', 'dashboard');
-                Route::get('/student/profile', 'index');
-                Route::get('/student/profile/edit', 'edit');
-            });
-        });
-
-        Route::controller(SavedJobController::class)->group(function(){
-            Route::middleware(['details.set'])->group(function(){
-                Route::get('/student/saved-jobs', 'index');
-                Route::post('/student/saved-jobs', 'store');
-                Route::delete('/student/saved-jobs/{job_post_id}', 'destroy');
-            });
-        });
-
-        Route::controller(JobApplicationController::class)->group(function(){
-            Route::middleware(['details.set'])->group(function(){
-                Route::get('/student/job-applications', 'index');
-                Route::get('/student/job-applications/create/{job_post_id}', 'create');
-                Route::post('/student/job-applications/{job_post_id}', 'store');
-                Route::delete('/student/job-applications/{job_application_id}', 'destroy');
+        Route::name('student.')->group(function(){
+            Route::prefix('student')->group(function(){
+                
+                /**
+                 * Student routes managed by student controller
+                 *
+                 * 
+                 */
+                Route::controller(StudentController::class)->group(function(){
+                    /**
+                     * Student routes that excludes details.set middleware
+                     *
+                     * 
+                     */
+                    Route::withoutMiddleware(['details.set'])->group(function(){
+                        Route::get('/setup', 'setup')->name('setup');
+                        Route::patch('/profile', 'update')->name('update_profile');
+                    });
+                    
+        
+                    Route::get('/dashboard', 'dashboard')->name('dashboard');
+                    Route::prefix('profile')->group(function(){
+                        Route::get('/', 'index')->name('profile');
+                        Route::get('/edit', 'edit')->name('edit_profile');
+                    });
+                });
+        
+                /**
+                 * Student routes managed by savedjob controller
+                 *
+                 * 
+                 */
+                Route::controller(SavedJobController::class)->group(function(){
+                    Route::prefix('saved-jobs')->group(function(){
+                        Route::get('/', 'index')->name('saved_jobs');
+                        Route::post('/', 'store')->name('store_saved_job');
+                        Route::delete('/{job_post_id}', 'destroy')->name('destroy_saved_job');
+                    });
+                });
+        
+                /**
+                 * Student routes managed by jobapplication controller
+                 *
+                 * 
+                 */
+                Route::controller(JobApplicationController::class)->group(function(){
+                    Route::prefix('job-applications')->group(function(){
+                        Route::get('/', 'index')->name('job_applications');
+                        Route::get('/create/{job_post_id}', 'create')->name('create_job_application');
+                        Route::post('/{job_post_id}', 'store')->name('store_job_application');
+                        Route::delete('/{job_application_id}', 'destroy')->name('destroy_job_application');
+                    });
+                });
             });
         });
     });

@@ -28,17 +28,17 @@
                             @if (in_array($job_post->id, $job_applications))
                                 <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
                             @else
-                                <a href="/student/job-applications/create/{{ $job_post->id }}" class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                                <a href={{ route('student.create_job_application', $job_post->id) }} class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
                             @endif
 
                             @if (in_array($job_post->id, $saved_jobs))
-                                <form action="/student/saved-jobs/{{ $job_post->id }}" method="POST">
+                                <form action={{ route('student.destroy_saved_job', $job_post->id) }} method="POST">
                                     @csrf
                                     @method('delete')
                                     <button name="job_post_id" type="submit" class="btn btn-danger">Remove</button>
                                 </form>
                             @else
-                                <form action="/student/saved-jobs" method="POST">
+                                <form action={{ route('student.store_saved_job') }} method="POST">
                                     @csrf
                                     <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning">Save</button>
                                 </form>
