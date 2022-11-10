@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href={{ route('student.saved_jobs') }} class="text-decoration-none">
+            <a href={{ route('student.saved_jobs.index') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center">
                     <box-icon name='spreadsheet' size='90px' color='violet'></box-icon>
                     <h3 class="fs-5">Saved Jobs</h3>

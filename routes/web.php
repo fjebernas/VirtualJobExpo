@@ -41,9 +41,8 @@ Route::middleware(['auth', 'details.set'])->group(function(){
      * 
      */
     Route::middleware(['student.only'])->group(function(){
-        Route::name('student.')->group(function(){
-            Route::prefix('student')->group(function(){
-                
+        Route::prefix('student')->group(function(){
+            Route::name('student.')->group(function(){
                 /**
                  * Student routes managed by StudentController
                  *
@@ -61,7 +60,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                     });
                     
         
-                Route::get('/dashboard', 'dashboard')->name('dashboard');
+                    Route::get('/dashboard', 'dashboard')->name('dashboard');
                     Route::get('/profile', 'index')->name('profile');
                     Route::get('/profile/edit', 'edit')->name('edit_profile');
                 });
@@ -71,11 +70,14 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                Route::controller(SavedJobController::class)->group(function(){
-                    Route::get('/saved-jobs', 'index')->name('saved_jobs');
-                    Route::post('/saved-jobs', 'store')->name('store_saved_job');
-                    Route::delete('/saved-jobs/{job_post_id}', 'destroy')->name('destroy_saved_job');
-                });
+                // Route::controller(SavedJobController::class)->group(function(){
+                //     Route::get('/saved-jobs', 'index')->name('saved_jobs');
+                //     Route::post('/saved-jobs', 'store')->name('store_saved_job');
+                //     Route::delete('/saved-jobs/{job_post_id}', 'destroy')->name('destroy_saved_job');
+                // });
+                Route::resource('saved_jobs', SavedJobController::class)->only([
+                    'index', 'store', 'destroy',
+                ]);
         
                 /**
                  * Student routes managed by JobApplicationController

@@ -32,13 +32,13 @@
                             @endif
 
                             @if (in_array($job_post->id, $saved_jobs))
-                                <form action={{ route('student.destroy_saved_job', $job_post->id) }} method="POST">
+                                <form action={{ route('student.saved_jobs.destroy', $job_post->id) }} method="POST">
                                     @csrf
                                     @method('delete')
                                     <button name="job_post_id" type="submit" class="btn btn-danger">Remove</button>
                                 </form>
                             @else
-                                <form action={{ route('student.store_saved_job') }} method="POST">
+                                <form action={{ route('student.saved_jobs.store') }} method="POST">
                                     @csrf
                                     <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning">Save</button>
                                 </form>

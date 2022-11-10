@@ -22,7 +22,7 @@
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
                             <button data-job-post='{{ $job_post_from_saved_job }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
-                            <form action="/student/saved-jobs/{{ $job_post_from_saved_job->id }}" method="POST">
+                            <form action={{ route('student.saved_jobs.destroy', $job_post_from_saved_job->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type='submit' class="btn btn-danger">Remove</button>
