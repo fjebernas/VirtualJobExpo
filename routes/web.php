@@ -23,14 +23,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Anyone can view job posts, including guests
+ *
+ * 
+ */
 Route::controller(JobPostController::class)->group(function(){
     Route::get('/job-posts', 'index');
 });
 
 Auth::routes();
 
-Route::middleware(['auth', 'details.set'])->group(function()
-{
+Route::middleware(['auth', 'details.set'])->group(function(){
     /**
      * Student routes
      *
@@ -41,13 +45,13 @@ Route::middleware(['auth', 'details.set'])->group(function()
             Route::prefix('student')->group(function(){
                 
                 /**
-                 * Student routes managed by student controller
+                 * Student routes managed by StudentController
                  *
                  * 
                  */
                 Route::controller(StudentController::class)->group(function(){
                     /**
-                     * Student routes that excludes details.set middleware
+                     * Student routes that exclude EnsureUserDetailsAreSet middleware
                      *
                      * 
                      */
@@ -57,69 +61,88 @@ Route::middleware(['auth', 'details.set'])->group(function()
                     });
                     
         
-                    Route::get('/dashboard', 'dashboard')->name('dashboard');
-                    Route::prefix('profile')->group(function(){
-                        Route::get('/', 'index')->name('profile');
-                        Route::get('/edit', 'edit')->name('edit_profile');
-                    });
+                Route::get('/dashboard', 'dashboard')->name('dashboard');
+                    Route::get('/profile', 'index')->name('profile');
+                    Route::get('/profile/edit', 'edit')->name('edit_profile');
                 });
         
                 /**
-                 * Student routes managed by savedjob controller
+                 * Student routes managed by SavedJobController
                  *
                  * 
                  */
                 Route::controller(SavedJobController::class)->group(function(){
-                    Route::prefix('saved-jobs')->group(function(){
-                        Route::get('/', 'index')->name('saved_jobs');
-                        Route::post('/', 'store')->name('store_saved_job');
-                        Route::delete('/{job_post_id}', 'destroy')->name('destroy_saved_job');
-                    });
+                    Route::get('/saved-jobs', 'index')->name('saved_jobs');
+                    Route::post('/saved-jobs', 'store')->name('store_saved_job');
+                    Route::delete('/saved-jobs/{job_post_id}', 'destroy')->name('destroy_saved_job');
                 });
         
                 /**
-                 * Student routes managed by jobapplication controller
+                 * Student routes managed by JobApplicationController
                  *
                  * 
                  */
                 Route::controller(JobApplicationController::class)->group(function(){
-                    Route::prefix('job-applications')->group(function(){
-                        Route::get('/', 'index')->name('job_applications');
-                        Route::get('/create/{job_post_id}', 'create')->name('create_job_application');
-                        Route::post('/{job_post_id}', 'store')->name('store_job_application');
-                        Route::delete('/{job_application_id}', 'destroy')->name('destroy_job_application');
-                    });
+                    Route::get('/job-applications', 'index')->name('job_applications');
+                    Route::get('/job-applications/create/{job_post_id}', 'create')->name('create_job_application');
+                    Route::post('/job-applications/{job_post_id}', 'store')->name('store_job_application');
+                    Route::delete('/job-applications/{job_application_id}', 'destroy')->name('destroy_job_application');
                 });
             });
         });
     });
 
+    /**
+     * Company routes
+     *
+     * 
+     */
     Route::middleware(['company.only'])->group(function(){
-        Route::controller(CompanyController::class)->group(function(){
-            Route::get('/company/setup', 'setup');
-            Route::patch('/company/profile', 'update');
-
-            Route::middleware(['details.set'])->group(function(){
-                Route::get('/company/dashboard', 'dashboard');
-                Route::get('/company/profile/', 'index');
-                Route::get('/company/profile/edit', 'edit');
+        Route::name('company.')->group(function(){
+            Route::prefix('company')->group(function(){
+                /**
+                 * Routes managed by CompanyController
+                 *
+                 * 
+                 */
+                Route::controller(CompanyController::class)->group(function(){
+                    /**
+                     * Company routes that exclude EnsureUserDetailsAreSet middleware
+                     *
+                     * 
+                     */
+                    Route::withoutMiddleware(['details.set'])->group(function(){
+                        Route::get('/setup', 'setup')->name('setup');
+                        Route::patch('/profile', 'update')->name('update_profile');
+                    });
+        
+                    Route::get('/dashboard', 'dashboard')->name('dashboard');
+                    Route::get('/profile', 'index')->name('profile');
+                    Route::get('/profile/edit', 'edit')->name('edit_profile');
+                });
+        
+                /**
+                 * Company routes managed by JobPostController
+                 *
+                 * 
+                 */
+                Route::controller(JobPostController::class)->group(function(){
+                    Route::get('/job-posts', 'indexOwned')->name('job_posts');
+                    Route::get('/job-posts/create', 'create')->name('create_job_post');
+                    Route::post('/job-posts', 'store')->name('store_job_post');
+                    Route::delete('/job-posts/{job_post_id}', 'destroy')->name('destroy_job_post');
+                });
+        
+                /**
+                 * Company routes managed by JobApplicationController
+                 *
+                 * 
+                 */
+                Route::controller(JobApplicationController::class)->group(function(){
+                    Route::patch('/job-applications/{job_application_id}', 'update')->name('update_job_application');
+                });
             });
         });
-
-        Route::middleware(['details.set'])->group(function(){
-            Route::controller(JobPostController::class)->group(function(){
-                Route::get('/company/job-posts', 'indexOwned');
-                Route::get('/company/job-posts/create', 'create');
-                Route::post('/company/job-posts', 'store');
-                Route::delete('/company/job-posts/{id}', 'destroy');
-            });
-        });
-
-        Route::controller(JobApplicationController::class)->group(function(){
-            Route::middleware(['details.set'])->group(function(){
-                Route::patch('/company/job-applications/{job_application_id}', 'update');
-            });
-        });
+        
     });
-    
 });

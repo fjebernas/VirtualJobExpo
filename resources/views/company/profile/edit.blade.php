@@ -16,7 +16,7 @@
             <div class="card-header">
                 Edit Profile
             </div>
-            <form action="/company/profile/" method="POST">
+            <form action={{ route('company.update_profile') }} method="POST">
                 @csrf
                 @method('patch')
 

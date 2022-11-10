@@ -39,7 +39,7 @@ class RegisterController extends Controller
         } 
         else if (Auth::user()->role == "company") 
         {
-            return "/company/setup";
+            return route('company.setup');
         }
     }
 

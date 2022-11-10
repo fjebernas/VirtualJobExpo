@@ -31,7 +31,7 @@
                             <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
                         <div class="col-3">
-                            <form class="d-flex justify-content-end" action="/company/job-posts/{{ $job_post->id }}" method="POST">
+                            <form class="d-flex justify-content-end" action={{ route('company.destroy_job_post', $job_post->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete job post</button>
@@ -57,7 +57,7 @@
                                                 <td>{{ $job_application_received->email }}</td>
                                                 <td>{{ $job_application_received->pitch }}</td>
                                                 <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
-                                                    <form action="/company/job-applications/{{ $job_application_received->id }}" method="POST" class="d-flex" style="column-gap: 10px; row-gap: 5px">
+                                                    <form action={{ route('company.update_job_application', $job_application_received->id) }} method="POST" class="d-flex" style="column-gap: 10px; row-gap: 5px">
                                                         @csrf
                                                         @method('patch')
                                                         <select name="status" class="form-select" aria-label="Default select example" style="width: fit-content">

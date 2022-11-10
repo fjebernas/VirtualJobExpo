@@ -18,28 +18,28 @@
         </div>
 
         <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
-            <a href="/company/profile" class="text-decoration-none">
+            <a href={{ route('company.profile') }} class="text-decoration-none">
                 <div class="card view-profile d-flex justify-content-center align-items-center">
                     <box-icon name='news' size='90px' color='green'></box-icon>
                     <h3 class="fs-5">View Profile</h3>
                 </div>
             </a>
 
-            <a href="/company/profile/edit" class="text-decoration-none">
+            <a href={{ route('company.edit_profile') }} class="text-decoration-none">
                 <div class="card edit-profile d-flex justify-content-center align-items-center">
                     <box-icon name='edit-alt' size='90px' color='orange'></box-icon>
                     <h3 class="fs-5">Edit Profile</h3>
                 </div>
             </a>
 
-            <a href="/company/job-posts" class="text-decoration-none">
+            <a href={{ route('company.job_posts') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center">
                     <box-icon name='table' size='90px' color='violet'></box-icon>
                     <h3 class="fs-5">My Job Posts</h3>
                 </div>
             </a>
 
-            <a href="/company/job-posts/create" class="text-decoration-none">
+            <a href={{ route('company.create_job_post') }} class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
                     <box-icon name='plus' size='90px' color='darkblue'></box-icon>
                     <h3 class="fs-5">Create Job Post</h3>
