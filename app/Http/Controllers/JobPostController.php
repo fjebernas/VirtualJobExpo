@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class JobPostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     * if student, return with saved jobs and  job applications
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function index() 
     {
-        // if student, return with saved jobs and  job applications
         if (Auth::check()) 
         {
             if (Auth::user()->role == 'student') 
@@ -41,10 +46,21 @@ class JobPostController extends Controller
             ->with('job_posts', JobPost::all());
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create() {
         return view('company.job-post.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request) 
     {
         JobPost::create([
@@ -67,6 +83,12 @@ class JobPostController extends Controller
             ]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\JobPost
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(JobPost $jobPost) 
     {
         $jobPost->delete();

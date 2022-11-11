@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class JobApplicationController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('student.job-application.index')
@@ -16,12 +21,25 @@ class JobApplicationController extends Controller
             ->with('job_posts_applied', Auth::user()->student->jobPostsApplied);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     * this method is excluded from the resource controller in web.php, because it needs a parameter of job post id.
+     * 
+     * @param int $job_post_id
+     * @return \Illuminate\Http\Response
+     */
     public function create($job_post_id) 
     {
         return view('student.job-application.create')
             ->with('job_post', JobPost::where('id', $job_post_id)->firstOrFail());
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         JobApplication::create([
@@ -39,9 +57,15 @@ class JobApplicationController extends Controller
             ]);
     }
 
-    public function destroy($job_application_id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\JobApplication
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(JobApplication $jobApplication)
     {
-        JobApplication::where('id', $job_application_id)->delete();
+        $jobApplication->delete();
 
         return redirect()->back()
             ->with('notification', [
@@ -50,6 +74,13 @@ class JobApplicationController extends Controller
             ]);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\JobApplication
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, JobApplication $job_application)
     {
         $job_application->update([

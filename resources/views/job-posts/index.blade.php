@@ -28,7 +28,7 @@
                             @if (in_array($job_post->id, $job_applications))
                                 <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
                             @else
-                                <a href={{ route('student.job_applications.create', $job_post) }} class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                                <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
                             @endif
 
                             @if (in_array($job_post->id, $saved_jobs))
