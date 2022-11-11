@@ -16,7 +16,7 @@
             <div class="card-header">
                 Job post
             </div>
-            <form action={{ route('company.store_job_post') }} method="POST">
+            <form action={{ route('company.job_posts.store') }} method="POST">
                 @csrf
 
                 <div class="card-body d-flex flex-column">

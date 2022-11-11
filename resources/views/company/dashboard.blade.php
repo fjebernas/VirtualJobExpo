@@ -32,14 +32,14 @@
                 </div>
             </a>
 
-            <a href={{ route('company.job_posts') }} class="text-decoration-none">
+            <a href={{ route('company.job_posts.index') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center">
                     <box-icon name='table' size='90px' color='violet'></box-icon>
                     <h3 class="fs-5">My Job Posts</h3>
                 </div>
             </a>
 
-            <a href={{ route('company.create_job_post') }} class="text-decoration-none">
+            <a href={{ route('company.job_posts.create') }} class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
                     <box-icon name='plus' size='90px' color='darkblue'></box-icon>
                     <h3 class="fs-5">Create Job Post</h3>

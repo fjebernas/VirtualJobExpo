@@ -31,7 +31,7 @@
                             <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
                         <div class="col-3">
-                            <form class="d-flex justify-content-end" action={{ route('company.destroy_job_post', $job_post->id) }} method="POST">
+                            <form class="d-flex justify-content-end" action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete job post</button>

@@ -14,36 +14,31 @@ class JobPostController extends Controller
 {
     public function index() 
     {
-        // if student, return with saved jobs
-        if (Auth::check()) {
+        // if student, return with saved jobs and  job applications
+        if (Auth::check()) 
+        {
             if (Auth::user()->role == 'student') 
             {
                 return view('job-posts.index')
                     ->with('job_posts', JobPost::all())
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
+            } 
+            else if (Auth::user()->role == 'company')
+            {
+                return view('company.job-post.index')
+                    ->with('job_posts', Auth::user()->company->jobPosts)
+                    ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived)
+                    ->with('statuses', [
+                                        'Received',
+                                        'Shortlisted',
+                                        'Not qualified',
+                                    ]);
             }
         }
 
         return view('job-posts.index')
             ->with('job_posts', JobPost::all());
-    }
-
-    /*
-     *
-     *  For company only
-     * 
-     */ 
-    public function indexOwned() 
-    {
-        return view('company.job-post.index')
-            ->with('job_posts', Auth::user()->company->jobPosts)
-            ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived)
-            ->with('statuses', [
-                                'Received',
-                                'Shortlisted',
-                                'Not qualified',
-                            ]);
     }
 
     public function create() {
@@ -72,10 +67,9 @@ class JobPostController extends Controller
             ]);
     }
 
-    public function destroy($id) 
+    public function destroy(JobPost $jobPost) 
     {
-        JobPost::where('id', $id)
-                ->delete();
+        $jobPost->delete();
 
         return redirect()->back()
             ->with('notification', [

@@ -116,12 +116,9 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                Route::controller(JobPostController::class)->group(function(){
-                    Route::get('/job-posts', 'indexOwned')->name('job_posts');
-                    Route::get('/job-posts/create', 'create')->name('create_job_post');
-                    Route::post('/job-posts', 'store')->name('store_job_post');
-                    Route::delete('/job-posts/{job_post_id}', 'destroy')->name('destroy_job_post');
-                });
+                Route::resource('job_posts', JobPostController::class)->only([
+                    'index', 'create', 'store', 'destroy',
+                ]);
         
                 /**
                  * Company routes managed by JobApplicationController
