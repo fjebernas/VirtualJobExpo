@@ -39,7 +39,7 @@
                 </div>
             </a>
 
-            <a href={{ route('student.job_applications') }} class="text-decoration-none">
+            <a href={{ route('student.job_applications.index') }} class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
                     <box-icon name='briefcase' size='90px' color='darkblue'></box-icon>
                     <h3 class="fs-5">Jobs Applied</h3>

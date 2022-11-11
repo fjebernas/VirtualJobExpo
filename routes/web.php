@@ -48,20 +48,13 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                Route::controller(StudentController::class)->group(function(){
-                    /**
-                     * Student routes that exclude EnsureUserDetailsAreSet middleware
-                     *
-                     * 
-                     */
-                    Route::withoutMiddleware(['details.set'])->group(function(){
-                        Route::get('/setup', 'setup')->name('setup');
-                        Route::resource('students', StudentController::class)->only([
-                            'show', 'edit', 'update',
-                        ]);
-                    });
-
-                    Route::get('/dashboard', 'dashboard')->name('dashboard');
+                Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
+                // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
+                Route::withoutMiddleware(['details.set'])->group(function(){
+                    Route::get('/setup', [StudentController::class, 'setup'])->name('setup');
+                    Route::resource('students', StudentController::class)->only([
+                        'show', 'edit', 'update',
+                    ]);
                 });
         
                 /**
@@ -69,11 +62,6 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                // Route::controller(SavedJobController::class)->group(function(){
-                //     Route::get('/saved-jobs', 'index')->name('saved_jobs');
-                //     Route::post('/saved-jobs', 'store')->name('store_saved_job');
-                //     Route::delete('/saved-jobs/{job_post_id}', 'destroy')->name('destroy_saved_job');
-                // });
                 Route::resource('saved_jobs', SavedJobController::class)->only([
                     'index', 'store', 'destroy',
                 ]);
@@ -83,12 +71,12 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                Route::controller(JobApplicationController::class)->group(function(){
-                    Route::get('/job-applications', 'index')->name('job_applications');
-                    Route::get('/job-applications/create/{job_post_id}', 'create')->name('create_job_application');
-                    Route::post('/job-applications/{job_post_id}', 'store')->name('store_job_application');
-                    Route::delete('/job-applications/{job_application_id}', 'destroy')->name('destroy_job_application');
-                });
+                Route::resource('job_applications', JobApplicationController::class)->only([
+                    'index', 'store', 'destroy',
+                ]);
+                // Create job application route is separated because it needs the job post id
+                Route::get('/job-applications/create/{job_post_id}', [JobApplicationController::class, 'create'])
+                    ->name('job_applications.create');
             });
         });
     });

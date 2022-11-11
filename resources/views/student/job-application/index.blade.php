@@ -46,7 +46,7 @@
                                     </span>
                         </td>
                         <td>
-                            <form action={{ route('student.destroy_job_application', $job_application->id) }} method="POST">
+                            <form action={{ route('student.job_applications.destroy', $job_application->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Withdraw</button>

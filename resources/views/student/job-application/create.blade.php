@@ -40,7 +40,7 @@
             <div class="card-header">
                 Job Application
             </div>
-            <form action={{ route('student.store_job_application', $job_post->id) }} method="POST">
+            <form action={{ route('student.job_applications.store' ) }} method="POST">
                 @csrf
 
                 <div class="card-body d-flex flex-column">
@@ -49,7 +49,7 @@
                         <textarea name="pitch" class="form-control mt-2" placeholder="Hint: Avoid generic pitches like 'I'm responsible'" id="floatingTextarea2" style="height: 150px; resize: none;"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-warning align-self-end">Submit</button>
+                    <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning align-self-end">Submit</button>
                 </div>
             </form>
         </div>

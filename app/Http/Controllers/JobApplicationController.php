@@ -22,13 +22,13 @@ class JobApplicationController extends Controller
             ->with('job_post', JobPost::where('id', $job_post_id)->firstOrFail());
     }
 
-    public function store(Request $request, $job_post_id)
+    public function store(Request $request)
     {
         JobApplication::create([
             'name' => Auth::user()->student->last_name,
             'email' => Auth::user()->email,
             'pitch' => $request->pitch,
-            'job_post_id' => $job_post_id,
+            'job_post_id' => $request->job_post_id,
             'student_id' => Auth::user()->student->id,
         ]);
         
