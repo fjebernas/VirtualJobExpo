@@ -57,7 +57,7 @@
                                                 <td>{{ $job_application_received->email }}</td>
                                                 <td>{{ $job_application_received->pitch }}</td>
                                                 <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
-                                                    <form action={{ route('company.update_job_application', $job_application_received->id) }} method="POST" class="d-flex" style="column-gap: 10px; row-gap: 5px">
+                                                    <form action={{ route('company.job_applications.update', $job_application_received->id) }} method="POST" class="d-flex" style="column-gap: 10px; row-gap: 5px">
                                                         @csrf
                                                         @method('patch')
                                                         <select name="status" class="form-select" aria-label="Default select example" style="width: fit-content">

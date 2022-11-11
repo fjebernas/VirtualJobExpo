@@ -50,12 +50,11 @@ class JobApplicationController extends Controller
             ]);
     }
 
-    public function update(Request $request, $job_application_id)
+    public function update(Request $request, JobApplication $job_application)
     {
-        JobApplication::where('id', $job_application_id)
-                    ->update([
-                        'status' => $request->status
-                    ]);
+        $job_application->update([
+            'status' => $request->status
+        ]);
 
         return redirect()->back()
             ->with('notification', [

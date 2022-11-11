@@ -5,6 +5,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\StudentController;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -127,9 +128,9 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  *
                  * 
                  */
-                Route::controller(JobApplicationController::class)->group(function(){
-                    Route::patch('/job-applications/{job_application_id}', 'update')->name('update_job_application');
-                });
+                Route::resource('job_applications', JobApplicationController::class)->only([
+                    'update',
+                ]);
             });
         });
         
