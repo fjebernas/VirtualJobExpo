@@ -24,15 +24,15 @@ class StudentController extends Controller
             ->with('student', $student);
     }
 
-    public function edit($student_id) 
+    public function edit(Student $student) 
     {
         return view('student.profile.edit')
-                ->with('student', Student::where('id', $student_id)->firstOrFail());
+                ->with('student', $student);
     }
 
-    public function update(Request $request, $student_id) 
+    public function update(Request $request, Student $student) 
     {
-        Student::where('id', $student_id)->update([
+        $student->update([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,

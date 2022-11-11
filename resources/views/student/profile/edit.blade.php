@@ -16,7 +16,7 @@
             <div class="card-header">
                 View Profile
             </div>
-            <form action={{ route('student.students.update', $student->id) }} method="post">
+            <form action={{ route('student.students.update', $student) }} method="post">
                 @csrf
                 @method('patch')
 

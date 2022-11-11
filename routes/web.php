@@ -51,6 +51,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  */
                 Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
                 // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
+                
                 Route::withoutMiddleware(['details.set'])->group(function(){
                     Route::get('/setup', [StudentController::class, 'setup'])->name('setup');
                     Route::resource('students', StudentController::class)->only([
@@ -75,7 +76,8 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                 Route::resource('job_applications', JobApplicationController::class)->only([
                     'index', 'store', 'destroy',
                 ]);
-                // Create job application route is separated because it needs the job post id
+
+                // Create-job-application route is separated because it needs the job post id
                 Route::get('/job-applications/create/{job_post_id}', [JobApplicationController::class, 'create'])
                     ->name('job_applications.create');
             });
@@ -91,24 +93,18 @@ Route::middleware(['auth', 'details.set'])->group(function(){
         Route::name('company.')->group(function(){
             Route::prefix('company')->group(function(){
                 /**
-                 * Routes managed by CompanyController
+                 * Company routes managed by CompanyController
                  *
                  * 
                  */
-                Route::controller(CompanyController::class)->group(function(){
-                    /**
-                     * Company routes that exclude EnsureUserDetailsAreSet middleware
-                     *
-                     * 
-                     */
-                    Route::withoutMiddleware(['details.set'])->group(function(){
-                        Route::get('/setup', 'setup')->name('setup');
-                        Route::patch('/profile', 'update')->name('update_profile');
-                    });
-        
-                    Route::get('/dashboard', 'dashboard')->name('dashboard');
-                    Route::get('/profile', 'index')->name('profile');
-                    Route::get('/profile/edit', 'edit')->name('edit_profile');
+                Route::get('/dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
+
+                // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
+                Route::withoutMiddleware(['details.set'])->group(function(){
+                    Route::get('/setup', [CompanyController::class, 'setup'])->name('setup');
+                    Route::resource('companies', CompanyController::class)->only([
+                        'show', 'edit', 'update',
+                    ]);
                 });
         
                 /**

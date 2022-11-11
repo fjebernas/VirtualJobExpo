@@ -18,14 +18,14 @@
         </div>
 
         <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
-            <a href={{ route('student.students.show', Auth::user()->student->id) }} class="text-decoration-none">
+            <a href={{ route('student.students.show', Auth::user()->student) }} class="text-decoration-none">
                 <div class="card view-profile d-flex justify-content-center align-items-center">
                     <box-icon name='news' size='90px' color='green'></box-icon>
                     <h3 class="fs-5">View Profile</h3>
                 </div>
             </a>
 
-            <a href={{ route('student.students.edit', Auth::user()->student->id) }} class="text-decoration-none">
+            <a href={{ route('student.students.edit', Auth::user()->student) }} class="text-decoration-none">
                 <div class="card edit-profile d-flex justify-content-center align-items-center">
                     <box-icon name='edit-alt' size='90px' color='orange'></box-icon>
                     <h3 class="fs-5">Edit Profile</h3>

@@ -19,21 +19,21 @@ class CompanyController extends Controller
         return view('company.dashboard');
     }
 
-    public function index() 
+    public function show(Company $company) 
     {
         return view('company.profile.index')
-                ->with('company', Auth::user()->company);
+                ->with('company', $company);
     }
 
-    public function edit() 
+    public function edit(Company $company) 
     {
         return view('company.profile.edit')
-                ->with('company', Auth::user()->company);
+                ->with('company', $company);
     }
 
-    public function update(Request $request) 
+    public function update(Request $request, Company $company) 
     {
-        Auth::user()->company->update([
+        $company->update([
             'name' => $request->name,
             'industry' => $request->industry,
             'address' => $request->address,
