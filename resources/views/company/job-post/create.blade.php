@@ -12,7 +12,7 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>CREATE A JOB POST</h1>
 
-        <div class="card bg-light mt-3" style="min-width: 42rem;">
+        <div class="card bg-light mt-3 w-100" style="max-width: 42rem;">
             <div class="card-header">
                 Job post
             </div>
