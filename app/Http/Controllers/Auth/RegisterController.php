@@ -35,11 +35,13 @@ class RegisterController extends Controller
     public function redirectTo() {
         if (Auth::user()->role == "student") 
         {
-            return route('student.students.edit', Auth::user()->student);
+            return redirect()
+                ->route('student.students.edit', Auth::user()->student);
         } 
         else if (Auth::user()->role == "company") 
         {
-            return route('company.companies.edit', Auth::user()->company);
+            return redirect()
+                ->route('company.companies.edit', Auth::user()->company);
         }
     }
 
