@@ -26,4 +26,11 @@ class JobPost extends Model
     protected $hidden = [
         'pivot',
     ];
+
+    public function jobApplications()
+    {
+        return $this->hasMany(
+            JobApplication::class
+        );
+    }
 }

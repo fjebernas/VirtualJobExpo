@@ -21,7 +21,7 @@ class EnsureUserDetailsAreSet
     {
         if (Auth::user()->role == 'student')
         {
-            $student = Student::where('user_id', Auth::user()->id)->firstOrFail();
+            $student = Auth::user()->student;
             if (isset($student->first_name,
                     $student->middle_name,
                     $student->last_name,
@@ -29,16 +29,17 @@ class EnsureUserDetailsAreSet
             {
                 return $next($request);
             }
-            return redirect('/student/setup')
+
+            return redirect()
+                ->route('student.students.edit', $student)
                 ->with('notification', [
-                    'message' => 'Finish student initial setup first',
-                    'type' => 'warning'
-                ]
-            );
+                            'message' => 'Finish student initial setup first',
+                            'type' => 'warning'
+                        ]);
         }
         else if (Auth::user()->role == 'company')
         {
-            $company = Company::where('user_id', Auth::user()->id)->firstOrFail();
+            $company = Auth::user()->company;
             if (isset($company->name,
                     $company->industry,
                     $company->address,
@@ -46,12 +47,13 @@ class EnsureUserDetailsAreSet
             {
                 return $next($request);
             }
-            return redirect('/company/setup')
+
+            return redirect()
+                ->route('company.companies.edit', $company)
                 ->with('notification', [
-                    'message' => 'Finish company initial setup first',
-                    'type' => 'warning'
-                ]
-            );
+                            'message' => 'Finish student initial setup first',
+                            'type' => 'warning'
+                        ]);
         }
     }
 }

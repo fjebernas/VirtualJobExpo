@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\JobApplication;
 use App\Models\JobPost;
 use App\Models\SavedJob;
 use App\Models\Student;
@@ -28,21 +29,28 @@ class JobPostController extends Controller
                     ->with('job_posts', JobPost::all())
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
-            } 
-            else if (Auth::user()->role == 'company')
-            {
-                return view('company.job-post.index')
+            }
+        }
+
+        return view('job-posts.index')
+            ->with('job_posts', JobPost::all());
+    }
+
+    /**
+     * Display a listing of the resource.
+     * Exclusive only for companies.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function companyOwnedIndex()
+    {
+        return view('company.job-post.index')
                     ->with('job_posts_with_job_applications', $this->getJobPostsWithJobApplications())
                     ->with('statuses', [
                                         'Received',
                                         'Shortlisted',
                                         'Not qualified',
                                     ]);
-            }
-        }
-
-        return view('job-posts.index')
-            ->with('job_posts', JobPost::all());
     }
 
     /**
@@ -107,16 +115,14 @@ class JobPostController extends Controller
      */
     private function getJobPostsWithJobApplications()
     {
-        $job_posts_with_job_applications = collect([]);
-
         $job_posts = Auth::user()->company->jobPosts;
-        $job_applications = Auth::user()->company->jobApplicationsReceived;
+        $job_posts_with_job_applications = collect([]);
 
         foreach ($job_posts as $job_post)
         {
-            $job_posts_with_job_applications->prepend([
+            $job_posts_with_job_applications->push([
                 'job_post' => $job_post,
-                'job_applications' => $job_applications->where('job_post_id', $job_post->id),
+                'job_applications' => $job_post->jobApplications,
             ]);
         }
 

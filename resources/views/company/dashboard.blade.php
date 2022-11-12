@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href={{ route('company.job_posts.index') }} class="text-decoration-none">
+            <a href={{ route('company.job_posts.company_owned_index') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center">
                     <box-icon name='table' size='90px' color='violet'></box-icon>
                     <h3 class="fs-5">My Job Posts</h3>

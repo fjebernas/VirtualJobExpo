@@ -51,9 +51,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  */
                 Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
                 // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
-                
                 Route::withoutMiddleware(['details.set'])->group(function(){
-                    Route::get('/setup', [StudentController::class, 'setup'])->name('setup');
                     Route::resource('students', StudentController::class)->only([
                         'show', 'edit', 'update',
                     ]);
@@ -101,7 +99,6 @@ Route::middleware(['auth', 'details.set'])->group(function(){
 
                 // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
                 Route::withoutMiddleware(['details.set'])->group(function(){
-                    Route::get('/setup', [CompanyController::class, 'setup'])->name('setup');
                     Route::resource('companies', CompanyController::class)->only([
                         'show', 'edit', 'update',
                     ]);
@@ -113,8 +110,11 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                  * 
                  */
                 Route::resource('job_posts', JobPostController::class)->only([
-                    'index', 'create', 'store', 'destroy',
+                    'create', 'store', 'destroy',
                 ]);
+                // Route for job posts owned by company
+                Route::get('/job-posts', [JobPostController::class, 'companyOwnedIndex'])
+                    ->name('job_posts.company_owned_index');
         
                 /**
                  * Company routes managed by JobApplicationController
