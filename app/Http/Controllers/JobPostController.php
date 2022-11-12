@@ -32,8 +32,7 @@ class JobPostController extends Controller
             else if (Auth::user()->role == 'company')
             {
                 return view('company.job-post.index')
-                    ->with('job_posts', Auth::user()->company->jobPosts)
-                    ->with('job_applications_received', Auth::user()->company->jobApplicationsReceived)
+                    ->with('job_posts_with_job_applications', $this->getJobPostsWithJobApplications())
                     ->with('statuses', [
                                         'Received',
                                         'Shortlisted',
@@ -98,5 +97,29 @@ class JobPostController extends Controller
                 'message' => 'Job post deleted',
                 'type' => 'success'
             ]);
+    }
+
+    /**
+     *
+     *
+     * 
+     * @return \Collection
+     */
+    private function getJobPostsWithJobApplications()
+    {
+        $job_posts_with_job_applications = collect([]);
+
+        $job_posts = Auth::user()->company->jobPosts;
+        $job_applications = Auth::user()->company->jobApplicationsReceived;
+
+        foreach ($job_posts as $job_post)
+        {
+            $job_posts_with_job_applications->prepend([
+                'job_post' => $job_post,
+                'job_applications' => $job_applications->where('job_post_id', $job_post->id),
+            ]);
+        }
+
+        return $job_posts_with_job_applications;
     }
 }
