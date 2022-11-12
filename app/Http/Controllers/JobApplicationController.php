@@ -6,6 +6,7 @@ use App\Models\JobApplication;
 use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class JobApplicationController extends Controller
 {
@@ -87,10 +88,14 @@ class JobApplicationController extends Controller
             'status' => $request->status
         ]);
 
-        return redirect()->back()
-            ->with('notification', [
-                'message' => 'Updated job application status',
-                'type' => 'success'
-            ]);
+        return Response::json([
+            'report' => 'success',
+        ]);
+
+        // return redirect()->back()
+        //     ->with('notification', [
+        //         'message' => 'Updated job application status',
+        //         'type' => 'success'
+        //     ]);
     }
 }

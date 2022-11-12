@@ -46,7 +46,7 @@
                                         <th scope="col" style="width: 15%">Name</th>
                                         <th scope="col" style="width: 15%">Email</th>
                                         <th scope="col">Pitch</th>
-                                        <th scope="col" style="width: 25%">Action</th>
+                                        <th scope="col" style="width: 10%">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,10 +56,8 @@
                                             <td>{{ $job_application->email }}</td>
                                             <td>{{ $job_application->pitch }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
-                                                <form action={{ route('company.job_applications.update', $job_application->id) }} method="POST" class="d-flex" style="column-gap: 10px; row-gap: 5px">
-                                                    @csrf
-                                                    @method('patch')
-                                                    <select name="status" class="form-select" aria-label="Default select example" style="width: fit-content">
+                                                <form action={{ route('company.job_applications.update', $job_application->id) }} class="d-flex" style="column-gap: 10px; row-gap: 5px">
+                                                    <select id="select-status" name="status" class="form-select" aria-label="Default select example" style="width: fit-content">
                                                         @foreach ($statuses as $status)
                                                             <option value="{{ $status }}" 
                                                                 @if ($status == $job_application->status)
@@ -68,7 +66,6 @@
                                                             >{{ $status }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <button type="submit" class="btn btn-warning">Update status</button>
                                                 </form>
                                             </td>
                                         </tr>
