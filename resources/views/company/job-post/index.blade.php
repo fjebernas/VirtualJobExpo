@@ -46,6 +46,7 @@
                                         <th scope="col" style="width: 15%">Name</th>
                                         <th scope="col" style="width: 15%">Email</th>
                                         <th scope="col">Pitch</th>
+                                        <th scope="col" style="width: 15%">Date Submitted</th>
                                         <th scope="col" style="width: 10%">Status</th>
                                     </tr>
                                 </thead>
@@ -55,6 +56,7 @@
                                             <td>{{ $job_application->name }}</td>
                                             <td>{{ $job_application->email }}</td>
                                             <td>{{ $job_application->pitch }}</td>
+                                            <td>{{ $job_application->created_at }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
                                                 <form action={{ route('company.job_applications.update', $job_application->id) }} class="d-flex" style="column-gap: 10px; row-gap: 5px">
                                                     <select id="select-status" name="status" class="form-select" aria-label="Default select example" style="width: fit-content">
@@ -71,7 +73,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="4">
+                                            <td colspan="5">
                                                 <i class="text-muted">No applications yet</i>
                                             </td>
                                         </tr>

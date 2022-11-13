@@ -13,16 +13,16 @@
 
     <div class="gx-4 mt-4 d-flex flex-wrap justify-content-center wrapper">
         <div class="saved-jobs-container order-xxl-first order-last">
-            @forelse ($job_posts_from_saved_jobs as $job_post_from_saved_job)
-                <div class="card w-100 mb-2 job_post_from_saved_job">
+            @forelse ($saved_jobs as $saved_job)
+                <div class="card w-100 mb-2 saved_job">
                     <div class="card-body row">
                         <div class="col">
-                            <h5 class="card-title">{{ $job_post_from_saved_job->position }}</h5>
-                            <p class="card-text">{{ $job_post_from_saved_job->company }}</p>
+                            <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
+                            <p class="card-text">{{ $saved_job->job_post->company }}</p>
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
-                            <button data-job-post='{{ $job_post_from_saved_job }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
-                            <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post_from_saved_job->id) }}>
+                            <button data-job-post='{{ $saved_job->job_post }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
+                            <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->id) }}>
                                 <button class="btn btn-danger btn-delete-saved-job">Remove</button>
                             </span>
                         </div>

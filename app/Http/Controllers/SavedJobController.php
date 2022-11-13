@@ -18,8 +18,10 @@ class SavedJobController extends Controller
      */
     public function index()
     {
+        $savedJobs = SavedJob::where('student_id', Auth::user()->student->id)->with('job_post')->get();
+
         return view('student.saved-jobs.index')
-            ->with('job_posts_from_saved_jobs', Auth::user()->student->jobPostsFromSavedJobs);
+            ->with('saved_jobs', $savedJobs);
     }
 
     /**
