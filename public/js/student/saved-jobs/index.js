@@ -1,5 +1,4 @@
-$(document).ready(function () 
-{
+$(function () {
     $('.btn-view-more-details').on('click', function () 
     {
         var jobPost = $(this).attr('data-job-post');
@@ -14,5 +13,45 @@ $(document).ready(function ()
         $('#level').text(jobPost['level']);
         $('#employment').text(jobPost['employment']);
         $('#salary_range').text(`₱${jobPost['salary_range']['low']} to ${jobPost['salary_range']['high']}`);
+    }
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).on('click', '.btn-delete-saved-job', function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            type: 'DELETE',
+            url: $(this).closest('span').attr('data-action-delete'),
+            dataType: 'json',
+            success: (data) => {
+                $(this).closest('.job_post_from_saved_job').remove();
+                toast(data['report']);
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
+    let toast = (report) => {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: report,
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
     }
 });

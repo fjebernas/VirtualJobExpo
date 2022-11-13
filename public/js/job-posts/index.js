@@ -33,14 +33,7 @@ $(function () {
             dataType: 'json',
             success: (data) => {
                 toggleProperties(this);
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: data['report'],
-                    showConfirmButton: false,
-                    timer: 2500
-                });
+                toast(data['report']);
                 console.log(data);
             },
             error: function (data) {
@@ -55,5 +48,21 @@ $(function () {
         $(element).text(
             $(element).hasClass('create') ? 'Save' : 'Remove'
         );
+    }
+
+    let toast = (report) => {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: report,
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
     }
 });
