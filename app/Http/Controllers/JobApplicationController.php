@@ -68,11 +68,9 @@ class JobApplicationController extends Controller
     {
         $jobApplication->delete();
 
-        return redirect()->back()
-            ->with('notification', [
-                'message' => 'Job application withdrew',
-                'type' => 'success'
-            ]);
+        return Response::json([
+            'report' => 'Withdrew job application',
+        ]);
     }
 
     /**
@@ -91,11 +89,5 @@ class JobApplicationController extends Controller
         return Response::json([
             'report' => 'success',
         ]);
-
-        // return redirect()->back()
-        //     ->with('notification', [
-        //         'message' => 'Updated job application status',
-        //         'type' => 'success'
-        //     ]);
     }
 }

@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 @forelse ($job_applications as $job_application)
-                    <tr>
+                    <tr class="job-application">
                         <td>{{ $job_application->id }}</td>
                         <td>{{ $job_posts_applied[$loop->index]->position }}</td>
                         <td>{{ $job_posts_applied[$loop->index]->company }}</td>
@@ -46,11 +46,9 @@
                                     </span>
                         </td>
                         <td>
-                            <form action={{ route('student.job_applications.destroy', $job_application->id) }} method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger">Withdraw</button>
-                            </form>
+                            <span data-action-delete={{ route('student.job_applications.destroy', $job_application->id) }}>
+                                <button type="submit" class="btn btn-danger btn-delete-job-application">Withdraw</button>
+                            </span>
                         </td>
                     </tr>
                 @empty
