@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StudentSeeder::class,
             CompanySeeder::class,
-            JobPostSeeder::class,
         ]);
     }
 }

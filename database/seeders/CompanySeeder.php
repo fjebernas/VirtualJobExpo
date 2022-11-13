@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
+use App\Models\JobPost;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,34 +18,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'email' => 'fnaf@company.com',
-            'role' => 'company',
-            'password' => Hash::make('wangan00'),
-        ]);
-
-        Company::create([
-            'name' => 'Five Nights at Freddies Inc.',
-            'industry' => 'Computer',
-            'address' => 'Surkland, NY',
-            'contact_number' => '09278483921',
-            'user_id' => '3',
-        ]);
-
-        // =============================================================================
-
-        User::create([
-            'email' => 'se@company.com',
-            'role' => 'company',
-            'password' => Hash::make('wangan00'),
-        ]);
-
-        Company::create([
-            'name' => 'SE Company',
-            'industry' => 'Technology',
-            'address' => 'Metro Manila',
-            'contact_number' => '09272727728',
-            'user_id' => '4',
-        ]);
+        Company::factory()->count(10)->hasJobPosts(5)->create();
     }
 }

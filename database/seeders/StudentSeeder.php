@@ -35,22 +35,5 @@ class StudentSeeder extends Seeder
         ]);
 
         // =============================================================================
-
-        User::create([
-            'email' => 'ganyu@user.com',
-            'role' => 'student',
-            'password' => Hash::make('wangan00'),
-        ]);
-
-        Student::create([
-            'first_name' => 'Ganyu',
-            'middle_name' => 'Adepti',
-            'last_name' => 'Sweet Rain',
-            'birthdate' => '19230502',
-            'gender' => 'female',
-            'university' => 'University of Liyue',
-            'contact_number' => '09277382901',
-            'user_id' => '2',
-        ]);
     }
 }

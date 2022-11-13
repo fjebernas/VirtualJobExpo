@@ -27,7 +27,10 @@ use Illuminate\Support\Facades\Route;
  * 
  */
 Route::get('/exp', function(){
-    $dummy = User::factory()->hasStudent()->create();
+    $dummy = User::factory()->hasCompany()->create([
+        'email' => fake()->unique()->email(),
+        'role' => 'company'
+    ]);
     return $dummy;
 });
 
