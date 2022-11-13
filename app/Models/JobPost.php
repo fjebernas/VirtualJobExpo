@@ -27,7 +27,7 @@ class JobPost extends Model
         'pivot',
     ];
 
-    public function jobApplications()
+    public function job_applications()
     {
         return $this->hasMany(
             JobApplication::class

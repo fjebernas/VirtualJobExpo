@@ -44,8 +44,12 @@ class JobPostController extends Controller
      */
     public function companyOwnedIndex()
     {
+        $job_posts = JobPost::where('company_id', Auth::user()->company->id)
+                            ->with('job_applications')
+                            ->get();
+        
         return view('company.job-post.index')
-                    ->with('job_posts_with_job_applications', $this->getJobPostsWithJobApplications())
+                    ->with('job_posts', $job_posts)
                     ->with('statuses', [
                                         'Received',
                                         'Shortlisted',
@@ -105,27 +109,5 @@ class JobPostController extends Controller
                 'message' => 'Job post deleted',
                 'type' => 'success'
             ]);
-    }
-
-    /**
-     *
-     *
-     * 
-     * @return \Collection
-     */
-    private function getJobPostsWithJobApplications()
-    {
-        $job_posts = Auth::user()->company->jobPosts;
-        $job_posts_with_job_applications = collect([]);
-
-        foreach ($job_posts as $job_post)
-        {
-            $job_posts_with_job_applications->push([
-                'job_post' => $job_post,
-                'job_applications' => $job_post->jobApplications,
-            ]);
-        }
-
-        return $job_posts_with_job_applications;
     }
 }

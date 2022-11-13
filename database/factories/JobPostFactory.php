@@ -19,12 +19,12 @@ class JobPostFactory extends Factory
         return [
             'position' => fake()->jobTitle(),
             'company' => 'not set',
-            'location' => 'not set',
+            'location' => fake()->city() . ', ' . fake()->state(),
             'level' => 'Senior',
             'employment' => 'Full-time',
             'salary_range' => [
-                'low' => fake()->numberBetween(4,7) . '0000',
-                'high' => fake()->numberBetween(8,9) . '0000',
+                'low' => fake()->numberBetween(3,5) . '0000',
+                'high' => fake()->numberBetween(6,9) . '0000',
             ],
         ];
     }

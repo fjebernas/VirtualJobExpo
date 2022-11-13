@@ -11,27 +11,27 @@
 @section('content')
     <h1 class="text-center">YOUR JOB POSTS</h1>
 
-    @forelse ($job_posts_with_job_applications as $job_post_with_job_applications)
+    @forelse ($job_posts as $job_post)
         <div class="py-3">
             <div class="card bg-light mt-3 w-100" style="">
                 <div class="card-header bg-dark text-white">
-                    Job post ID: {{ $job_post_with_job_applications['job_post']->id }}
+                    Job post ID: {{ $job_post->id }}
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <p><span class="fw-bold">Position: </span> {{ $job_post_with_job_applications['job_post']->position }}</p>
-                            <p><span class="fw-bold">Level: </span> {{ $job_post_with_job_applications['job_post']->level }}</p>
+                            <p><span class="fw-bold">Position: </span> {{ $job_post->position }}</p>
+                            <p><span class="fw-bold">Level: </span> {{ $job_post->level }}</p>
                         </div>
                         <div class="col">
-                            <p><span class="fw-bold">Location: </span> {{ $job_post_with_job_applications['job_post']->location }}</p>
-                            <p><span class="fw-bold">Employment: </span> {{ $job_post_with_job_applications['job_post']->employment }}</p>
+                            <p><span class="fw-bold">Location: </span> {{ $job_post->location }}</p>
+                            <p><span class="fw-bold">Employment: </span> {{ $job_post->employment }}</p>
                         </div>
                         <div class="col-4">
-                            <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post_with_job_applications['job_post']->salary_range['low'] }} to ₱{{ $job_post_with_job_applications['job_post']->salary_range['high'] }}</p>
+                            <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
                         <div class="col-3">
-                            <form class="d-flex justify-content-end" action={{ route('company.job_posts.destroy', $job_post_with_job_applications['job_post']->id) }} method="POST">
+                            <form class="d-flex justify-content-end" action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete job post</button>
@@ -50,7 +50,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($job_post_with_job_applications['job_applications'] as $job_application)
+                                    @forelse ($job_post->job_applications as $job_application)
                                         <tr>
                                             <td>{{ $job_application->name }}</td>
                                             <td>{{ $job_application->email }}</td>
