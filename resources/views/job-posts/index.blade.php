@@ -55,4 +55,7 @@
             <h2 class="fs-4 text-center text-muted fst-italic">No available jobs as of now</h2>
         @endforelse
     </div>
+    <div class="mt-4 mx-5 d-md-block d-flex justify-content-center">
+        {{ $job_posts->links() }}
+    </div>
 @endsection
