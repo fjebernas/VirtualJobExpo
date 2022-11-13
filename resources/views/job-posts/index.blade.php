@@ -28,21 +28,23 @@
                             @if (in_array($job_post->id, $job_applications))
                                 <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
                             @else
-                                <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-primary" style="margin-right: 5px;">Apply now</a>
+                                <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
                             @endif
 
-                            @if (in_array($job_post->id, $saved_jobs))
-                                <form action={{ route('student.saved_jobs.destroy', $job_post->id) }} method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button name="job_post_id" type="submit" class="btn btn-danger">Remove</button>
-                                </form>
-                            @else
-                                <form action={{ route('student.saved_jobs.store') }} method="POST">
-                                    @csrf
-                                    <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning">Save</button>
-                                </form>
-                            @endif
+                            <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} data-action-create={{ route('student.saved_jobs.store') }}>
+                                    <button
+                                        name="job_post_id"
+                                        value="{{ $job_post->id }}"
+                                        class="btn btn-saved-job
+                                        @if (in_array($job_post->id, $saved_jobs))
+                                            btn-danger delete">
+                                            Remove
+                                        @else
+                                            btn-primary create">
+                                            Save
+                                        @endif
+                                    </button>
+                            </span>
                         @else
                             {{-- No buttons to show if user is not student --}}
                         @endisset

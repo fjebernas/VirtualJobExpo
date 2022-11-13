@@ -7,6 +7,7 @@ use App\Models\SavedJob;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class SavedJobController extends Controller
 {
@@ -34,11 +35,9 @@ class SavedJobController extends Controller
             'student_id' => Auth::user()->student->id,
         ]);
 
-        return redirect()->back()
-            ->with('notification', [
-                'message' => 'Job saved successfully',
-                'type' => 'success'
-            ]);
+        return Response::json([
+            'report' => 'Added to saved jobs',
+        ]);
     }
 
     /**
@@ -53,10 +52,8 @@ class SavedJobController extends Controller
                 ->where('student_id', Auth::user()->student->id)
                 ->delete();
 
-        return redirect()->back()
-            ->with('notification', [
-                'message' => 'Removed from saved jobs',
-                'type' => 'success'
-            ]);
+        return Response::json([
+            'report' => 'Removed from saved jobs',
+        ]);
     }
 }
