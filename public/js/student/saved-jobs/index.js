@@ -29,7 +29,7 @@ $(function () {
             url: $(this).closest('span').attr('data-action-delete'),
             dataType: 'json',
             success: (data) => {
-                $(this).closest('.job_post_from_saved_job').remove();
+                $(this).closest('.saved_job').remove();
                 toast(data['report']);
                 console.log(data);
             },
