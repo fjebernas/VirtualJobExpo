@@ -33,7 +33,7 @@ class JobPostController extends Controller
         }
 
         return view('job-posts.index')
-            ->with('job_posts', JobPost::simplePaginate(8));
+            ->with('job_posts', JobPost::paginate(8));
     }
 
     /**

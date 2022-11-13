@@ -6,6 +6,7 @@ use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\StudentController;
 use App\Models\JobApplication;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ * For testing factories
+ *
+ * 
+ */
+Route::get('/exp', function(){
+    $dummy = User::factory()->hasStudent()->create();
+    return $dummy;
+});
 
 Route::get('/', function () {
     return view('welcome');
