@@ -26,8 +26,8 @@
                 @forelse ($job_applications as $job_application)
                     <tr class="job-application">
                         <td>{{ $job_application->id }}</td>
-                        <td>{{ $job_posts_applied[$loop->index]->position }}</td>
-                        <td>{{ $job_posts_applied[$loop->index]->company }}</td>
+                        <td>{{ $job_application->job_post->position }}</td>
+                        <td>{{ $job_application->job_post->company }}</td>
                         <td class="fst-italic fw-bold">
                             @switch($job_application->status)
                                 @case('Received')
