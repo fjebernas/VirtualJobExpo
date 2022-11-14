@@ -22,7 +22,7 @@
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
                             <button data-job-post='{{ $saved_job->job_post }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
-                            <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job) }}>
+                            <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->job_post->id) }}>
                                 <button class="btn btn-danger btn-delete-saved-job">Remove</button>
                             </span>
                         </div>

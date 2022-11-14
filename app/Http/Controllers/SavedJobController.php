@@ -48,9 +48,11 @@ class SavedJobController extends Controller
      * @param  int  $job_post_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SavedJob $savedJob) 
+    public function destroy($job_post_id) 
     {
-        $savedJob->delete();
+        SavedJob::where('job_post_id', $job_post_id)
+            ->where('student_id', Auth::user()->student->id)
+            ->delete();
 
         return Response::json([
             'report' => 'Removed from saved jobs',
