@@ -6,6 +6,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 class StudentController extends Controller
 {
@@ -65,16 +67,18 @@ class StudentController extends Controller
         if (isset($request->profile_picture))
         {
             // custom image name
-            $new_profile_picture_name = time() . 
-            '-' . 
-            Auth::user()->student->last_name . 
-            '.' .
-            $request->profile_picture->extension();
+            $new_profile_picture_name = 'student' .
+                                        Auth::user()->student->id . 
+                                        '-' . 
+                                        Auth::user()->student->last_name . 
+                                        '.' .
+                                        $request->profile_picture->extension();
 
             // if there is already a profile picture in public, delete it
-            if (File::exists(public_path('img/profile-pictures/' . $new_profile_picture_name))) 
+            $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
+            if (File::exists(public_path('img/profile-pictures/' . $new_profile_picture_name_without_extension))) 
             {
-            File::delete(public_path('img/profile-pictures/' . $new_profile_picture_name));
+            File::delete(public_path('img/profile-pictures/' . $new_profile_picture_name_without_extension));
             }
 
             // move the image file to public/img/profile-pictures

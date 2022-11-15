@@ -6,7 +6,9 @@ use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\StudentController;
 use App\Models\JobApplication;
+use App\Models\JobPost;
 use App\Models\User;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +24,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
- * For testing factories
+ * For testing
  *
  * 
  */
 Route::get('/exp', function(){
-    $dummy = User::factory()->hasCompany()->create([
-        'email' => fake()->unique()->email(),
-        'role' => 'company'
-    ]);
-    return $dummy;
+    //Benchmark::dd(fn () => JobPost::all());
 });
 
 Route::get('/', function () {
