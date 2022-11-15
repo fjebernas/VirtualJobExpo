@@ -36,7 +36,7 @@ class StudentController extends Controller
      */
     public function show(Student $student) 
     {
-        return view('student.profile.index')
+        return view('student.profile.show')
             ->with('student', $student);
     }
 

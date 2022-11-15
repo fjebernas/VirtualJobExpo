@@ -21,7 +21,7 @@ class CompanyController extends Controller
 
     public function show(Company $company) 
     {
-        return view('company.profile.index')
+        return view('company.profile.show')
                 ->with('company', $company);
     }
 
