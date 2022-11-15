@@ -19,6 +19,7 @@ class Student extends Model
         'email',
         'contact_number',
         'profile_picture_path',
+        'about',
         'user_id',
     ];
 

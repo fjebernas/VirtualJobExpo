@@ -22,11 +22,6 @@
 
                 <div class="card-body d-flex flex-column">
                     <div class="mb-3">
-                        <label class="form-label fw-bold fs-5" for="profile_picture">Profile picture</label>
-                        <input name="profile_picture" type="file" class="form-control" id="profile_picture" />
-                    </div>
-
-                    <div class="mb-3">
                         <label for="first_name" class="form-label fw-bold fs-5">First name</label>
                         <input name="first_name" value="@isset($student->first_name) {{ $student->first_name }} @endisset" type="text" class="form-control" id="first_name">
                     </div>
@@ -62,6 +57,16 @@
                     <div class="mb-3">
                         <label for="contact_number" class="form-label fw-bold fs-5">Contact number</label>
                         <input name="contact_number" value=@isset($student->contact_number) {{ $student->contact_number }} @else null @endisset type="number" class="form-control" id="contact_number">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold fs-5" for="profile_picture">Profile picture</label>
+                        <input name="profile_picture" type="file" class="form-control" id="profile_picture" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="about" class="form-label fw-bold fs-5">About</label>
+                        <textarea name="about" class="form-control" id="about" rows="3">@isset($student->about) {{ $student->about }}@endisset</textarea>
                     </div>
 
                     <button name="" type="submit" class="btn btn-warning align-self-end">Save changes</button>

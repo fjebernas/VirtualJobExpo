@@ -29,15 +29,13 @@
                                             {{ $student->first_name }}
                                         @endisset
                         </h2>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor eligendi suscipit placeat amet consequuntur dolorem repellat in dolore pariatur? Veniam, nam quo iusto inventore odit voluptatum quasi tempora autem nostrum?
-                        </p>
+                        <p>{{ $student->about }}</p>
                     </span>
                 </div>
                 
-                <div class="row mt-3">
+                <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">First name</h5>
+                        <h5 class="card-title fs-6 fw-bold">First name</h5>
                         <p class="card-text fs-5">
                             @isset($student->first_name)
                                 {{ $student->first_name }}
@@ -45,7 +43,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Middle name</h5>
+                        <h5 class="card-title fs-6 fw-bold">Middle name</h5>
                         <p class="card-text fs-5">
                             @isset($student->middle_name)
                                 {{ $student->middle_name }}
@@ -53,7 +51,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Last name</h5>
+                        <h5 class="card-title fs-6 fw-bold">Last name</h5>
                         <p class="card-text fs-5">
                             @isset($student->last_name)
                                 {{ $student->last_name }}
@@ -64,7 +62,7 @@
                 
                 <div class="row my-3">
                     <span class="col-8">
-                        <h5 class="card-title fw-bold">University</h5>
+                        <h5 class="card-title fs-6 fw-bold">University</h5>
                         <p class="card-text fs-5">
                             @isset($student->university)
                                 {{ $student->university }}
@@ -72,7 +70,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Email</h5>
+                        <h5 class="card-title fs-6 fw-bold">Email</h5>
                         <p class="card-text fs-5">
                             {{ Auth::user()->email }}
                         </p>
@@ -80,7 +78,7 @@
                 </div>
                 <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Contact number</h5>
+                        <h5 class="card-title fs-6 fw-bold">Contact number</h5>
                         <p class="card-text fs-5">
                             @isset($student->contact_number)
                                 {{ $student->contact_number }}
@@ -88,7 +86,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Birthdate</h5>
+                        <h5 class="card-title fs-6 fw-bold">Birthdate</h5>
                         <p class="card-text fs-5">
                             @isset($student->birthdate)
                                 {{ $student->birthdate }}
@@ -96,7 +94,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fw-bold">Gender</h5>
+                        <h5 class="card-title fs-6 fw-bold">Gender</h5>
                         <p class="card-text fs-5">
                             @isset($student->gender)
                                 {{ $student->gender }}

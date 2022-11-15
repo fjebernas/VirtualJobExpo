@@ -99,6 +99,7 @@ class StudentController extends Controller
             'university' => $request->university,
             'contact_number' => $request->contact_number,
             'profile_picture_path' => $new_profile_picture_name,
+            'about' => $request->about,
         ]);
 
         return redirect('/student/dashboard')
