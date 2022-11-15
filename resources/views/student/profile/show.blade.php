@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('customcss')
-    <link rel="stylesheet" href="/css/student/profile/view.css">
+    <link rel="stylesheet" href="/css/student/profile/show.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/student/profile/view.js" type="module"></script>
+    <script src="/js/student/profile/show.js" type="module"></script>
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
                         <img src={{ asset('img/profile-pictures/' . $student->profile_picture_path) }} 
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
-                            width="200">
+                            id="profile-picture">
                     </span>
                     <span class="" style="width:400px">
                         <h2>Hello! I'm @isset($student->first_name) 

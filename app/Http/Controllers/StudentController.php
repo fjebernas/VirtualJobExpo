@@ -86,7 +86,7 @@ class StudentController extends Controller
         } 
         else 
         {
-            $new_profile_picture_name = null;
+            $new_profile_picture_name = 'placeholder.png';
         }
         
 
