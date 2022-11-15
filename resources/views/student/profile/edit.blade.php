@@ -16,11 +16,16 @@
             <div class="card-header">
                 View Profile
             </div>
-            <form action={{ route('student.students.update', $student) }} method="post">
+            <form action={{ route('student.students.update', $student) }} method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
 
                 <div class="card-body d-flex flex-column">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold fs-5" for="profile_picture">Profile picture</label>
+                        <input name="profile_picture" type="file" class="form-control" id="profile_picture" />
+                    </div>
+
                     <div class="mb-3">
                         <label for="first_name" class="form-label fw-bold fs-5">First name</label>
                         <input name="first_name" value="@isset($student->first_name) {{ $student->first_name }} @endisset" type="text" class="form-control" id="first_name">

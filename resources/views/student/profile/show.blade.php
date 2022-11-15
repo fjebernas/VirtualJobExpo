@@ -16,7 +16,11 @@
             <div class="card-header">
                 View Profile
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
+                <img src={{ asset('img/profile-pictures/' . $student->profile_picture_path) }} 
+                    class="img-thumbnail mb-2 align-self-center" 
+                    alt="profile picture"
+                    width="150">
                 <h5 class="card-title fw-bold">First name</h5>
                 <p class="card-text">
                     @isset($student->first_name)

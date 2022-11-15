@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
@@ -61,6 +62,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student) 
     {
+        // custom image name
+        $new_profile_picture_name = time() . 
+                                    '-' . 
+                                    Auth::user()->student->last_name . 
+                                    '.' .
+                                    $request->profile_picture->extension();
+
+        // if there is already a profile picture in public, delete it
+        if (File::exists(public_path('img/profile-pictures/' . $new_profile_picture_name))) {
+            File::delete(public_path('img/profile-pictures/' . $new_profile_picture_name));
+        }
+        
+        // move the image file to public/img/profile-pictures
+        $request->profile_picture->move(public_path('img/profile-pictures'), $new_profile_picture_name);
+
         $student->update([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
@@ -69,6 +85,7 @@ class StudentController extends Controller
             'gender' => $request->gender,
             'university' => $request->university,
             'contact_number' => $request->contact_number,
+            'profile_picture_path' => $new_profile_picture_name,
         ]);
 
         return redirect('/student/dashboard')
