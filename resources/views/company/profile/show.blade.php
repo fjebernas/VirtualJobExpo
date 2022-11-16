@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('customcss')
-    <link rel="stylesheet" href="/css/company/profile/view.css">
+    <link rel="stylesheet" href="/css/company/profile/show.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/company/profile/view.js" type="module"></script>
+    <script src="/js/company/profile/show.js" type="module"></script>
 @endsection
 
 @section('content')

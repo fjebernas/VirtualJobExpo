@@ -18,7 +18,7 @@
                     <div class="card-body row">
                         <div class="col">
                             <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
-                            <p class="card-text">{{ $saved_job->job_post->company }}</p>
+                            <p class="card-text">{{ $saved_job->job_post->company->name }}</p>
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
                             <button data-job-post='{{ $saved_job->job_post }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>

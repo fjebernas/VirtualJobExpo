@@ -27,7 +27,7 @@
                     <tr class="job-application">
                         <td>{{ $job_application->id }}</td>
                         <td>{{ $job_application->job_post->position }}</td>
-                        <td>{{ $job_application->job_post->company }}</td>
+                        <td>{{ $job_application->job_post->company->name }}</td>
                         <td class="fst-italic fw-bold">
                             @switch($job_application->status)
                                 @case('Received')
