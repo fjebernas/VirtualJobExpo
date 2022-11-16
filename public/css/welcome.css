@@ -6,9 +6,12 @@
     height: 60vh;
 }
 
+.now {
+    color: #E87A00;
+}
+
 .btn-register {
-    background-color: #FF5D00;
-    color: #fff;
+    background-color: #5630bd;
     border: none;
 }
 

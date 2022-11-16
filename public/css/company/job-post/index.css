@@ -1,0 +1,12 @@
+.card {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+td {
+    background-color: #000 !important;
+}
+
+select {
+    background-color: rgb(26, 26, 26) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}

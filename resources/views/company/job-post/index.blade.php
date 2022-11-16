@@ -13,22 +13,22 @@
 
     @forelse ($job_posts as $job_post)
         <div class="py-3">
-            <div class="card bg-light mt-3 w-100" style="">
-                <div class="card-header bg-dark text-white">
+            <div class="card mt-3 w-100" style="">
+                <div class="card-header bg-dark text-muted">
                     Job post ID: {{ $job_post->id }}
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <p><span class="fw-bold">Position: </span> {{ $job_post->position }}</p>
-                            <p><span class="fw-bold">Level: </span> {{ $job_post->level }}</p>
+                            <p class="text-white"><span class="fw-bold text-muted">Position: </span> {{ $job_post->position }}</p>
+                            <p class="text-white"><span class="fw-bold text-muted">Level: </span> {{ $job_post->level }}</p>
                         </div>
                         <div class="col">
-                            <p><span class="fw-bold">Location: </span> {{ $job_post->location }}</p>
-                            <p><span class="fw-bold">Employment: </span> {{ $job_post->employment }}</p>
+                            <p class="text-white"><span class="fw-bold text-muted">Location: </span> {{ $job_post->location }}</p>
+                            <p class="text-white"><span class="fw-bold text-muted">Employment: </span> {{ $job_post->employment }}</p>
                         </div>
                         <div class="col-4">
-                            <p><span class="fw-bold">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
+                            <p class="text-white"><span class="fw-bold text-muted">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
                         <div class="col-3">
                             <form class="d-flex justify-content-end" action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
@@ -40,8 +40,8 @@
                     </div>
                     <div class="row">
                         <div class="table-responsive">
-                            <table class="table text-center table-bordered bg-white mt-4">
-                                <thead class="bg-secondary text-white">
+                            <table class="table table-dark text-center table-bordered mt-4">
+                                <thead>
                                     <tr>
                                         <th scope="col" style="width: 15%">Name</th>
                                         <th scope="col" style="width: 15%">Email</th>

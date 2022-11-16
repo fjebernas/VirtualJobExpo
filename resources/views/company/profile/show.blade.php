@@ -12,9 +12,8 @@
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>VIEW PROFILE</h1>
 
-        <div class="card bg-light mt-3 w-100" style="max-width: 42rem">
+        <div class="card mt-3 w-100" style="max-width: 42rem">
             <div class="card-header d-flex justify-content-between">
-                <span>View Profile</span>
                 {{-- <span>
                     <a href={{ route('student.students.edit', $company) }}>
                         Edit Profile
@@ -30,7 +29,7 @@
                             id="profile-picture">
                     </span>
                     <span class="" style="width:400px">
-                        <h2>@isset($company->name) 
+                        <h2 class="hello-plus-name">@isset($company->name) 
                                 {{ $company->name }}
                             @endisset
                         </h2>
@@ -40,7 +39,7 @@
                 
                 <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Industry</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Industry</h5>
                         <p class="card-text fs-5">
                             @isset($company->industry)
                                 {{ $company->industry }}
@@ -48,7 +47,7 @@
                         </p>
                     </span>
                     <span class="col-8">
-                        <h5 class="card-title fs-6 fw-bold">Address</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Address</h5>
                         <p class="card-text fs-5">
                             @isset($company->address)
                                 {{ $company->address }}
@@ -59,13 +58,13 @@
                 
                 <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Email</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Email</h5>
                         <p class="card-text fs-5">
                             {{ $company->user->email }}
                         </p>
                     </span>
                     <span class="col-8">
-                        <h5 class="card-title fs-6 fw-bold">Contact number</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Contact number</h5>
                         <p class="card-text fs-5">
                             @isset($company->contact_number)
                                 {{ $company->contact_number }}

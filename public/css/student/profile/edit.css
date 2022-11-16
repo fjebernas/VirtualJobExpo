@@ -1,0 +1,14 @@
+.card {
+    max-width: 42rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+input[type='text'],
+input[type='date'],
+input[type='number'],
+input[type='file'],
+select,
+textarea {
+    background-color: rgb(26, 26, 26) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}

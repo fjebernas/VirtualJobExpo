@@ -12,7 +12,7 @@
     <div class="row banner">
         <div class="col d-flex flex-column justify-content-center align-items-center">
             <h1 class="fs-1">Get your dream job. 
-                <div class="fw-bolder">
+                <div class="fw-bolder now">
                     Now.
                 </div>
                 @guest

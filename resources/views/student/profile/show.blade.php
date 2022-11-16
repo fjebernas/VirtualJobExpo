@@ -12,9 +12,8 @@
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>VIEW PROFILE</h1>
 
-        <div class="card bg-light mt-3 w-100" style="max-width: 42rem">
+        <div class="card mt-3 w-100">
             <div class="card-header d-flex justify-content-between">
-                <span>View Profile</span>
                 {{-- <span>
                     <a href={{ route('student.students.edit', $student) }}>
                         Edit Profile
@@ -30,8 +29,8 @@
                             id="profile-picture">
                     </span>
                     <span class="" style="width:400px">
-                        <h2>Hello! I'm @isset($student->first_name) 
-                                            {{ $student->first_name }}
+                        <h2 class="hello-plus-name">Hello! I'm @isset($student->first_name) 
+                                            {{ $student->first_name }}.
                                         @endisset
                         </h2>
                         <p>{{ $student->about }}</p>
@@ -40,7 +39,7 @@
                 
                 <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">First name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">First name</h5>
                         <p class="card-text fs-5">
                             @isset($student->first_name)
                                 {{ $student->first_name }}
@@ -48,7 +47,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Middle name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Middle name</h5>
                         <p class="card-text fs-5">
                             @isset($student->middle_name)
                                 {{ $student->middle_name }}
@@ -56,7 +55,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Last name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Last name</h5>
                         <p class="card-text fs-5">
                             @isset($student->last_name)
                                 {{ $student->last_name }}
@@ -67,7 +66,7 @@
                 
                 <div class="row my-3">
                     <span class="col-8">
-                        <h5 class="card-title fs-6 fw-bold">University</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">University</h5>
                         <p class="card-text fs-5">
                             @isset($student->university)
                                 {{ $student->university }}
@@ -75,7 +74,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Email</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Email</h5>
                         <p class="card-text fs-5">
                             {{ $student->user->email }}
                         </p>
@@ -83,7 +82,7 @@
                 </div>
                 <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Contact number</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Contact number</h5>
                         <p class="card-text fs-5">
                             @isset($student->contact_number)
                                 {{ $student->contact_number }}
@@ -91,7 +90,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Birthdate</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Birthdate</h5>
                         <p class="card-text fs-5">
                             @isset($student->birthdate)
                                 {{ $student->birthdate }}
@@ -99,7 +98,7 @@
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="card-title fs-6 fw-bold">Gender</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Gender</h5>
                         <p class="card-text fs-5">
                             @isset($student->gender)
                                 {{ $student->gender }}
