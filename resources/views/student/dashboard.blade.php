@@ -12,7 +12,7 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div class="greeting row w-100 d-flex align-items-center px-3">
             <div>
-                <h1>Welcome, {{ Auth::user()->email }}.</h1>
+                <h1>Welcome, {{ Auth::user()->student->first_name }}.</h1>
                 <h2 class="fs-5">Lorem ipsum dolor sit amet consectetur.</h2>
             </div>
         </div>

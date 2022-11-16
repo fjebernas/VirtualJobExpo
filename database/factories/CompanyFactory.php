@@ -22,6 +22,7 @@ class CompanyFactory extends Factory
             'industry' => 'IT/Technology',
             'address' => fake()->streetAddress() . ', ' . fake()->state(),
             'contact_number' => fake()->phoneNumber(),
+            'about' => fake()->text(300),
             'user_id' => User::factory(),
         ];
     }
