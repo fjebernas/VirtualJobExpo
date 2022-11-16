@@ -61,7 +61,7 @@
                     <span class="col-4">
                         <h5 class="card-title fs-6 fw-bold">Email</h5>
                         <p class="card-text fs-5">
-                            {{ Auth::user()->email }}
+                            {{ $company->user->email }}
                         </p>
                     </span>
                     <span class="col-8">

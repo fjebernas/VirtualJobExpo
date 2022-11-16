@@ -53,91 +53,86 @@ Route::middleware(['auth', 'details.set'])->group(function(){
      *
      * 
      */
-    //Route::middleware(['student.only'])->group(function(){
-        Route::prefix('student')->group(function(){
-            Route::name('student.')->group(function(){
-                /**
-                 * Student routes managed by StudentController
-                 *
-                 * 
-                 */
-                Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
-                // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
-                Route::withoutMiddleware(['details.set'])->group(function(){
-                    Route::resource('students', StudentController::class)->only([
-                        'show', 'edit', 'update',
-                    ]);
-                });
-        
-                /**
-                 * Student routes managed by SavedJobController
-                 *
-                 * 
-                 */
-                Route::resource('saved_jobs', SavedJobController::class)->only([
-                    'index', 'store', 'destroy',
+    Route::prefix('student')->group(function(){
+        Route::name('student.')->group(function(){
+            /**
+             * Student routes managed by StudentController
+             *
+             * 
+             */
+            Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
+            // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
+            Route::withoutMiddleware(['details.set'])->group(function(){
+                Route::resource('students', StudentController::class)->only([
+                    'show', 'edit', 'update',
                 ]);
-        
-                /**
-                 * Student routes managed by JobApplicationController
-                 *
-                 * 
-                 */
-                Route::resource('job_applications', JobApplicationController::class)->only([
-                    'index', 'store', 'destroy',
-                ]);
-
-                // Create-job-application route is separated because it needs the job post id
-                Route::get('/job-applications/create/{job_post_id}', [JobApplicationController::class, 'create'])
-                    ->name('job_applications.create');
             });
+    
+            /**
+             * Student routes managed by SavedJobController
+             *
+             * 
+             */
+            Route::resource('saved_jobs', SavedJobController::class)->only([
+                'index', 'store', 'destroy',
+            ]);
+    
+            /**
+             * Student routes managed by JobApplicationController
+             *
+             * 
+             */
+            Route::resource('job_applications', JobApplicationController::class)->only([
+                'index', 'store', 'destroy',
+            ]);
+
+            // Create-job-application route is separated because it needs the job post id
+            Route::get('/job-applications/create/{job_post_id}', [JobApplicationController::class, 'create'])
+                ->name('job_applications.create');
         });
-    //});
+    });
 
     /**
      * Company routes
      *
      * 
      */
-    //Route::middleware(['company.only'])->group(function(){
-        Route::name('company.')->group(function(){
-            Route::prefix('company')->group(function(){
-                /**
-                 * Company routes managed by CompanyController
-                 *
-                 * 
-                 */
-                Route::get('/dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
+    Route::name('company.')->group(function(){
+        Route::prefix('company')->group(function(){
+            /**
+             * Company routes managed by CompanyController
+             *
+             * 
+             */
+            Route::get('/dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
 
-                // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
-                Route::withoutMiddleware(['details.set'])->group(function(){
-                    Route::resource('companies', CompanyController::class)->only([
-                        'show', 'edit', 'update',
-                    ]);
-                });
-        
-                /**
-                 * Company routes managed by JobPostController
-                 *
-                 * 
-                 */
-                Route::resource('job_posts', JobPostController::class)->only([
-                    'create', 'store', 'destroy',
-                ]);
-                // Route for job posts owned by company
-                Route::get('/job-posts', [JobPostController::class, 'companyOwnedIndex'])
-                    ->name('job_posts.company_owned_index');
-        
-                /**
-                 * Company routes managed by JobApplicationController
-                 *
-                 * 
-                 */
-                Route::resource('job_applications', JobApplicationController::class)->only([
-                    'update',
+            // This group below needs to be excluded from EnsureUserDetailsAreSet middleware
+            Route::withoutMiddleware(['details.set'])->group(function(){
+                Route::resource('companies', CompanyController::class)->only([
+                    'show', 'edit', 'update',
                 ]);
             });
+    
+            /**
+             * Company routes managed by JobPostController
+             *
+             * 
+             */
+            Route::resource('job_posts', JobPostController::class)->only([
+                'create', 'store', 'destroy',
+            ]);
+            // Route for job posts owned by company
+            Route::get('/job-posts', [JobPostController::class, 'companyOwnedIndex'])
+                ->name('job_posts.company_owned_index');
+    
+            /**
+             * Company routes managed by JobApplicationController
+             *
+             * 
+             */
+            Route::resource('job_applications', JobApplicationController::class)->only([
+                'update',
+            ]);
         });
-        
-    //});
+    });
 });
