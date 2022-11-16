@@ -9,21 +9,21 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">JOB POSTS</h1>
+    <h1 class="text-center page-title">JOB POSTS</h1>
 
     <div class="d-flex justify-content-center flex-wrap">
         @forelse ($job_posts as $job_post)
-            <div class="card mx-3 mt-3" style="width: 18rem;">
+            <div class="card mx-3 mt-3 job-post" style="width: 18rem;">
                 <div class="card-body">
                     <img src={{ asset('img/profile-picture/company/' . $job_post->company->profile_picture_path) }} 
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
-                    <a href={{ route('company.companies.show', $job_post->company) }}>
+                    <a href={{ route('company.companies.show', $job_post->company) }} class="job-position">
                         <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     </a>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->company->name }}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
+                    <h6 class="card-subtitle mb-2">{{ $job_post->company->name }}</h6>
+                    <h6 class="card-subtitle mb-2">{{ $job_post->location }}</h6>
                     <ul>
                         <li>{{ $job_post->level }}</li>
                         <li>{{ $job_post->employment }}</li>
