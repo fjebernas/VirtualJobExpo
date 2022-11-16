@@ -15,6 +15,10 @@
         @forelse ($job_posts as $job_post)
             <div class="card mx-3 mt-3" style="width: 18rem;">
                 <div class="card-body">
+                    <img src={{ asset('img/profile-pictures/' . $job_post->company->profile_picture_path) }} 
+                            class="img-thumbnail mb-2 align-self-center" 
+                            alt="profile picture"
+                            id="profile-picture">
                     <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->company->name }}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
