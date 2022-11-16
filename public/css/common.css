@@ -20,6 +20,8 @@ h1 {
     left: 0;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
+    transform: translateX(0px);
     z-index: -999;
     filter: brightness(0.3) blur(2px);
 }

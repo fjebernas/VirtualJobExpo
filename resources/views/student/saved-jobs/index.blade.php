@@ -18,7 +18,7 @@
                     <div class="card-body row">
                         <div class="col">
                             <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
-                            <p class="card-text">{{ $saved_job->job_post->company->name }}</p>
+                            <p class="card-text text-muted">{{ $saved_job->job_post->company->name }}</p>
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
                             <button data-job-post='{{ $saved_job->job_post }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
@@ -34,27 +34,27 @@
         </div>
         <div class="job-details-panel order-xxl-last order-first p-4">
             <div class="d-flex mb-3">
-                <h4 >Position:&nbsp;</h4>
+                <h4 class="text-muted">Position:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="position"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 >Company:&nbsp;</h4>
+                <h4 class="text-muted">Company:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="company"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 >Location:&nbsp;</h4>
+                <h4 class="text-muted">Location:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="location"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 >Level:&nbsp;</h4>
+                <h4 class="text-muted">Level:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="level"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 >Employment:&nbsp;</h4>
+                <h4 class="text-muted">Employment:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="employment"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 >Salary range:&nbsp;</h4>
+                <h4 class="text-muted">Salary range:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="salary_range"></p>
             </div>
         </div>

@@ -12,7 +12,7 @@
     <h1 class="text-center">JOB APPLICATION STATUS</h1>
 
     <div class="table-responsive">
-        <table class="table text-center table-bordered bg-white mt-4">
+        <table class="table table-dark text-center table-bordered mt-4">
             <thead class="bg-dark text-white">
                 <tr>
                     <th scope="col">id</th>

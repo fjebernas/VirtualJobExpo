@@ -23,11 +23,11 @@
                         <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     </a>
                     <h6 class="card-subtitle mb-2">{{ $job_post->company->name }}</h6>
-                    <h6 class="card-subtitle mb-2">{{ $job_post->location }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
                     <ul>
-                        <li>{{ $job_post->level }}</li>
-                        <li>{{ $job_post->employment }}</li>
-                        <li>₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</li>
+                        <li class="text-muted">{{ $job_post->level }}</li>
+                        <li class="text-muted">{{ $job_post->employment }}</li>
+                        <li class="text-muted">₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</li>
                     </ul>
                     <div class="d-flex flex-wrap buttons-container">
                         @isset($saved_jobs)
