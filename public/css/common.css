@@ -10,13 +10,31 @@ body, #app {
     min-height: 100vh;
 }
 
+h1 {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -999;
+    filter: brightness(0.3);
+}
+
+#footer {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 /* custom scroll bar */
 ::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #D8E1E7;
+    background: rgba(0, 0, 0, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.8);
+    background: #D8E1E7;
 }

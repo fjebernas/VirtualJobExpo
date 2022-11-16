@@ -26,7 +26,7 @@
             <img src="/img/buildings.png" class="img-fluid" alt="buildings" srcset="">
         </div>
     </div>
-    <div class="top-employers d-flex flex-column">
+    {{-- <div class="top-employers d-flex flex-column">
         <h1 class="text-center mb-5 fs-3" style="z-index: 999">
             OUR TOP EMPLOYERS
         </h1>
@@ -84,5 +84,5 @@
                 <h5 class="pt-2">Google</h5>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

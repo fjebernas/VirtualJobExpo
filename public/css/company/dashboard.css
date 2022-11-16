@@ -1,6 +1,6 @@
 .greeting {
     height: 150px;
-    background-color: #acd0fa;
+    background-color: #2c2c2c;
     color:#0262cf;
     border-radius: 10px;
 }
@@ -22,20 +22,20 @@
 }
 
 .view-profile.card {
-    background-color: rgb(226, 253, 226);
-    color: green;
+    color: rgb(226, 253, 226);
+    background-color: rgb(0, 77, 0);
 }
 
 .edit-profile.card {
-    background-color: rgb(253, 245, 223);
-    color: orange;
+    color: rgb(253, 245, 223);
+    background-color: rgb(163, 106, 0);
 }
 
 .saved-jobs.card {
-    background-color: rgb(250, 239, 255);
-    color: violet;
+    color: rgb(250, 239, 255);
+    background-color: rgb(138, 0, 138);
 }
 .jobs-applied.card {
-    background-color: #e8eeff;
-    color: darkblue;
+    color: #e8eeff;
+    background-color: rgb(0, 0, 119);
 }

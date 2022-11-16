@@ -20,28 +20,28 @@
         <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
             <a href={{ route('student.students.show', Auth::user()->student) }} class="text-decoration-none">
                 <div class="card view-profile d-flex justify-content-center align-items-center">
-                    <box-icon name='news' size='90px' color='green'></box-icon>
+                    <box-icon name='news' size='90px' color='white'></box-icon>
                     <h3 class="fs-5">View Profile</h3>
                 </div>
             </a>
 
             <a href={{ route('student.students.edit', Auth::user()->student) }} class="text-decoration-none">
                 <div class="card edit-profile d-flex justify-content-center align-items-center">
-                    <box-icon name='edit-alt' size='90px' color='orange'></box-icon>
+                    <box-icon name='edit-alt' size='90px' color='white'></box-icon>
                     <h3 class="fs-5">Edit Profile</h3>
                 </div>
             </a>
 
             <a href={{ route('student.saved_jobs.index') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center">
-                    <box-icon name='spreadsheet' size='90px' color='violet'></box-icon>
+                    <box-icon name='spreadsheet' size='90px' color='white'></box-icon>
                     <h3 class="fs-5">Saved Jobs</h3>
                 </div>
             </a>
 
             <a href={{ route('student.job_applications.index') }} class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
-                    <box-icon name='briefcase' size='90px' color='darkblue'></box-icon>
+                    <box-icon name='briefcase' size='90px' color='white'></box-icon>
                     <h3 class="fs-5">Jobs Applied</h3>
                 </div>
             </a>
