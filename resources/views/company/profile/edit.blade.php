@@ -16,7 +16,7 @@
             <div class="card-header">
                 Edit Profile
             </div>
-            <form action={{ route('company.companies.update', $company->id) }} method="POST">
+            <form action={{ route('company.companies.update', $company->id) }} method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
 
@@ -39,6 +39,16 @@
                     <div class="mb-3">
                         <label for="contact_number" class="form-label fw-bold fs-5">Contact number</label>
                         <input name="contact_number" value=@isset($company->contact_number) {{ $company->contact_number }} @else null @endisset type="number" class="form-control" id="contact_number">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold fs-5" for="profile_picture">Profile picture</label>
+                        <input name="profile_picture" type="file" class="form-control" id="profile_picture" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="about" class="form-label fw-bold fs-5">About</label>
+                        <textarea name="about" class="form-control" id="about" rows="3">@isset($company->about) {{ $company->about }}@endisset</textarea>
                     </div>
 
                     <button name="" type="submit" class="btn btn-warning align-self-end">Save changes</button>

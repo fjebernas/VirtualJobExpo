@@ -68,9 +68,8 @@ class StudentController extends Controller
         {
             // custom image name
             $new_profile_picture_name = 'student' .
+                                        '-' .  
                                         Auth::user()->student->id . 
-                                        '-' . 
-                                        Auth::user()->student->last_name . 
                                         '.' .
                                         $request->profile_picture->extension();
 
