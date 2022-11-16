@@ -12,43 +12,67 @@
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>VIEW PROFILE</h1>
 
-        <div class="card bg-light mt-3 w-100" style="max-width: 42rem;">
-            <div class="card-header">
-                View Profile
+        <div class="card bg-light mt-3 w-100" style="max-width: 42rem">
+            <div class="card-header d-flex justify-content-between">
+                <span>View Profile</span>
+                {{-- <span>
+                    <a href={{ route('student.students.edit', $company) }}>
+                        Edit Profile
+                    </a>
+                </span> --}}
             </div>
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Company name</h5>
-                <p class="card-text">
-                    @isset($company->name)
-                        {{ $company->name }}
-                    @endisset
-                </p>
-            
-                <h5 class="card-title fw-bold">Industry</h5>
-                <p class="card-text">
-                    @isset($company->industry)
-                        {{ $company->industry }}
-                    @endisset
-                </p>
-
-                <h5 class="card-title fw-bold">Address</h5>
-                <p class="card-text">
-                    @isset($company->address)
-                        {{ $company->address }}
-                    @endisset
-                </p>
-
-                <h5 class="card-title fw-bold">Email</h5>
-                <p class="card-text">
-                    {{ Auth::user()->email }}
-                </p>
-
-                <h5 class="card-title fw-bold">Contact number</h5>
-                <p class="card-text">
-                    @isset($company->contact_number)
-                        {{ $company->contact_number }}
-                    @endisset
-                </p>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
+                    <span class="">
+                        <img src={{ asset('img/profile-pictures/' . $company->profile_picture_path) }} 
+                            class="img-thumbnail mb-2 align-self-center" 
+                            alt="profile picture"
+                            id="profile-picture">
+                    </span>
+                    <span class="" style="width:400px">
+                        <h2>@isset($company->name) 
+                                {{ $company->name }}
+                            @endisset
+                        </h2>
+                        <p>{{ $company->about }}</p>
+                    </span>
+                </div>
+                
+                <div class="row my-3">
+                    <span class="col-4">
+                        <h5 class="card-title fs-6 fw-bold">Industry</h5>
+                        <p class="card-text fs-5">
+                            @isset($company->industry)
+                                {{ $company->industry }}
+                            @endisset
+                        </p>
+                    </span>
+                    <span class="col-8">
+                        <h5 class="card-title fs-6 fw-bold">Address</h5>
+                        <p class="card-text fs-5">
+                            @isset($company->address)
+                                {{ $company->address }}
+                            @endisset
+                        </p>
+                    </span>
+                </div>
+                
+                <div class="row my-3">
+                    <span class="col-4">
+                        <h5 class="card-title fs-6 fw-bold">Email</h5>
+                        <p class="card-text fs-5">
+                            {{ Auth::user()->email }}
+                        </p>
+                    </span>
+                    <span class="col-8">
+                        <h5 class="card-title fs-6 fw-bold">Contact number</h5>
+                        <p class="card-text fs-5">
+                            @isset($company->contact_number)
+                                {{ $company->contact_number }}
+                            @endisset
+                        </p>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
