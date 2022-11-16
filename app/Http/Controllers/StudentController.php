@@ -75,13 +75,13 @@ class StudentController extends Controller
 
             // if there is already a profile picture in public, delete it
             $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
-            if (File::exists(public_path('img/profile-pictures/' . $new_profile_picture_name_without_extension))) 
+            if (File::exists(public_path('img/profile-picture/student/' . $new_profile_picture_name_without_extension))) 
             {
-            File::delete(public_path('img/profile-pictures/' . $new_profile_picture_name_without_extension));
+            File::delete(public_path('img/profile-picture/student/' . $new_profile_picture_name_without_extension));
             }
 
             // move the image file to public/img/profile-pictures
-            $request->profile_picture->move(public_path('img/profile-pictures'), $new_profile_picture_name);
+            $request->profile_picture->move(public_path('img/profile-picture/student'), $new_profile_picture_name);
         } 
         else 
         {

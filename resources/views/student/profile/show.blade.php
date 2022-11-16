@@ -24,7 +24,7 @@
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
                     <span class="">
-                        <img src={{ asset('img/profile-pictures/' . $student->profile_picture_path) }} 
+                        <img src={{ asset('img/profile-picture/student/' . $student->profile_picture_path) }} 
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
