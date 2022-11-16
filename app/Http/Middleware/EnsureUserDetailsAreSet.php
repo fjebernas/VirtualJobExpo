@@ -51,7 +51,7 @@ class EnsureUserDetailsAreSet
             return redirect()
                 ->route('company.companies.edit', $company)
                 ->with('notification', [
-                            'message' => 'Finish student initial setup first',
+                            'message' => 'Finish company initial setup first',
                             'type' => 'warning'
                         ]);
         }

@@ -62,7 +62,8 @@ class JobPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create() 
+    {
         return view('company.job-post.create');
     }
 

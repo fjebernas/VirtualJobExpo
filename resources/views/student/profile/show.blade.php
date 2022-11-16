@@ -13,8 +13,13 @@
         <h1>VIEW PROFILE</h1>
 
         <div class="card bg-light mt-3 w-100" style="max-width: 42rem">
-            <div class="card-header">
-                View Profile
+            <div class="card-header d-flex justify-content-between">
+                <span>View Profile</span>
+                <span>
+                    <a href={{ route('student.students.edit', $student) }}>
+                        Edit Profile
+                    </a>
+                </span>
             </div>
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
