@@ -15,7 +15,6 @@ class JobPost extends Model
 
     protected $fillable = [
         'position',
-        'company',
         'location',
         'level',
         'employment',
@@ -29,7 +28,7 @@ class JobPost extends Model
 
     public function company()
     {
-        $this->belongsTo(
+        return $this->belongsTo(
             Company::class
         );
     }

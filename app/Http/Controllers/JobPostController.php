@@ -26,14 +26,14 @@ class JobPostController extends Controller
             if (Auth::user()->role == 'student') 
             {
                 return view('job-posts.index')
-                    ->with('job_posts', JobPost::paginate(8))
+                    ->with('job_posts', JobPost::with('company')->paginate(8))
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
             }
         }
 
         return view('job-posts.index')
-            ->with('job_posts', JobPost::paginate(8));
+            ->with('job_posts', JobPost::with('company')->paginate(8));
     }
 
     /**

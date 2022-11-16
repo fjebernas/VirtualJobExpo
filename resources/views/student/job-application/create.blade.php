@@ -22,7 +22,7 @@
                         <span class="fw-bold">Position: </span> {{ $job_post->position }}
                     </p>
                     <p>
-                        <span class="fw-bold">Company: </span> {{ $job_post->company }}
+                        <span class="fw-bold">Company: </span> {{ $job_post->company->name }}
                     </p>
                 </div>
                 <div class="col">
