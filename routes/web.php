@@ -53,7 +53,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
      *
      * 
      */
-    Route::middleware(['student.only'])->group(function(){
+    //Route::middleware(['student.only'])->group(function(){
         Route::prefix('student')->group(function(){
             Route::name('student.')->group(function(){
                 /**
@@ -92,14 +92,14 @@ Route::middleware(['auth', 'details.set'])->group(function(){
                     ->name('job_applications.create');
             });
         });
-    });
+    //});
 
     /**
      * Company routes
      *
      * 
      */
-    Route::middleware(['company.only'])->group(function(){
+    //Route::middleware(['company.only'])->group(function(){
         Route::name('company.')->group(function(){
             Route::prefix('company')->group(function(){
                 /**
@@ -139,5 +139,5 @@ Route::middleware(['auth', 'details.set'])->group(function(){
             });
         });
         
-    });
+    //});
 });
