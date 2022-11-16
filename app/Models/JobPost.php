@@ -27,6 +27,13 @@ class JobPost extends Model
         'pivot',
     ];
 
+    public function company()
+    {
+        $this->belongsTo(
+            Company::class
+        );
+    }
+
     public function job_applications()
     {
         return $this->hasMany(
