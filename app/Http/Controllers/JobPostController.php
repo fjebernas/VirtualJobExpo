@@ -44,12 +44,8 @@ class JobPostController extends Controller
      */
     public function companyOwnedIndex()
     {
-        $job_posts = JobPost::where('company_id', Auth::user()->company->id)
-                            ->with('job_applications')
-                            ->get();
-        
         return view('company.job-post.index')
-                    ->with('job_posts', $job_posts)
+                    ->with('job_posts', Auth::user()->company->jobPosts)
                     ->with('statuses', [
                                         'Received',
                                         'Shortlisted',
@@ -101,9 +97,9 @@ class JobPostController extends Controller
      * @param  \App\Models\JobPost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobPost $jobPost) 
+    public function destroy(JobPost $job_post) 
     {
-        $jobPost->delete();
+        $job_post->delete();
 
         return redirect()->back()
             ->with('notification', [
