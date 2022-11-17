@@ -17,12 +17,8 @@ class JobApplicationController extends Controller
      */
     public function index()
     {
-        $job_applications = JobApplication::where('student_id', Auth::user()->student->id)
-                                        ->with('job_post')
-                                        ->get();
-
         return view('student.job-application.index')
-            ->with('job_applications', $job_applications);
+            ->with('job_applications', Auth::user()->student->jobApplications);
     }
 
     /**
