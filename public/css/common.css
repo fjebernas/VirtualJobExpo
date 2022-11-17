@@ -14,6 +14,11 @@ h1 {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.link {
+    text-decoration: none;
+    color: #E87A00;
+}
+
 #loader {
     position: fixed;
     top: 0;

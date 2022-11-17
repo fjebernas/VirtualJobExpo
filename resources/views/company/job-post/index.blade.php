@@ -53,8 +53,15 @@
                                 <tbody>
                                     @forelse ($job_post->job_applications as $job_application)
                                         <tr>
-                                            <td>{{ $job_application->name }}</td>
-                                            <td>{{ $job_application->email }}</td>
+                                            <td>
+                                                <a href={{ route('student.students.show', $job_application->student) }}
+                                                    class="link"
+                                                    style="text-decoration: none;">
+                                                    {{ $job_application->student->first_name }}
+                                                    {{ $job_application->student->last_name }}
+                                                </a>
+                                            </td>
+                                            <td>{{ $job_application->student->user->email }}</td>
                                             <td>{{ $job_application->pitch }}</td>
                                             <td>{{ $job_application->created_at }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">

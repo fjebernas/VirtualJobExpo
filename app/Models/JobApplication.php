@@ -18,6 +18,13 @@ class JobApplication extends Model
         'student_id',
     ];
 
+    public function student()
+    {
+        return $this->belongsTo(
+            Student::class
+        );
+    }
+
     public function job_post()
     {
         return $this->belongsTo(

@@ -19,7 +19,8 @@
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
-                    <a href={{ route('company.companies.show', $job_post->company) }} class="job-position">
+                    <a href={{ route('company.companies.show', $job_post->company) }}
+                        class="link">
                         <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     </a>
                     <h6 class="card-subtitle mb-2">{{ $job_post->company->name }}</h6>
