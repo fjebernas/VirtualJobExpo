@@ -47,8 +47,6 @@ class JobApplicationController extends Controller
     public function store(Request $request)
     {
         JobApplication::create([
-            'name' => Auth::user()->student->last_name,
-            'email' => Auth::user()->email,
             'pitch' => $request->pitch,
             'job_post_id' => $request->job_post_id,
             'student_id' => Auth::user()->student->id,
