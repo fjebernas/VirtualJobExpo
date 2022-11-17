@@ -125,7 +125,7 @@
                                                                     </p>
                 <p class="text-muted p-0 m-0">&nbsp; VJE Virtual Job Expo</p>
             </div>
-            <p class="text-muted p-0 mt-2">"Unless someone like you cares a whole awful lot, Nothing is going to get better." - <i>Dr. Seuss</i></p>
+            <p class="text-muted p-0 mt-2">"Unless someone like you cares a whole awful lot, nothing is going to get better." - <i>Dr. Seuss</i></p>
         </footer>
     </div>
 </body>

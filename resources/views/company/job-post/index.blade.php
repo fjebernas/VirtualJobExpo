@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>
                                                 <a href={{ route('student.students.show', $job_application->student) }}
-                                                    class="link"
+                                                    class="link text-warning"
                                                     style="text-decoration: none;">
                                                     {{ $job_application->student->first_name }}
                                                     {{ $job_application->student->last_name }}

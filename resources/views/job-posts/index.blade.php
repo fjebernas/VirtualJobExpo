@@ -20,7 +20,7 @@
                             alt="profile picture"
                             id="profile-picture">
                     <a href='#'
-                        class="link">
+                        class="link text-warning">
                         <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     </a>
                     <h6 class="card-subtitle mb-2">
