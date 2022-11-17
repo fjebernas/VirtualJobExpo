@@ -57,6 +57,11 @@
                         </div>
                     </fieldset>
 
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label fw-bold fs-5 text-muted">description</label>
+                        <textarea name="description" class="form-control" id="description" rows="5" placeholder="e.g. Create/maintain applications and improve them."></textarea>
+                    </div>
+
                     <button name="" type="submit" class="btn btn-warning align-self-end">Create job post</button>
                 </div>
             </form>

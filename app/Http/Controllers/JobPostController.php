@@ -81,6 +81,7 @@ class JobPostController extends Controller
                                 'low' => $request->salary_range[0],
                                 'high' => $request->salary_range[1],
                             ],
+            'description' => $request->description,
             'company_id' => Auth::user()->company->id,
         ]);
 

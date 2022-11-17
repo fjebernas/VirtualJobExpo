@@ -96,8 +96,8 @@
             <hr>
         @endif
     @empty
-        <p class="text-muted fst-italic text-center mt-5 fs-5">
-            No job posts made. <a href={{ route('company.job_posts.create') }} class="link-primary">Create one now</a> 
+        <p class="text-white fst-italic text-center mt-5 fs-5">
+            No job posts made. <a href={{ route('company.job_posts.create') }} class="text-warning">Create one now</a> 
         </p>
     @endforelse
 @endsection

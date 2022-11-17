@@ -19,6 +19,7 @@ class JobPost extends Model
         'level',
         'employment',
         'salary_range',
+        'description',
         'company_id',
     ];
 

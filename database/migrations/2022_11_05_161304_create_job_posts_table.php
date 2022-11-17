@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('level')->nullable();
             $table->string('employment')->nullable();
             $table->json('salary_range')->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('company_id')
                 ->constrained()
                 ->onUpdate('cascade')
