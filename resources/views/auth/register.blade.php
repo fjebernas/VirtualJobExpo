@@ -1,10 +1,28 @@
 @extends('layouts.app')
 
+<style>
+    .card {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        color: #fff;
+    }
+
+    input[type='text'],
+    input[type='date'],
+    input[type='number'],
+    input[type='file'],
+    select,
+    input[type='email'],
+    input[type='password'] {
+        background-color: rgb(26, 26, 26) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+</style>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">

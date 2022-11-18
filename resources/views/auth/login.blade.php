@@ -1,11 +1,24 @@
 @extends('layouts.app')
 
+<style>
+    .card {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        color: #fff;
+    }
+
+    input[type='email'],
+    input[type='password'] {
+        background-color: rgb(26, 26, 26) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+</style>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card bg-dark text-white">
-                <div class="card-header">{{ __('Login') }}</div>
+            <div class="card">
+                <div class="card-header text-muted">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -58,7 +71,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link text-warning" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
