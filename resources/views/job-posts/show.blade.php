@@ -16,7 +16,7 @@
             <div class="card-header d-flex justify-content-between">
             </div>
             <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
+                <div class="d-flex justify-content-start flex-wrap" style="column-gap: 20px; row-gap: 10px">
                     <span class="">
                         <img src={{ asset('img/profile-picture/company/' . $job_post->company->profile_picture_path) }} 
                             class="img-thumbnail mb-2 align-self-center" 
@@ -32,76 +32,49 @@
                     </span>
                 </div>
                 
-                {{-- <div class="row my-3">
+                <div class="row my-3">
                     <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">First name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Company</h5>
                         <p class="card-text fs-5">
-                            @isset($student->first_name)
-                                {{ $student->first_name }}
+                            @isset($job_post->company->name)
+                                {{ $job_post->company->name }}
                             @endisset
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Middle name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Location</h5>
                         <p class="card-text fs-5">
-                            @isset($student->middle_name)
-                                {{ $student->middle_name }}
+                            @isset($job_post->location)
+                                {{ $job_post->location }}
                             @endisset
                         </p>
                     </span>
                     <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Last name</h5>
+                        <h5 class="text-muted card-title fs-6 fw-bold">Level</h5>
                         <p class="card-text fs-5">
-                            @isset($student->last_name)
-                                {{ $student->last_name }}
+                            @isset($job_post->level)
+                                {{ $job_post->level }}
                             @endisset
                         </p>
                     </span>
                 </div>
                 
                 <div class="row my-3">
-                    <span class="col-8">
-                        <h5 class="text-muted card-title fs-6 fw-bold">University</h5>
+                    <span class="col-4">
+                        <h5 class="text-muted card-title fs-6 fw-bold">Employment</h5>
                         <p class="card-text fs-5">
-                            @isset($student->university)
-                                {{ $student->university }}
+                            @isset($job_post->employment)
+                                {{ $job_post->employment }}
                             @endisset
                         </p>
                     </span>
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Email</h5>
+                    <span class="col-8">
+                        <h5 class="text-muted card-title fs-6 fw-bold">Salary range</h5>
                         <p class="card-text fs-5">
-                            {{ $student->user->email }}
+                            ₱{{ $job_post->salary_range['low'] }} to {{ $job_post->salary_range['high'] }}
                         </p>
                     </span>
                 </div>
-
-                <div class="row my-3">
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Contact number</h5>
-                        <p class="card-text fs-5">
-                            @isset($student->contact_number)
-                                {{ $student->contact_number }}
-                            @endisset
-                        </p>
-                    </span>
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Birthdate</h5>
-                        <p class="card-text fs-5">
-                            @isset($student->birthdate)
-                                {{ $student->birthdate }}
-                            @endisset
-                        </p>
-                    </span>
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Gender</h5>
-                        <p class="card-text fs-5">
-                            @isset($student->gender)
-                                {{ $student->gender }}
-                            @endisset
-                        </p>
-                    </span>
-                </div> --}}
             </div>
         </div>
     </div>
