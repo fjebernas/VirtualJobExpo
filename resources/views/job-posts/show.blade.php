@@ -24,38 +24,9 @@
                             id="profile-picture">
                     </span>
                     <span class="" style="width:400px">
-                        <h2 class="hello-plus-name">@isset($job_post->position) 
-                                                        {{ $job_post->position }}
-                                                    @endisset
-                        </h2>
-                        <p>{{ $job_post->description }}</p>
-                    </span>
-                </div>
-                
-                <div class="row my-3">
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Company</h5>
-                        <p class="card-text fs-5">
-                            @isset($job_post->company->name)
-                                {{ $job_post->company->name }}
-                            @endisset
-                        </p>
-                    </span>
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Location</h5>
-                        <p class="card-text fs-5">
-                            @isset($job_post->location)
-                                {{ $job_post->location }}
-                            @endisset
-                        </p>
-                    </span>
-                    <span class="col-4">
-                        <h5 class="text-muted card-title fs-6 fw-bold">Level</h5>
-                        <p class="card-text fs-5">
-                            @isset($job_post->level)
-                                {{ $job_post->level }}
-                            @endisset
-                        </p>
+                        <h2 class="text-warning">{{ $job_post->position }}</h2>
+                        <h4>{{ $job_post->company->name }}</h4>
+                        <h5 class="text-muted">{{ $job_post->location }}</p>
                     </span>
                 </div>
                 
@@ -68,13 +39,57 @@
                             @endisset
                         </p>
                     </span>
-                    <span class="col-8">
+                    <span class="col-4">
+                        <h5 class="text-muted card-title fs-6 fw-bold">Level</h5>
+                        <p class="card-text fs-5">
+                            @isset($job_post->level)
+                                {{ $job_post->level }}
+                            @endisset
+                        </p>
+                    </span>
+                    <span class="col-4">
                         <h5 class="text-muted card-title fs-6 fw-bold">Salary range</h5>
                         <p class="card-text fs-5">
                             ₱{{ number_format($job_post->salary_range['low']) }} 
                             to {{ number_format($job_post->salary_range['high']) }}
                         </p>
                     </span>
+                </div>
+
+                <div class="row my-3">
+                    <span class="col">
+                        <h5 class="text-muted card-title fs-6 fw-bold">Job description</h5>
+                        <p class="card-text fs-5">
+                            {{ $job_post->description }}
+                        </p>
+                    </span>
+                </div>
+
+                <div class="d-flex flex-wrap buttons-container">
+                    @isset($saved_jobs)
+                        @if (in_array($job_post->id, $job_applications))
+                            <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
+                        @else
+                            <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
+                        @endif
+
+                        <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} data-action-create={{ route('student.saved_jobs.store') }}>
+                                <button
+                                    name="job_post_id"
+                                    value="{{ $job_post->id }}"
+                                    class="btn btn-saved-job
+                                    @if (in_array($job_post->id, $saved_jobs))
+                                        btn-danger delete">
+                                        Remove
+                                    @else
+                                        btn-primary create">
+                                        Save
+                                    @endif
+                                </button>
+                        </span>
+                    @else
+                        {{-- No buttons to show if user is not student --}}
+                    @endisset
                 </div>
             </div>
         </div>

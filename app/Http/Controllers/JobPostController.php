@@ -44,6 +44,17 @@ class JobPostController extends Controller
      */
     public function show(JobPost $job_post) 
     {
+        if (Auth::check()) 
+        {
+            if (Auth::user()->role = 'student')
+            {
+                return view('job-posts.show')
+                    ->with('job_post', $job_post)
+                    ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
+                    ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
+            }
+        }
+        
         return view('job-posts.show')
             ->with('job_post', $job_post);
     }
