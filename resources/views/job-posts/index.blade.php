@@ -23,7 +23,23 @@
                                 class="form-control" 
                                 id="keyword_position"
                                 placeholder="e.g. engineer"
-                                value=@isset($old_keyword_position) {{ $old_keyword_position }} @endisset>
+                                value=@isset($old_keywords['position']) {{ $old_keywords['position'] }} @endisset>
+                    </div>
+                    <div class="mt-3 mb-3">
+                        <label for="keyword_company" class="form-label fs-5 text-muted">Company name</label>
+                        <input name="keyword_company" 
+                                type="text" 
+                                class="form-control" 
+                                id="keyword_company"
+                                placeholder="e.g. ABC Inc."
+                                value=@isset($old_keywords['company']) {{ $old_keywords['company']}} @endisset>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employment" class="text-muted form-label fw-bold fs-5">Employment</label>
+                        <select name="employment" class="form-control">
+                            <option value="part-time">Part-time</option>
+                            <option value="full-time">Full-time</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Search</button>
                 </form>

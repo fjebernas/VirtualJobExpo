@@ -40,7 +40,11 @@ class JobPostController extends Controller
 
     public function indexWithFilter(Request $request)
     {
-        $job_posts = JobPost::where('position', 'like', '%' . $request->keyword_position . '%');
+        $job_posts = JobPost::where('position', 'like', '%' . $request->keyword_position . '%')
+                            ->whereHas('company', function($company) use ($request) 
+                                                {
+                                                    $company->where('name', 'like', '%' . $request->keyword_company . '%');
+                                                });
 
         if (Auth::check()) 
         {
@@ -51,7 +55,10 @@ class JobPostController extends Controller
                                                 ->paginate(6))
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray())
-                    ->with('old_keyword_position', $request->keyword_position);
+                    ->with('old_keywords', [
+                                                'position' => $request->keyword_position,
+                                                'company' => $request->keyword_company,
+                                            ]);
             }
         }
 
