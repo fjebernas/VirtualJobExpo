@@ -1,5 +1,5 @@
 $(function () {
-    $('.btn-view-more-details').on('click', function () 
+    $('.btn-brief-details').on('click', function () 
     {
         var jobPost = $(this).attr('data-job-post');
         fillDetails(JSON.parse(jobPost));
@@ -8,11 +8,12 @@ $(function () {
     function fillDetails(jobPost) 
     {
         $('#position').text(jobPost['position']);
-        $('#company').text(jobPost['company']);
+        $('#company').text(jobPost['company']['name']);
         $('#location').text(jobPost['location']);
         $('#level').text(jobPost['level']);
         $('#employment').text(jobPost['employment']);
-        $('#salary_range').text(`₱${jobPost['salary_range']['low']} to ${jobPost['salary_range']['high']}`);
+        $('#salary_range').text(`${formatter.format(jobPost['salary_range']['low'])} 
+                            to ${formatter.format(jobPost['salary_range']['high'])}`);
     }
 
     $.ajaxSetup({
@@ -54,4 +55,10 @@ $(function () {
             }
         });
     }
+
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'PHP',
+        minimumFractionDigits: 0,
+    });
 });

@@ -17,11 +17,21 @@
                 <div class="card w-100 mb-2 saved_job">
                     <div class="card-body row">
                         <div class="col">
-                            <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
-                            <p class="card-text text-muted">{{ $saved_job->job_post->company->name }}</p>
+                            <a href={{ route('job-posts.show', $saved_job->job_post) }}
+                                class="link text-warning">
+                                <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
+                            </a>
+                            <a href={{ route('company.companies.show', $saved_job->job_post->company) }}
+                                class="link text-white">
+                                <p class="card-text">{{ $saved_job->job_post->company->name }}</p>
+                            </a>
                         </div>
                         <div class="col d-flex align-items-center justify-content-end">
-                            <button data-job-post='{{ $saved_job->job_post }}' class="btn btn-primary btn-view-more-details" style="margin-right: 5px;">View more details</button>
+                            <button data-job-post='{{ $saved_job->job_post }}' 
+                                    class="btn btn-primary btn-brief-details" 
+                                    style="margin-right: 5px;">
+                                View brief details
+                            </button>
                             <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->job_post->id) }}>
                                 <button class="btn btn-danger btn-delete-saved-job">Remove</button>
                             </span>
