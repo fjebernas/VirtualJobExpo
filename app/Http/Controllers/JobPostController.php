@@ -38,6 +38,13 @@ class JobPostController extends Controller
                                         ->paginate(6));
     }
 
+    /**
+     * Display a listing of the resource with filters.
+     * if student, return with saved jobs and  job applications
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function indexWithFilter(Request $request)
     {
         $job_posts = JobPost::where('position', 'like', '%' . $request->keyword_position . '%')
@@ -51,6 +58,8 @@ class JobPostController extends Controller
         $old_keywords = [
             'position' => $request->keyword_position,
             'company' => $request->keyword_company,
+            'job_level' => $request->level,
+            'employment' => $request->employment,
         ];
 
         if (Auth::check()) 

@@ -38,18 +38,34 @@
                         <label for="level" class="text-muted form-label fs-5">Job level</label>
                         <select name="level" class="form-control">
                             <option value="">All</option>
-                            <option value="entry-level">Entry-level</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="senior">Senior</option>
-                            <option value="internship">Internship</option>
+                            @foreach ($job_level_types as $job_level)
+                                @isset($old_keywords['job_level'])
+                                    @if ($old_keywords['job_level'] == $job_level)
+                                        <option selected value={{ $job_level }}>{{ $job_level }}</option>
+                                    @else
+                                        <option value={{ $job_level }}>{{ $job_level }}</option>
+                                    @endif
+                                @else
+                                    <option value={{ $job_level }}>{{ $job_level }}</option>
+                                @endisset
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="employment" class="text-muted form-label fs-5">Employment</label>
                         <select name="employment" class="form-control">
                             <option value="">All</option>
-                            <option value="full-time">Full-time</option>
-                            <option value="part-time">Part-time</option>
+                            @foreach ($employment_types as $employment)
+                                @isset($old_keywords['employment'])
+                                    @if ($old_keywords['employment'] == $employment)
+                                        <option selected value={{ $employment }}>{{ $employment }}</option>
+                                    @else
+                                        <option value={{ $employment }}>{{ $employment }}</option>
+                                    @endif
+                                @else
+                                    <option value={{ $employment }}>{{ $employment }}</option>
+                                @endisset
+                            @endforeach
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Search</button>
