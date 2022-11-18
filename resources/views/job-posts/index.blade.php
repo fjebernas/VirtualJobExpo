@@ -18,14 +18,18 @@
                     @csrf
                     <div class="mt-3 mb-3">
                         <label for="keyword_position" class="form-label fs-5 text-muted">Job position</label>
-                        <input name="keyword_position" type="text" class="form-control" id="keyword_position"
-                        value=@isset($old_keyword_position) {{ $old_keyword_position }} @endisset>
+                        <input name="keyword_position" 
+                                type="text" 
+                                class="form-control" 
+                                id="keyword_position"
+                                placeholder="e.g. engineer"
+                                value=@isset($old_keyword_position) {{ $old_keyword_position }} @endisset>
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
                 </form>
             </div>
         </div>
-        <div class="d-flex justify-content-center flex-wrap job-posts-container" style="max-width: 60rem">
+        <div class="d-flex justify-content-start flex-wrap position-relative job-posts-container" style="width: 60rem; max-width: 60rem">
             @forelse ($job_posts as $job_post)
                 <div class="card mx-3 mt-3 job-post" style="width: 18rem;">
                     <div class="card-header border-0 d-flex mt-2 mb-0 pb-0" style="column-gap: 10px">
@@ -85,7 +89,15 @@
                     </div>
                 </div>
             @empty
-                <h2 class="fs-4 text-center text-muted fst-italic">No available jobs as of now</h2>
+                <h2 class="fs-4 text-center text-muted fst-italic mt-5"
+                    style="position: absolute;
+                            margin-left: auto;
+                            margin-right: auto;
+                            left: 0;
+                            right: 0;
+                            text-align: center;">
+                    No available jobs as of now
+                </h2>
             @endforelse
         </div>
     </div>
