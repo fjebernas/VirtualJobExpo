@@ -25,7 +25,7 @@ class JobApplication extends Model
         );
     }
 
-    public function job_post()
+    public function jobPost()
     {
         return $this->belongsTo(
             JobPost::class

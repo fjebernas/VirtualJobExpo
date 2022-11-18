@@ -51,7 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($job_post->job_applications as $job_application)
+                                    @forelse ($job_post->jobApplications as $job_application)
                                         <tr>
                                             <td>
                                                 <a href={{ route('student.students.show', $job_application->student) }}

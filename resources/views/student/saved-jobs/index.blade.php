@@ -17,22 +17,22 @@
                 <div class="card w-100 mb-2 saved_job">
                     <div class="card-body row">
                         <div class="col">
-                            <a href={{ route('job-posts.show', $saved_job->job_post) }}
+                            <a href={{ route('job-posts.show', $saved_job->jobPost) }}
                                 class="link text-warning">
-                                <h5 class="card-title">{{ $saved_job->job_post->position }}</h5>
+                                <h5 class="card-title">{{ $saved_job->jobPost->position }}</h5>
                             </a>
-                            <a href={{ route('company.companies.show', $saved_job->job_post->company) }}
+                            <a href={{ route('company.companies.show', $saved_job->jobPost->company) }}
                                 class="link text-white">
-                                <p class="card-text">{{ $saved_job->job_post->company->name }}</p>
+                                <p class="card-text">{{ $saved_job->jobPost->company->name }}</p>
                             </a>
                         </div>
                         <div class="col d-flex flex-wrap align-items-center justify-content-end"
                             style="column-gap: 5px; row-gap:5px">
-                            <button data-job-post='{{ $saved_job->job_post }}' 
+                            <button data-job-post='{{ $saved_job->jobPost }}' 
                                     class="btn btn-primary btn-brief-details">
                                 View brief details
                             </button>
-                            <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->job_post->id) }}>
+                            <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->jobPost->id) }}>
                                 <button class="btn btn-danger btn-delete-saved-job">Remove</button>
                             </span>
                         </div>

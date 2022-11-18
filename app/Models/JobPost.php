@@ -34,7 +34,7 @@ class JobPost extends Model
         );
     }
 
-    public function job_applications()
+    public function jobApplications()
     {
         return $this->hasMany(
             JobApplication::class

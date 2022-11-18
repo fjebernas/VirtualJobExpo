@@ -27,15 +27,15 @@
                     <tr class="job-application">
                         <td>{{ $job_application->id }}</td>
                         <td>
-                            <a href={{ route('job-posts.show', $job_application->job_post) }}
+                            <a href={{ route('job-posts.show', $job_application->jobPost) }}
                                 class="link text-warning fw-bold">
-                                {{ $job_application->job_post->position }}
+                                {{ $job_application->jobPost->position }}
                             </a>
                         </td>
                         <td>
-                            <a href={{ route('company.companies.show', $job_application->job_post->company) }}
+                            <a href={{ route('company.companies.show', $job_application->jobPost->company) }}
                                 class="link text-white">
-                                {{ $job_application->job_post->company->name }}
+                                {{ $job_application->jobPost->company->name }}
                             </a>
                         </td>
                         <td class="fst-italic fw-bold">

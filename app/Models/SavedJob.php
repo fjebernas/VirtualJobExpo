@@ -14,7 +14,7 @@ class SavedJob extends Model
         'student_id',
     ];
 
-    public function job_post()
+    public function jobPost()
     {
         return $this->belongsTo(
             JobPost::class
