@@ -26,14 +26,16 @@ class JobPostController extends Controller
             if (Auth::user()->role == 'student') 
             {
                 return view('job-posts.index')
-                    ->with('job_posts', JobPost::with('company')->paginate(8))
+                    ->with('job_posts', JobPost::orderBy('created_at', 'desc')
+                                                ->paginate(8))
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
             }
         }
 
         return view('job-posts.index')
-            ->with('job_posts', JobPost::with('company')->paginate(8));
+            ->with('job_posts', JobPost::orderBy('created_at', 'desc')
+                                        ->paginate(8));
     }
 
     /**
@@ -46,7 +48,7 @@ class JobPostController extends Controller
     {
         if (Auth::check()) 
         {
-            if (Auth::user()->role = 'student')
+            if (Auth::user()->role == 'student')
             {
                 return view('job-posts.show')
                     ->with('job_post', $job_post)

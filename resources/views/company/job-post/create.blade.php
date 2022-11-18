@@ -45,7 +45,7 @@
                         </select>
                     </div>
 
-                    <h6 class="pb-2 m-0 fw-bold fs-5">Salary range:</h6>
+                    <h6 class="pb-2 m-0 text-muted fw-bold fs-5">Salary range:</h6>
                     <fieldset class="row gx-2">
                         <div class="col input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">min</span>
