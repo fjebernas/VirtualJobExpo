@@ -48,6 +48,11 @@ class JobPostController extends Controller
                             ->where('level', 'like', '%' . $request->level . '%')
                             ->where('employment', 'like', '%' . $request->employment . '%');
 
+        $old_keywords = [
+            'position' => $request->keyword_position,
+            'company' => $request->keyword_company,
+        ];
+
         if (Auth::check()) 
         {
             if (Auth::user()->role == 'student') 
@@ -57,17 +62,14 @@ class JobPostController extends Controller
                                                 ->paginate(6))
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray())
-                    ->with('old_keywords', [
-                                                'position' => $request->keyword_position,
-                                                'company' => $request->keyword_company,
-                                            ]);
+                    ->with('old_keywords', $old_keywords);
             }
         }
 
         return view('job-posts.index')
             ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
                                         ->paginate(6))
-            ->with('old_keyword_position', $request->keyword_position);
+            ->with('old_keywords', $old_keywords); 
     }
 
     /**
