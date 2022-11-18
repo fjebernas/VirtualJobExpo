@@ -1,43 +1,38 @@
 @extends('layouts.app')
     
 @section('customcss')
-    <link rel="stylesheet" href="/css/welcome.css">
+    <link rel="stylesheet" href="/css/job-posts/show.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/welcome.js" type="module"></script>
+    <script src="/js/job-posts/show.js" type="module"></script>
 @endsection
 
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
-        <h1>VIEW PROFILE</h1>
+        <h1>JOB POST</h1>
 
         <div class="card mt-3 w-100">
             <div class="card-header d-flex justify-content-between">
-                {{-- <span>
-                    <a href={{ route('student.students.edit', $student) }}>
-                        Edit Profile
-                    </a>
-                </span> --}}
             </div>
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
                     <span class="">
-                        <img src={{ asset('img/profile-picture/student/' . $student->profile_picture_path) }} 
+                        <img src={{ asset('img/profile-picture/company/' . $job_post->company->profile_picture_path) }} 
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
                     </span>
                     <span class="" style="width:400px">
-                        <h2 class="hello-plus-name">Hello! I'm @isset($student->first_name) 
-                                            {{ $student->first_name }}.
-                                        @endisset
+                        <h2 class="hello-plus-name">@isset($job_post->position) 
+                                                        {{ $job_post->position }}
+                                                    @endisset
                         </h2>
-                        <p>{{ $student->about }}</p>
+                        <p>{{ $job_post->description }}</p>
                     </span>
                 </div>
                 
-                <div class="row my-3">
+                {{-- <div class="row my-3">
                     <span class="col-4">
                         <h5 class="text-muted card-title fs-6 fw-bold">First name</h5>
                         <p class="card-text fs-5">
@@ -80,6 +75,7 @@
                         </p>
                     </span>
                 </div>
+
                 <div class="row my-3">
                     <span class="col-4">
                         <h5 class="text-muted card-title fs-6 fw-bold">Contact number</h5>
@@ -105,7 +101,7 @@
                             @endisset
                         </p>
                     </span>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

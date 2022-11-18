@@ -43,7 +43,7 @@ Route::get('/', function () {
  */
 Route::controller(JobPostController::class)->group(function(){
     Route::get('/job-posts', 'index');
-    Route::get('/job-posts/{job_post}', 'show');
+    Route::get('/job-posts/{job_post}', 'show')->name('job-posts.show');
 });
 
 Auth::routes();

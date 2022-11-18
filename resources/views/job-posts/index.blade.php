@@ -19,7 +19,7 @@
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
-                    <a href='#'
+                    <a href={{ route('job-posts.show', $job_post) }}
                         class="link text-warning">
                         <h5 class="card-title" style="width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ $job_post->position }}</h5>
                     </a>

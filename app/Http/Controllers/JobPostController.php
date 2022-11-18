@@ -37,6 +37,18 @@ class JobPostController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(JobPost $job_post) 
+    {
+        return view('job-posts.show')
+            ->with('job_post', $job_post);
+    }
+
+    /**
      * Display a listing of the resource.
      * Exclusive only for companies.
      * 
