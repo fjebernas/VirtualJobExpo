@@ -27,7 +27,7 @@ class JobPostController extends Controller
             {
                 return view('job-posts.index')
                     ->with('job_posts', JobPost::orderBy('created_at', 'desc')
-                                                ->paginate(8))
+                                                ->paginate(6))
                     ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
                     ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray());
             }
@@ -35,7 +35,30 @@ class JobPostController extends Controller
 
         return view('job-posts.index')
             ->with('job_posts', JobPost::orderBy('created_at', 'desc')
-                                        ->paginate(8));
+                                        ->paginate(6));
+    }
+
+    public function indexWithFilter(Request $request)
+    {
+        $job_posts = JobPost::where('position', 'like', '%' . $request->keyword_position . '%');
+
+        if (Auth::check()) 
+        {
+            if (Auth::user()->role == 'student') 
+            {
+                return view('job-posts.index')
+                    ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
+                                                ->paginate(6))
+                    ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
+                    ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray())
+                    ->with('old_keyword_position', $request->keyword_position);
+            }
+        }
+
+        return view('job-posts.index')
+            ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
+                                        ->paginate(6))
+            ->with('old_keyword_position', $request->keyword_position);
     }
 
     /**
