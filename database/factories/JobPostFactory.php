@@ -20,7 +20,7 @@ class JobPostFactory extends Factory
             'position' => fake()->jobTitle(),
             'location' => fake()->city() . ', ' . fake()->state(),
             'level' => fake()->randomElement(['entry-level ', 'intermediate', 'senior', 'internship']),
-            'employment' => 'Full-time',
+            'employment' => fake()->randomElement(['full-time', 'part-time']),
             'salary_range' => [
                 'low' => fake()->numberBetween(3,5) . '0000',
                 'high' => fake()->numberBetween(6,9) . '0000',
