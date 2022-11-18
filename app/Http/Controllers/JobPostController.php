@@ -104,12 +104,7 @@ class JobPostController extends Controller
     public function companyOwnedIndex()
     {
         return view('company.job-post.index')
-                    ->with('job_posts', Auth::user()->company->jobPosts)
-                    ->with('statuses', [
-                                        'Received',
-                                        'Shortlisted',
-                                        'Not qualified',
-                                    ]);
+                    ->with('job_posts', Auth::user()->company->jobPosts);
     }
 
     /**
