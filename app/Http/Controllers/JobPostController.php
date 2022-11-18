@@ -44,7 +44,9 @@ class JobPostController extends Controller
                             ->whereHas('company', function($company) use ($request) 
                                                 {
                                                     $company->where('name', 'like', '%' . $request->keyword_company . '%');
-                                                });
+                                                })
+                            ->where('level', 'like', '%' . $request->level . '%')
+                            ->where('employment', 'like', '%' . $request->employment . '%');
 
         if (Auth::check()) 
         {

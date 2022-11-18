@@ -35,19 +35,30 @@
                                 value=@isset($old_keywords['company']) {{ $old_keywords['company']}} @endisset>
                     </div>
                     <div class="mb-3">
-                        <label for="employment" class="text-muted form-label fw-bold fs-5">Employment</label>
+                        <label for="level" class="text-muted form-label fs-5">Job level</label>
+                        <select name="level" class="form-control">
+                            <option value="">All</option>
+                            <option value="entry-level">Entry-level</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="senior">Senior</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employment" class="text-muted form-label fs-5">Employment</label>
                         <select name="employment" class="form-control">
-                            <option value="part-time">Part-time</option>
+                            <option value="">All</option>
                             <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Search</button>
                 </form>
             </div>
         </div>
-        <div class="d-flex justify-content-start flex-wrap position-relative job-posts-container" style="width: 60rem; max-width: 60rem">
+        <div class="d-flex justify-content-center flex-wrap position-relative job-posts-container" style="width: 60rem; max-width: 60rem">
             @forelse ($job_posts as $job_post)
-                <div class="card mx-3 mt-3 job-post" style="width: 18rem;">
+                <div class="card mx-3 mt-3 job-post" style="width: 18rem; height: fit-content">
                     <div class="card-header border-0 d-flex mt-2 mb-0 pb-0" style="column-gap: 10px">
                         <img src={{ asset('img/profile-picture/company/' . $job_post->company->profile_picture_path) }} 
                             class="img-thumbnail" 
