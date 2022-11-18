@@ -45,7 +45,7 @@
     <div id="background-image"></div>
 
     <div id="app" class="d-flex flex-column">
-        <nav class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark position-fixed w-100" style="z-index: 999">
+        <nav id="navbar" class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark position-fixed w-100">
             <div class="container">
                 <a class="navbar-brand fs-3 text-white" href="{{ url('/') }}">
                     <span class="app-name-abbrv fw-bolder">VJE</span>
