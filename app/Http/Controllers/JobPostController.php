@@ -39,7 +39,7 @@ class JobPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\JobPost $job_post
      * @return \Illuminate\Http\Response
      */
     public function show(JobPost $job_post) 

@@ -58,12 +58,12 @@ class JobApplicationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JobApplication
+     * @param  \App\Models\JobApplication $job_application
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobApplication $jobApplication)
+    public function destroy(JobApplication $job_application)
     {
-        $jobApplication->delete();
+        $job_application->delete();
 
         return Response::json([
             'report' => 'Withdrew job application',
@@ -74,7 +74,7 @@ class JobApplicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JobApplication
+     * @param  \App\Models\JobApplication $job_application
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, JobApplication $job_application)

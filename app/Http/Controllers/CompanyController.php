@@ -11,28 +11,57 @@ use Illuminate\Support\Str;
 
 class CompanyController extends Controller
 {
+    /**
+     * Show the initial setup form
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function setup() 
     {
         return view('company.setup');
     }
 
+    /**
+     * Show the company's dashboard
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function dashboard() 
     {
         return view('company.dashboard');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Company $company
+     * @return \Illuminate\Http\Response
+     */
     public function show(Company $company) 
     {
         return view('company.profile.show')
                 ->with('company', $company);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Company $company
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Company $company) 
     {
         return view('company.profile.edit')
                 ->with('company', $company);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Company $company
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Company $company) 
     {
         if (isset($request->profile_picture))
