@@ -26,10 +26,10 @@
                                 <p class="card-text">{{ $saved_job->job_post->company->name }}</p>
                             </a>
                         </div>
-                        <div class="col d-flex align-items-center justify-content-end">
+                        <div class="col d-flex flex-wrap align-items-center justify-content-end"
+                            style="column-gap: 5px; row-gap:5px">
                             <button data-job-post='{{ $saved_job->job_post }}' 
-                                    class="btn btn-primary btn-brief-details" 
-                                    style="margin-right: 5px;">
+                                    class="btn btn-primary btn-brief-details">
                                 View brief details
                             </button>
                             <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->job_post->id) }}>
