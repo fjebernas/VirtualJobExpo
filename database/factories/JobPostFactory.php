@@ -22,8 +22,8 @@ class JobPostFactory extends Factory
             'level' => fake()->randomElement(['entry-level ', 'intermediate', 'senior', 'internship']),
             'employment' => fake()->randomElement(['full-time', 'part-time']),
             'salary_range' => [
-                'low' => fake()->numberBetween(3,5) . '0000',
-                'high' => fake()->numberBetween(6,9) . '0000',
+                'low' => fake()->numberBetween(3,6) . '0000',
+                'high' => fake()->numberBetween(7,9) . '0000',
             ],
             'description' => fake()->text(300),
         ];

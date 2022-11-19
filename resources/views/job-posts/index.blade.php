@@ -74,21 +74,25 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-2 d-flex flex-column">
-                        <label for="salary-range" class="text-muted form-label fs-5 mb-0">Salary range</label>
+                    <div class="mb-3 d-flex flex-column">
+                        <label for="salary-range" class="text-muted form-label fs-5 mb-0">Minimum salary offer</label>
                         <input type="range" 
+                                value=@isset($old_keywords['salary_range'])
+                                        {{ $old_keywords['salary_range'] }}
+                                    @else
+                                        15000
+                                    @endisset
                                 name="salary_range"
                                 class="form-range" 
-                                min="10000" 
-                                max="150000" 
+                                min="15000" 
+                                max="90000" 
                                 step="5000" 
                                 id="salary-range" 
-                                oninput="this.nextElementSibling.value = this.value"
                                 style="width: 17rem">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">₱10,000</span>
-                            <span class="text-white" id="range-value">₱10,000</span>
-                            <span class="text-muted">₱150,000+</span>
+                            <span class="text-muted">₱15,000</span>
+                            <span class="text-white" id="range-value"></span>
+                            <span class="text-muted">₱90,000+</span>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Search</button>

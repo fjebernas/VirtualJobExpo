@@ -53,13 +53,15 @@ class JobPostController extends Controller
                                                     $company->where('name', 'like', '%' . $request->keyword_company . '%');
                                                 })
                             ->where('level', 'like', '%' . $request->level . '%')
-                            ->where('employment', 'like', '%' . $request->employment . '%');
+                            ->where('employment', 'like', '%' . $request->employment . '%')
+                            ->where('salary_range->low', '>=', $request->salary_range);
 
         $old_keywords = [
             'position' => $request->keyword_position,
             'company' => $request->keyword_company,
             'job_level' => $request->level,
             'employment' => $request->employment,
+            'salary_range' => $request->salary_range,
         ];
 
         if (Auth::check()) 
