@@ -39,51 +39,6 @@ class JobPostController extends Controller
     }
 
     /**
-     * Display a listing of the resource with filters.
-     * if student, return with saved jobs and  job applications
-     * 
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function indexWithFilter(Request $request)
-    {
-        $job_posts = JobPost::where('position', 'like', '%' . $request->keyword_position . '%')
-                            ->whereHas('company', function($company) use ($request) 
-                                                {
-                                                    $company->where('name', 'like', '%' . $request->keyword_company . '%');
-                                                })
-                            ->where('level', 'like', '%' . $request->level . '%')
-                            ->where('employment', 'like', '%' . $request->employment . '%')
-                            ->where('salary_range->low', '>=', $request->salary_range);
-
-        $old_keywords = [
-            'position' => $request->keyword_position,
-            'company' => $request->keyword_company,
-            'job_level' => $request->level,
-            'employment' => $request->employment,
-            'salary_range' => $request->salary_range,
-        ];
-
-        if (Auth::check()) 
-        {
-            if (Auth::user()->role == 'student') 
-            {
-                return view('job-posts.index')
-                    ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
-                                                ->paginate(6))
-                    ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
-                    ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray())
-                    ->with('old_keywords', $old_keywords);
-            }
-        }
-
-        return view('job-posts.index')
-            ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
-                                        ->paginate(6))
-            ->with('old_keywords', $old_keywords); 
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\JobPost $job_post
