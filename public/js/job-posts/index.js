@@ -1,5 +1,15 @@
 
 $(function () {
+    $(document).on('input', '#salary-range', function () {
+        $('#range-value').text(formatter.format($(this).val()));
+    });
+
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'PHP',
+        minimumFractionDigits: 0,
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

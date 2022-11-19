@@ -22,7 +22,7 @@
                 <h3 class="text-center">SEARCH</h3>
                 <form action={{ route('job-posts.search' ) }} method="POST">
                     @csrf
-                    <div class="mt-3 mb-3">
+                    <div class="mt-1 mb-2">
                         <label for="keyword_position" class="form-label fs-5 text-muted">Job position</label>
                         <input name="keyword_position" 
                                 type="text" 
@@ -31,7 +31,7 @@
                                 placeholder="e.g. engineer"
                                 value=@isset($old_keywords['position']) {{ $old_keywords['position'] }} @endisset>
                     </div>
-                    <div class="mt-3 mb-3">
+                    <div class="mb-2">
                         <label for="keyword_company" class="form-label fs-5 text-muted">Company name</label>
                         <input name="keyword_company" 
                                 type="text" 
@@ -40,7 +40,7 @@
                                 placeholder="e.g. ABC Inc."
                                 value=@isset($old_keywords['company']) {{ $old_keywords['company']}} @endisset>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="level" class="text-muted form-label fs-5">Job level</label>
                         <select name="level" class="form-control">
                             <option value="">All</option>
@@ -57,7 +57,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label for="employment" class="text-muted form-label fs-5">Employment</label>
                         <select name="employment" class="form-control">
                             <option value="">All</option>
@@ -73,6 +73,23 @@
                                 @endisset
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-2 d-flex flex-column">
+                        <label for="salary-range" class="text-muted form-label fs-5 mb-0">Salary range</label>
+                        <input type="range" 
+                                name="salary_range"
+                                class="form-range" 
+                                min="10000" 
+                                max="150000" 
+                                step="5000" 
+                                id="salary-range" 
+                                oninput="this.nextElementSibling.value = this.value"
+                                style="width: 17rem">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">₱10,000</span>
+                            <span class="text-white" id="range-value">₱10,000</span>
+                            <span class="text-muted">₱150,000+</span>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Search</button>
                 </form>
