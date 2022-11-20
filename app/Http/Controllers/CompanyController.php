@@ -7,6 +7,7 @@ use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CompanyController extends Controller
@@ -75,13 +76,14 @@ class CompanyController extends Controller
 
             // if there is already a profile picture in public, delete it
             $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
-            if (File::exists(public_path('img/profile-picture/company/' . $new_profile_picture_name_without_extension))) 
+            if (str_contains(Auth::user()->company->profile_picture_path, $new_profile_picture_name_without_extension)) 
             {
-            File::delete(public_path('img/profile-picture/company/' . $new_profile_picture_name_without_extension));
+                Storage::disk('local')->delete('public/companies/images/' . Auth::user()->company->profile_picture_path);
             }
 
             // move the image file to public/img/profile-pictures
-            $request->profile_picture->move(public_path('img/profile-picture/company'), $new_profile_picture_name);
+            Storage::disk('local')->put('public/companies/images/' . $new_profile_picture_name, 
+                                        File::get($request->profile_picture));
         } 
         else 
         {
