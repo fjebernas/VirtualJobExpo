@@ -14,13 +14,22 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 
+            'resources/js/app.js', 
+            'resources/js/common.js'])
 
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/layouts/app.css">
+    <style>
+        .navbar {
+            background-color: #000;
+        }
+
+        .app-name-abbrv {
+            letter-spacing: 3px;
+            color: #0066ff;
+        }
+    </style>
+    
     @yield('customcss')
-
-    <script src="/js/common.js" type="module"></script>
     @yield('customjs')
 </head>
 <body>

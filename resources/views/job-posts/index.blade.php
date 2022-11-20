@@ -90,7 +90,7 @@
                                 id="salary-range" 
                                 style="width: 17rem">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">₱15,000</span>
+                            <span class="text-muted">₱15,000+</span>
                             <span class="text-white" id="range-value"></span>
                             <span class="text-muted">₱90,000+</span>
                         </div>

@@ -1,10 +1,13 @@
-$(document).ready(function () {
+
+function hideLoader() {
     setTimeout(() => {
         $('#loader').fadeOut(500);
     }, 200);
+}
 
-    let notifMsg = $('#toast-data-holder').attr('data-msg').trim();
-    let notifType = $('#toast-data-holder').attr('data-type').trim();
+function showToastIfNotificationDataExists() {
+    const notifMsg = $('#toast-data-holder').attr('data-msg').trim();
+    const notifType = $('#toast-data-holder').attr('data-type').trim();
 
     if (notifMsg.length != "") {
         Swal.fire({
@@ -16,4 +19,7 @@ $(document).ready(function () {
             timer: 2500
         })
     }
-});
+}
+
+hideLoader();
+showToastIfNotificationDataExists();
