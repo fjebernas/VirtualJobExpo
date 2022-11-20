@@ -20,7 +20,12 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <p class="text-white"><span class="fw-bold text-muted">Position: </span> {{ $job_post->position }}</p>
+                            <p class="text-white">
+                                <span class="fw-bold text-muted">Position: </span> 
+                                <a href={{ route('job-posts.show', $job_post) }} class="link text-warning">
+                                    {{ $job_post->position }}
+                                </a>
+                            </p>
                             <p class="text-white"><span class="fw-bold text-muted">Level: </span> {{ $job_post->level }}</p>
                         </div>
                         <div class="col">

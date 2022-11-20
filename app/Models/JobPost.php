@@ -40,4 +40,11 @@ class JobPost extends Model
             JobApplication::class
         );
     }
+
+    public function savedJobs()
+    {
+        return $this->hasMany(
+            SavedJob::class
+        );
+    }
 }

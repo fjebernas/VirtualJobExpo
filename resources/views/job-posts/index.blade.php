@@ -131,30 +131,31 @@
                             </li>
                         </ul>
                         <div class="d-flex flex-wrap buttons-container">
-                            @isset($saved_jobs)
-                                @if (in_array($job_post->id, $job_applications))
-                                    <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
-                                @else
-                                    <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
-                                @endif
-    
-                                <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} data-action-create={{ route('student.saved_jobs.store') }}>
+                            @if (Auth::check())
+                                @if (Auth::user()->role == 'student')
+                                    @if ($job_post->jobApplications->where('student_id', Auth::user()->student->id)->first())
+                                        <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
+                                    @else
+                                        <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
+                                    @endif
+                                    <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} data-action-create={{ route('student.saved_jobs.store') }}>
                                         <button
                                             name="job_post_id"
                                             value="{{ $job_post->id }}"
                                             class="btn btn-saved-job
-                                            @if (in_array($job_post->id, $saved_jobs))
-                                                btn-danger delete">
-                                                Remove
-                                            @else
+                                            @if ($job_post->savedJobs->where('student_id', Auth::user()->student->id)->first())
                                                 btn-primary create">
                                                 Save
+                                            @else
+                                                btn-danger delete">
+                                                Remove
                                             @endif
                                         </button>
-                                </span>
+                                    </span>
+                                @endif
                             @else
                                 {{-- No buttons to show if user is not student --}}
-                            @endisset
+                            @endif
                         </div>
                     </div>
                 </div>
