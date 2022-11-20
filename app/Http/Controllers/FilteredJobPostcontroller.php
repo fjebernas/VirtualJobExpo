@@ -22,19 +22,6 @@ class FilteredJobPostcontroller extends Controller
         $job_posts = $this->filterJobPosts($request);
         $old_keywords = $this->getOldKeywords($request);
 
-        if (Auth::check()) 
-        {
-            if (Auth::user()->role == 'student') 
-            {
-                return view('job-posts.index')
-                    ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
-                                                ->paginate(6))
-                    ->with('saved_jobs', Auth::user()->student->savedJobs->pluck('job_post_id')->toArray())
-                    ->with('job_applications', Auth::user()->student->jobApplications->pluck('job_post_id')->toArray())
-                    ->with('old_keywords', $old_keywords);
-            }
-        }
-
         return view('job-posts.index')
             ->with('job_posts', $job_posts->orderBy('created_at', 'desc')
                                         ->paginate(6))
