@@ -134,11 +134,20 @@
                             @if (Auth::check())
                                 @if (Auth::user()->role == 'student')
                                     @if ($job_post->jobApplications->contains('student_id', Auth::user()->student->id))
-                                        <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
+                                        <a href="#" 
+                                            class="btn btn-secondary disabled" 
+                                            style="margin-right: 5px;">
+                                            Applied
+                                        </a>
                                     @else
-                                        <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
+                                        <a href={{ route('student.job_applications.create', $job_post->id) }} 
+                                            class="btn btn-warning" 
+                                            style="margin-right: 5px;">
+                                            Apply now
+                                        </a>
                                     @endif
-                                    <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} data-action-create={{ route('student.saved_jobs.store') }}>
+                                    <span data-action-delete={{ route('student.saved_jobs.destroy', $job_post->id) }} 
+                                            data-action-create={{ route('student.saved_jobs.store') }}>
                                         <button
                                             name="job_post_id"
                                             value="{{ $job_post->id }}"
