@@ -68,7 +68,7 @@
                 <div class="d-flex flex-wrap buttons-container">
                     @if (Auth::check())
                         @if (Auth::user()->role == 'student')
-                            @if ($job_post->jobApplications->where('student_id', Auth::user()->student->id)->first())
+                            @if ($job_post->jobApplications->contains('student_id', Auth::user()->student->id))
                                 <a href="#" class="btn btn-secondary disabled" style="margin-right: 5px;">Applied</a>
                             @else
                                 <a href={{ route('student.job_applications.create', $job_post->id) }} class="btn btn-warning" style="margin-right: 5px;">Apply now</a>
@@ -78,7 +78,7 @@
                                     name="job_post_id"
                                     value="{{ $job_post->id }}"
                                     class="btn btn-saved-job
-                                    @if ($job_post->savedJobs->where('student_id', Auth::user()->student->id)->first())
+                                    @if ($job_post->savedJobs->contains('student_id', Auth::user()->student->id))
                                         btn-primary create">
                                         Save
                                     @else
