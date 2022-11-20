@@ -88,11 +88,11 @@
                                     value="{{ $job_post->id }}"
                                     class="btn btn-saved-job
                                     @if ($job_post->savedJobs->contains('student_id', Auth::user()->student->id))
-                                        btn-primary create">
-                                        Save
-                                    @else
                                         btn-danger delete">
                                         Remove
+                                    @else
+                                        btn-primary create">
+                                        Save
                                     @endif
                                 </button>
                             </span>
