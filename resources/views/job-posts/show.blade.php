@@ -51,7 +51,7 @@
                         <h5 class="text-muted card-title fs-6 fw-bold">Salary range</h5>
                         <p class="card-text fs-5">
                             ₱{{ number_format($job_post->salary_range['low']) }} 
-                            to {{ number_format($job_post->salary_range['high']) }}
+                            to ₱{{ number_format($job_post->salary_range['high']) }}
                         </p>
                     </span>
                 </div>

@@ -39,6 +39,13 @@
                 </div>
             </a>
 
+            <a href='' class="text-decoration-none">
+                <div class="card shortlisted-candidates d-flex justify-content-center align-items-center">
+                    <box-icon name='user-check' size='90px' color='white'></box-icon>
+                    <h3 class="fs-5 text-center">Shortlisted Candidates</h3>
+                </div>
+            </a>
+
             <a href={{ route('company.job_posts.create') }} class="text-decoration-none">
                 <div class="card jobs-applied d-flex justify-content-center align-items-center">
                     <box-icon name='plus' size='90px' color='white'></box-icon>
