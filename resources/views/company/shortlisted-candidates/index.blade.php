@@ -32,7 +32,11 @@
                         </td>
                     </tr>
                 @empty
-                    
+                    <tr>
+                        <td colspan="4">
+                            <i class="text-muted">No shortlisted candidates</i>
+                        </td>
+                    </tr>
                 @endforelse
             </tbody>
         </table>
