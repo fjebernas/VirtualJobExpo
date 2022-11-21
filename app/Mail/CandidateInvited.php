@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\JobPost;
+use App\Models\Student;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -13,14 +15,18 @@ class CandidateInvited extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $student;
+    public $job_post;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Student $student, JobPost $job_post)
     {
-        //
+        $this->student = $student;
+        $this->job_post = $job_post;
     }
 
     /**

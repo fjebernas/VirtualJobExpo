@@ -35,7 +35,7 @@
                         <td>
                             <form action={{ route('company.shortlisted-candidates.send-invitation') }} method="POST">
                                 @csrf
-                                <input type="hidden" name="email" value={{ $job_application->student->user->email }}>
+                                <input type="hidden" name="job_application_id" value='{{ $job_application->id }}'>
                                 <button type='button' 
                                         class="btn-send-invitation btn btn-warning">
                                         Send invitation
