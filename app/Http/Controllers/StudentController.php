@@ -65,31 +65,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student) 
     {
-        if (isset($request->profile_picture))
-        {
-            // custom image name
-            $new_profile_picture_name = 'student' .
-                                        '-' .  
-                                        Auth::user()->student->id . 
-                                        '.' .
-                                        $request->profile_picture->extension();
-
-            // if there is already a profile picture in public, delete it
-            $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
-            if (str_contains(Auth::user()->student->profile_picture_path, $new_profile_picture_name_without_extension)) 
-            {
-                Storage::disk('local')->delete('public/students/images/' . Auth::user()->student->profile_picture_path);
-            }
-
-            // move the image file to public/img/profile-pictures
-            Storage::disk('local')->put('public/students/images/' . $new_profile_picture_name, 
-                                        File::get($request->profile_picture));
-        } 
-        else 
-        {
-            $new_profile_picture_name = 'placeholder.png';
-        }
-        
+        $new_profile_picture_name = $this->getProfilePicturePath($request->profile_picture);
 
         $student->update([
             'first_name' => $request->first_name,
@@ -108,5 +84,52 @@ class StudentController extends Controller
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
             ]);
+    }
+
+    public function getProfilePicturePath($profile_picture)
+    {
+        if (isset($profile_picture))
+        {
+            // custom image name
+            $new_profile_picture_name = $this->getFormattedProfilePictureName($profile_picture);
+
+            // if there is already a profile picture in public, delete it
+            $this->deleteProfilePictureIfExists($new_profile_picture_name);
+
+            // move the image file to public/img/profile-pictures
+            $this->storeProfilePictureToDisk($new_profile_picture_name, $profile_picture);
+
+            return $new_profile_picture_name;
+        } 
+        else 
+        {
+            return 'placeholder.png';
+        }
+    }
+
+    public function getFormattedProfilePictureName($profile_picture)
+    {
+        return 'student' .
+                '-' .  
+                Auth::user()->student->id . 
+                '.' .
+                $profile_picture->extension();
+    }
+
+    public function deleteProfilePictureIfExists($new_profile_picture_name)
+    {
+        $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
+        if (str_contains(Auth::user()->student->profile_picture_path, $new_profile_picture_name_without_extension)) 
+        {
+            Storage::disk('local')->delete('public/students/images/' . Auth::user()->student->profile_picture_path);
+        }
+    }
+
+    public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
+    {
+        $store_success = Storage::disk('local')->put('public/students/images/' . $new_profile_picture_name, 
+                        File::get($profile_picture)) ? true : false;
+
+        return $store_success;
     }
 }
