@@ -23,19 +23,19 @@
 
 .view-profile.card {
     color: rgb(226, 253, 226);
-    background-color: rgb(0, 77, 0);
+    background-color: rgba(0, 77, 0, 0.6);
 }
 
 .edit-profile.card {
     color: rgb(253, 245, 223);
-    background-color: rgb(163, 106, 0);
+    background-color: rgba(163, 106, 0, 0.6);
 }
 
 .saved-jobs.card {
     color: rgb(250, 239, 255);
-    background-color: rgb(138, 0, 138);
+    background-color: rgba(138, 0, 138, 0.6);
 }
 .jobs-applied.card {
     color: #e8eeff;
-    background-color: rgb(0, 0, 119);
+    background-color: rgba(0, 0, 119, 0.6);
 }

@@ -29,9 +29,19 @@
             <tbody>
                 @forelse ($job_applications as $job_application)
                     <tr>
-                        <td>{{ $job_application->student->last_name }}</td>
+                        <td>
+                            <a href={{ route('student.students.show', $job_application->student) }}
+                                class="link text-warning">
+                                {{ $job_application->student->first_name }} {{ $job_application->student->last_name }}
+                            </a>
+                        </td>
                         <td>{{ $job_application->student->user->email }}</td>
-                        <td>{{ $job_application->jobPost->position }}</td>
+                        <td>
+                            <a href={{ route('job-posts.show', $job_application->jobPost) }}
+                                class="link text-white">
+                                {{ $job_application->jobPost->position }}
+                            </a>
+                        </td>
                         <td>
                             <form action={{ route('company.shortlisted-candidates.send-invitation') }} method="POST">
                                 @csrf
