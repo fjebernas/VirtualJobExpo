@@ -47,8 +47,13 @@
                                 @csrf
                                 <input type="hidden" name="job_application_id" value='{{ $job_application->id }}'>
                                 <button type='button' 
-                                        class="btn-send-invitation btn btn-warning">
-                                        Send invitation
+                                        @if ($job_application->invited)
+                                            class="btn-send-invitation btn btn-secondary">
+                                            Send again
+                                        @else
+                                            class="btn-send-invitation btn btn-warning">
+                                            Send invitation
+                                        @endif
                                 </button>
                             </form>
                         </td>

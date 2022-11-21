@@ -29,12 +29,14 @@ class ShortlistedCandidateController extends Controller
     {
         $job_application = JobApplication::firstWhere('id', $request->job_application_id);
         $job_post = $job_application->jobPost;
-        $company = $job_application->jobPost->company;
         $student = $job_application->student;
-        
 
         Mail::to($student->user->email)
             ->send(new CandidateInvited($student, $job_post));
+
+        $job_application->update([
+            'invited' => true,
+        ]);
 
         return redirect()->back()
             ->with('notification', [

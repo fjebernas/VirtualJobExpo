@@ -14,6 +14,7 @@ class JobApplication extends Model
         'email',
         'pitch',
         'status',
+        'invited',
         'job_post_id',
         'student_id',
     ];

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('pitch');
             $table->string('status')
                 ->default('Received');
+            $table->boolean('invited')
+                ->default(false);
             $table->foreignId('job_post_id')
                 ->constrained()
                 ->onUpdate('cascade')
