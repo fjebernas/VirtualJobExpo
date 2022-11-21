@@ -9,6 +9,11 @@
 @endsection
 
 @section('content')
+    <div class="" id="sending-invitation-loader">
+        <img src="/img/ball-triangle.svg" alt="" srcset="">
+        <h2 class="fs-4 mt-5 text-muted">Sending invitation</h2>
+    </div>
+
     <h1 class="text-center">SHORTLISTED CANDIDATES</h1>
 
     <div class="table-responsive">
@@ -30,10 +35,9 @@
                         <td>
                             <form action={{ route('company.shortlisted-candidates.send-invitation') }} method="POST">
                                 @csrf
-                                <button name="email" 
-                                        value={{ $job_application->student->user->email }} 
-                                        type='submit' 
-                                        class="btn btn-warning">
+                                <input type="hidden" name="email" value={{ $job_application->student->user->email }}>
+                                <button type='button' 
+                                        class="btn-send-invitation btn btn-warning">
                                         Send invitation
                                 </button>
                             </form>

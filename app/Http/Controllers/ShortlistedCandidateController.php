@@ -25,7 +25,8 @@ class ShortlistedCandidateController extends Controller
 
     public function sendInvitation(Request $request)
     {
-        Mail::to($request->email)->send(new CandidateInvited);
+        Mail::to($request->email)
+            ->send(new CandidateInvited);
 
         return redirect()->back()
             ->with('notification', [
