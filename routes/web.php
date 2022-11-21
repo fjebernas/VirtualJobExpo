@@ -5,6 +5,7 @@ use App\Http\Controllers\FilteredJobPostcontroller;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
+use App\Http\Controllers\ShortlistedCandidateController;
 use App\Http\Controllers\StudentController;
 use App\Models\JobApplication;
 use App\Models\JobPost;
@@ -139,6 +140,16 @@ Route::middleware(['auth', 'details.set'])->group(function(){
             Route::resource('job_applications', JobApplicationController::class)->only([
                 'update',
             ]);
+
+            /**
+             * Company routes managed by ShortlistedCandidateController
+             *
+             * 
+             */
+            Route::controller(ShortlistedCandidateController::class)->group(function(){
+                Route::get('/shortlisted-candidates', 'index')
+                    ->name('shortlisted-candidates.index');
+            });
         });
     });
 });
