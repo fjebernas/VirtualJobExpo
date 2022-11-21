@@ -28,7 +28,15 @@
                         <td>{{ $job_application->student->user->email }}</td>
                         <td>{{ $job_application->jobPost->position }}</td>
                         <td>
-                            <button type='button' class="btn btn-warning">Send invitation</button>
+                            <form action={{ route('company.shortlisted-candidates.send-invitation') }} method="POST">
+                                @csrf
+                                <button name="email" 
+                                        value={{ $job_application->student->user->email }} 
+                                        type='submit' 
+                                        class="btn btn-warning">
+                                        Send invitation
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @empty

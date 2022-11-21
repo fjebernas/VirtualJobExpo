@@ -149,6 +149,8 @@ Route::middleware(['auth', 'details.set'])->group(function(){
             Route::controller(ShortlistedCandidateController::class)->group(function(){
                 Route::get('/shortlisted-candidates', 'index')
                     ->name('shortlisted-candidates.index');
+                Route::post('/shortlisted-candidates', 'sendInvitation')
+                    ->name('shortlisted-candidates.send-invitation');
             });
         });
     });
