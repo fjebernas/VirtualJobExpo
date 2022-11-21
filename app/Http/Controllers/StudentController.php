@@ -65,7 +65,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student) 
     {
-        $new_profile_picture_name = $this->getProfilePicturePath($request->profile_picture);
+        $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
         $student->update([
             'first_name' => $request->first_name,
@@ -75,7 +75,7 @@ class StudentController extends Controller
             'gender' => $request->gender,
             'university' => $request->university,
             'contact_number' => $request->contact_number,
-            'profile_picture_path' => $new_profile_picture_name,
+            'profile_picture_path' => $new_profile_picture_path,
             'about' => $request->about,
         ]);
 
