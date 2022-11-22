@@ -29,7 +29,8 @@ class CompanyController extends Controller
      */
     public function dashboard() 
     {
-        return view('company.dashboard');
+        return view('company.dashboard')
+                ->with('company', Auth::user()->company);
     }
 
     /**
