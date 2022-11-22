@@ -22,7 +22,9 @@
                         <div class="col">
                             <p class="text-white">
                                 <span class="fw-bold text-muted">Position: </span> 
-                                <a href={{ route('job-posts.show', $job_post) }} class="link text-warning">
+                                <a href={{ route('job-posts.show', $job_post) }} 
+                                    target="_blank"
+                                    class="link fw-bold text-warning">
                                     {{ $job_post->position }}
                                 </a>
                             </p>
@@ -60,6 +62,7 @@
                                         <tr>
                                             <td>
                                                 <a href={{ route('student.students.show', $job_application->student) }}
+                                                    target="_blank"
                                                     class="link text-warning"
                                                     style="text-decoration: none;">
                                                     {{ $job_application->student->first_name }}
@@ -67,7 +70,7 @@
                                                 </a>
                                             </td>
                                             <td>{{ $job_application->student->user->email }}</td>
-                                            <td>{{ $job_application->pitch }}</td>
+                                            <td class="text-start">{{ $job_application->pitch }}</td>
                                             <td>{{ $job_application->created_at }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
                                                 <form action={{ route('company.job_applications.update', $job_application->id) }} class="d-flex" style="column-gap: 10px; row-gap: 5px">

@@ -31,6 +31,7 @@
                     <tr>
                         <td>
                             <a href={{ route('student.students.show', $job_application->student) }}
+                                target="_blank"
                                 class="link text-warning">
                                 {{ $job_application->student->first_name }} {{ $job_application->student->last_name }}
                             </a>
@@ -38,6 +39,7 @@
                         <td>{{ $job_application->student->user->email }}</td>
                         <td>
                             <a href={{ route('job-posts.show', $job_application->jobPost) }}
+                                target="_blank"
                                 class="link text-white">
                                 {{ $job_application->jobPost->position }}
                             </a>

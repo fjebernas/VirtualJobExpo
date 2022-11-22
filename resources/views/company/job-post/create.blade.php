@@ -40,8 +40,8 @@
                     <div class="mb-3">
                         <label for="employment" class="text-muted form-label fw-bold fs-5">Employment</label>
                         <select name="employment" class="form-control">
-                            <option value="part-time">Part-time</option>
                             <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
                         </select>
                     </div>
 
