@@ -10,10 +10,32 @@
 
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="greeting row w-100 d-flex align-items-center px-3">
+        <div class="greeting w-100 d-flex flex-wrap align-items-center justify-content-between px-5 py-3">
             <div>
-                <h1>Welcome, {{ Auth::user()->student->first_name }}.</h1>
-                <h2 class="fs-5">Lorem ipsum dolor sit amet consectetur.</h2>
+                <h1 class="text-warning">Welcome, {{ Auth::user()->student->first_name }}.</h1>
+                <h2 class="fs-5 text-white">Lorem ipsum dolor sit amet consectetur.</h2>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col text-nowrap">
+                        <h5 class="text-warning pb-0 mb-0">Saved Jobs</h5>
+                    </div>
+                    <div class="col text-nowrap">
+                        <h5 class="text-warning pb-0 mb-0">Jobs Applied</h5>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <p class="fs-2 pb-0 mb-0 text-center text-white">
+                            {{ $student->savedJobs->count() }}
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="fs-2 pb-0 mb-0 text-center text-white">
+                            {{ $student->jobApplications->count() }}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 

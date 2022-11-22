@@ -1,8 +1,7 @@
 .greeting {
-    height: 150px;
     background-color: rgba(0, 0, 0, 0.5);
-    color: #d16500;
     border-radius: 10px;
+    row-gap: 20px;
 }
 
 .cards-container {
