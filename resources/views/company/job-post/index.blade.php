@@ -23,7 +23,6 @@
                             <p class="text-white">
                                 <span class="fw-bold text-muted">Position: </span> 
                                 <a href={{ route('job-posts.show', $job_post) }} 
-                                    target="_blank"
                                     class="link fw-bold text-warning">
                                     {{ $job_post->position }}
                                 </a>
@@ -62,7 +61,6 @@
                                         <tr>
                                             <td>
                                                 <a href={{ route('student.students.show', $job_application->student) }}
-                                                    target="_blank"
                                                     class="link text-warning"
                                                     style="text-decoration: none;">
                                                     {{ $job_application->student->first_name }}

@@ -18,12 +18,10 @@
                     <div class="card-body row">
                         <div class="col">
                             <a href={{ route('job-posts.show', $saved_job->jobPost) }}
-                                target="_blank"
                                 class="link text-warning">
                                 <h5 class="card-title">{{ $saved_job->jobPost->position }}</h5>
                             </a>
                             <a href={{ route('company.companies.show', $saved_job->jobPost->company) }}
-                                target="_blank"
                                 class="link text-white">
                                 <p class="card-text">{{ $saved_job->jobPost->company->name }}</p>
                             </a>

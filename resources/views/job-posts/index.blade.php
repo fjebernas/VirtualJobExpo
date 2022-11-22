@@ -109,14 +109,12 @@
                             id="profile-picture">
                         <div>
                             <a href={{ route('job-posts.show', $job_post) }} 
-                                target="_blank"
                                 class="link text-warning">
                                 <h5 class="card-title" style="width: 12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
                                     {{ $job_post->position }}
                                 </h5>
                             </a>
                             <a href={{ route('company.companies.show', $job_post->company) }} 
-                                target="_blank"
                                 class="link text-white mb-2">
                                 <h6 class="card-subtitle">
                                     {{ $job_post->company->name }}
