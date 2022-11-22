@@ -19,10 +19,10 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'industry' => 'IT/Technology',
+            'industry' => fake()->randomElement(['IT/Technology', 'Commerce', 'Manufacturing', 'Finance', 'Agriculture']),
             'address' => fake()->streetAddress() . ', ' . fake()->state(),
             'contact_number' => fake()->phoneNumber(),
-            'about' => fake()->text(300),
+            'about' => fake()->realText(300, 2),
             'user_id' => User::factory(),
         ];
     }

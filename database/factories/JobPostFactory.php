@@ -25,7 +25,7 @@ class JobPostFactory extends Factory
                 'low' => fake()->numberBetween(3,6) . '0000',
                 'high' => fake()->numberBetween(7,9) . '0000',
             ],
-            'description' => fake()->text(300),
+            'description' => fake()->realText(300, 2),
         ];
     }
 }

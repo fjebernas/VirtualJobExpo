@@ -18,7 +18,7 @@ class StudentSeeder extends Seeder
     public function run()
     {
         User::create([
-            'email' => 'fjebernas@gmail.com',
+            'email' => 'francis@user.com',
             'role' => 'student',
             'password' => Hash::make('wangan00'),
         ]);

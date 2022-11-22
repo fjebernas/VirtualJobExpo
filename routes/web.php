@@ -30,9 +30,9 @@ use Illuminate\Support\Facades\Route;
  *
  * 
  */
-Route::get('/exp', function(){
-    //Benchmark::dd(fn () => JobPost::all());
-});
+// Route::get('/exp', function(){
+//     dd(asset('storage/students/images/' . 'placeholder.png'));
+// });
 
 Route::get('/', function () {
     return view('welcome');
