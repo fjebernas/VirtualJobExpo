@@ -24,8 +24,8 @@
         }
 
         .app-name-abbrv {
-            letter-spacing: 3px;
-            color: #0066ff;
+            /* letter-spacing: 3px;
+            color: #0066ff; */
         }
     </style>
     
@@ -57,7 +57,7 @@
         <nav id="navbar" class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark position-fixed w-100">
             <div class="container">
                 <a class="navbar-brand fs-3 text-white" href="{{ url('/') }}">
-                    <span class="app-name-abbrv fw-bolder">VJE</span>
+                    <span class="fw-bolder text-secondary" style="letter-spacing: 3px">VJE</span>
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

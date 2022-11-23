@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobPost;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ class StudentController extends Controller
     public function dashboard() 
     {
         return view('student.dashboard')
-                ->with('student', Auth::user()->student);
+                ->with('student', Auth::user()->student)
+                ->with('jobs_count', JobPost::all()->count());
     }
 
     /**

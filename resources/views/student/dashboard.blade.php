@@ -10,22 +10,37 @@
 
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="greeting w-100 rounded d-flex flex-wrap align-items-center justify-content-between px-3 py-4">
+        <div class="greeting w-100 rounded d-flex flex-wrap align-items-center justify-content-between px-4 py-4">
             <div>
                 <h1 class="text-warning">Welcome, {{ Auth::user()->student->first_name }}.</h1>
                 <h2 class="fs-5 text-white">Lorem ipsum dolor sit amet consectetur.</h2>
             </div>
             <div class="table-responsive">
                 <table>
-                    <thead class="text-warning fs-4">
+                    <thead class="text-warning fs-5">
                         <tr>
-                            <td class="px-4 text-center text-nowrap">Saved Jobs</td>
+                            <td class="px-4 text-center text-nowrap border-secondary border-end">Jobs</td>
                             <td class="px-2 text-center">Jobs Applied</td>
                         </tr>
                     </thead>
                     <tbody class="text-white text-center">
                         <tr>
-                            <td class="fs-3">{{ $student->savedJobs->count() }}</td>
+                            <td class="table-responsive border-secondary border-end">
+                                <table>
+                                    <thead class="fs-6 text-muted">
+                                        <tr>
+                                            <td class="px-2">Available</td>
+                                            <td class="px-2 text-nowrap">Saved</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fs-4">
+                                        <tr>
+                                            <td>{{ $jobs_count }}</td>
+                                            <td>{{ $student->savedJobs->count() }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
                             <td class="table-responsive">
                                 <table>
                                     <thead class="fs-6 text-muted">
