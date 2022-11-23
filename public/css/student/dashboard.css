@@ -11,12 +11,11 @@
 .card {
     width: 170px;
     height: 150px;
-    border: none;
     transition: 100ms ease-in-out;
 }
 
 .card:hover {
-    filter: brightness(0.95);
+    filter: brightness(1.3);
 }
 
 .view-profile.card {
