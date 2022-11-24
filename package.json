@@ -18,6 +18,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@sweetalert2/theme-dark": "^5.0.15",
         "boxicons": "^2.1.4",
         "sweetalert2": "^11.6.5"
     }

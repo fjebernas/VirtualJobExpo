@@ -8,5 +8,8 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+// Dark theme for sweetalert2
+@import '@sweetalert2/theme-dark/dark.scss';
+
 // my custom common scss
 @import './common';
