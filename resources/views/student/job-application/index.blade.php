@@ -12,10 +12,9 @@
     <h1 class="text-center">JOB APPLICATION STATUS</h1>
 
     <div class="table-responsive">
-        <table class="table table-dark text-center table-bordered mt-4">
+        <table class="table table-dark text-center text-nowrap table-bordered mt-4">
             <thead class="bg-dark text-white">
                 <tr>
-                    <th scope="col">id</th>
                     <th scope="col">Position</th>
                     <th scope="col">Company</th>
                     <th scope="col">Status</th>
@@ -25,7 +24,6 @@
             <tbody>
                 @forelse ($job_applications as $job_application)
                     <tr class="job-application">
-                        <td>{{ $job_application->id }}</td>
                         <td>
                             <a href={{ route('job-posts.show', $job_application->jobPost) }}
                                 class="link text-warning fw-bold">

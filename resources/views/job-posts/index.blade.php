@@ -17,7 +17,7 @@
         @endisset
     </h1>
     <div class="d-flex flex-wrap w-100 justify-content-center">
-        <div class="card mt-3 search-card d-none d-xxl-block" style="min-width: 20rem">
+        <div class="card mt-3 search-card" style="min-width: 20rem">
             <div class="card-body d-flex flex-column">
                 <h3 class="text-center">SEARCH</h3>
                 <form action={{ route('job-posts.search' ) }} method="POST">
