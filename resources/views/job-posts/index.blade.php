@@ -99,7 +99,7 @@
                 </form>
             </div>
         </div>
-        <div class="d-flex justify-content-start flex-wrap position-relative job-posts-container" style="width: 60rem; max-width: 60rem">
+        <div class="d-flex justify-content-center justify-content-md-start flex-wrap position-relative job-posts-container" style="width: 60rem; max-width: 60rem">
             @forelse ($job_posts as $job_post)
                 <div class="card mx-3 mt-3 job-post" style="width: 18rem; height: fit-content">
                     <div class="card-header border-0 d-flex mt-2 mb-0 pb-0" style="column-gap: 10px">

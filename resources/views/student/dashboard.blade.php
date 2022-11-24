@@ -19,8 +19,8 @@
                 <table>
                     <thead class="text-warning fs-5">
                         <tr>
-                            <td class="px-4 text-center text-nowrap border-secondary border-end">Jobs</td>
-                            <td class="px-2 text-center">Jobs Applied</td>
+                            <td class="text-center text-nowrap border-secondary border-end">Jobs</td>
+                            <td class="text-center">Jobs Applied</td>
                         </tr>
                     </thead>
                     <tbody class="text-white text-center">
