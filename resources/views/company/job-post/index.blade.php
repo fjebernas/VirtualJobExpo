@@ -14,8 +14,15 @@
     @forelse ($job_posts as $job_post)
         <div class="py-3">
             <div class="card mt-3 w-100" style="">
-                <div class="card-header bg-dark text-muted">
-                    Job post ID: {{ $job_post->id }}
+                <div class="card-header bg-dark text-muted d-flex justify-content-between">
+                    <span>Job post ID: {{ $job_post->id }}</span>
+                    <span>
+                        <form action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-link text-danger fw-bold m-0 p-0">Delete job post</button>
+                        </form>
+                    </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -36,17 +43,11 @@
                         <div class="col-4">
                             <p class="text-white"><span class="fw-bold text-muted">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} to ₱{{ $job_post->salary_range['high'] }}</p>
                         </div>
-                        <div class="col-3">
-                            <form class="d-flex justify-content-end" action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger">Delete job post</button>
-                            </form>
-                        </div>
+                        
                     </div>
                     <div class="row">
                         <div class="table-responsive">
-                            <table class="table table-dark text-center table-bordered mt-4">
+                            <table class="table table-dark text-center table-bordered mt-4 text-nowrap">
                                 <thead>
                                     <tr>
                                         <th scope="col" style="width: 15%">Name</th>
@@ -68,16 +69,16 @@
                                                 </a>
                                             </td>
                                             <td>{{ $job_application->student->user->email }}</td>
-                                            <td class="text-center">
+                                            <td class="text-center" style="min-width: 300px">
                                                 <a class="btn btn-link text-warning" 
                                                     data-bs-toggle="collapse" 
-                                                    href="#collapseExample" 
+                                                    href={{ '#pitch_' . $job_application->id }} 
                                                     role="button" 
                                                     aria-expanded="false" 
                                                     aria-controls="collapseExample">
-                                                    See pitch
+                                                    Show pitch
                                                 </a>
-                                                <p class="collapse text-start" id="collapseExample">
+                                                <p class="collapse text-start text-wrap" id={{ 'pitch_' . $job_application->id }}>
                                                     {{ $job_application->pitch }}
                                                 </p>
                                             </td>
