@@ -68,7 +68,19 @@
                                                 </a>
                                             </td>
                                             <td>{{ $job_application->student->user->email }}</td>
-                                            <td class="text-start">{{ $job_application->pitch }}</td>
+                                            <td class="text-center">
+                                                <a class="btn btn-link text-warning" 
+                                                    data-bs-toggle="collapse" 
+                                                    href="#collapseExample" 
+                                                    role="button" 
+                                                    aria-expanded="false" 
+                                                    aria-controls="collapseExample">
+                                                    See pitch
+                                                </a>
+                                                <p class="collapse text-start" id="collapseExample">
+                                                    {{ $job_application->pitch }}
+                                                </p>
+                                            </td>
                                             <td>{{ $job_application->created_at }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
                                                 <form action={{ route('company.job_applications.update', $job_application->id) }} class="d-flex" style="column-gap: 10px; row-gap: 5px">
@@ -78,7 +90,8 @@
                                                                 @if ($status == $job_application->status)
                                                                     selected 
                                                                 @endif
-                                                            >{{ $status }}</option>
+                                                            >{{ $status }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </form>
