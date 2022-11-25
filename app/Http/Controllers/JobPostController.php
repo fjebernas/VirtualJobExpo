@@ -10,7 +10,6 @@ class JobPostController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * if student, return with saved jobs and  job applications
      * 
      * @return \Illuminate\Http\Response
      */

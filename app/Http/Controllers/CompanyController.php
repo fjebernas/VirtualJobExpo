@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyProfileUpdateRequest;
 use App\Models\Company;
-use App\Models\JobPost;
 use App\Services\ProfilePictureService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class CompanyController extends Controller
 {
