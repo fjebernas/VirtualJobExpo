@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\CandidateInvited;
 use App\Models\JobApplication;
 use App\Models\Student;
+use App\Services\MailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -25,18 +26,14 @@ class ShortlistedCandidateController extends Controller
                                                             ->all());
     }
 
-    public function sendInvitation(Request $request)
+    public function sendInvitation(Request $request, MailService $mailService)
     {
-        $job_application = JobApplication::firstWhere('id', $request->job_application_id);
-        $job_post = $job_application->jobPost;
-        $student = $job_application->student;
+        $mailService->sendInvitationMail($request->job_application_id);
 
-        Mail::to($student->user->email)
-            ->send(new CandidateInvited($student, $job_post));
-
-        $job_application->update([
-            'invited' => true,
-        ]);
+        JobApplication::where('id', $request->job_application_id)
+                    ->update([
+                        'invited' => true,
+                    ]);
 
         return redirect()->back()
             ->with('notification', [
