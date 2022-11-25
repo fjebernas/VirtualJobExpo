@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobPostStoreRequest;
 use App\Models\Company;
 use App\Models\JobApplication;
 use App\Models\JobPost;
@@ -67,25 +68,8 @@ class JobPostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) 
+    public function store(JobPostStoreRequest $request) 
     {
-        $validated = $request->validate([
-            'position' => ['required'],
-            'location' => ['required'],
-            'level' => ['required', Rule::in([
-                                                'entry-level',
-                                                'intermediate',
-                                                'senior',
-                                                'internship',
-                                            ])],
-            'employment' => ['required', Rule::in([
-                                                    'full-time',
-                                                    'part-time',
-                                                ])],
-            'salary_range' => ['nullable'],
-            'description' => ['nullable'],
-        ]);
-
         JobPost::create([
             'position' => $request->position,
             'company' => Auth::user()->company->name,
