@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\FilteredJobPostcontroller;
+use App\Http\Controllers\FilteredJobPostController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\SavedJobController;
@@ -50,7 +50,7 @@ Route::controller(JobPostController::class)->group(function(){
 /**
  * Route for searching job with filters
  */
-Route::post('/job-posts/search', FilteredJobPostcontroller::class)->name('job-posts.search');
+Route::post('/job-posts/search', FilteredJobPostController::class)->name('job-posts.search');
 
 Auth::routes();
 

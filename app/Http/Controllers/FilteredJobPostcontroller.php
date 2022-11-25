@@ -6,7 +6,7 @@ use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FilteredJobPostcontroller extends Controller
+class FilteredJobPostController extends Controller
 {
     /**
      * Handle the incoming request.
