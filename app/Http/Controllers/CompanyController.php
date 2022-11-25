@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyProfileUpdateRequest;
 use App\Models\Company;
 use App\Models\JobPost;
 use Illuminate\Http\Request;
@@ -64,17 +65,8 @@ class CompanyController extends Controller
      * @param  \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company) 
+    public function update(CompanyProfileUpdateRequest $request, Company $company) 
     {
-        $validated = $request->validate([
-            'name' => ['required'],
-            'industry' => ['required'],
-            'address' => ['required'],
-            'contact_number' => ['required'],
-            'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
-            'about' => ['nullable'],
-        ]);
-
         $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
         $company->update([
