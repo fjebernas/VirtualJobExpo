@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class StudentProfileUpdateRequest extends FormRequest
 {
@@ -15,7 +16,22 @@ class StudentProfileUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->role == 'student';
+        return Auth::user()->student;
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'first_name' => Str::title(Str::lower($this->first_name)),
+            'middle_name' => Str::title(Str::lower($this->middle_name)),
+            'last_name' => Str::title(Str::lower($this->last_name)),
+            'university' => Str::title(Str::lower($this->university)),
+        ]);
     }
 
     /**
@@ -26,16 +42,16 @@ class StudentProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'regex:/^[\pL\s\-]+$/u'],
-            'middle_name' => ['nullable', 'alpha'],
-            'last_name' => ['required', 'alpha'],
+            'first_name' => ['required', 'regex:/^[a-zA-Z ]*$/'],
+            'middle_name' => ['nullable', 'regex:/^[a-zA-Z ]*$/'],
+            'last_name' => ['required', 'regex:/^[a-zA-Z ]*$/'],
             'birthdate' => ['nullable', 'date'],
             'gender' => ['required', Rule::in([
                                                 'male',
                                                 'female',
                                             ])],
             'university' => ['required', 'regex:/^[\pL\s\-]+$/u'],
-            'contact_number' => ['nullable'],
+            'contact_number' => ['nullable', 'numeric', 'min_digits:11', 'max_digits:11'],
             'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
             'about' => ['nullable'],
         ];

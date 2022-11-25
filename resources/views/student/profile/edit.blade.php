@@ -79,8 +79,8 @@
                         <select name="gender" 
                                 class="form-control @error('gender') is-invalid @enderror">
                             <option selected disabled>Select one</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="male" @if($student->gender == 'male') selected @endif>Male</option>
+                            <option value="female" @if($student->gender == 'female') selected @endif>Female</option>
                         </select>
                         @error('gender')
                             <span class="invalid-feedback" role="alert">
@@ -105,14 +105,11 @@
 
                     <div class="mb-3">
                         <label for="contact_number" class="form-label fw-bold fs-5 text-muted">Contact number</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-dark text-white" id="basic-addon1">+639</span>
-                            <input type="text" 
-                                    name="contact_number"
-                                    class="form-control @error('university') is-invalid @enderror" 
-                                    value=@isset($student->contact_number) {{ $student->contact_number }} @endisset 
-                                    id="contact_number">
-                        </div>
+                        <input name="contact_number" 
+                                value=@isset($student->contact_number) "{{ $student->contact_number }}" @else null @endisset 
+                                type="number" 
+                                class="form-control @error('contact_number') is-invalid @enderror" 
+                                id="contact_number">
                         @error('contact_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
