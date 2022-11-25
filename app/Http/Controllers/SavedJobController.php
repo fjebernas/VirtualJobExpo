@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobPost;
 use App\Models\SavedJob;
-use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;

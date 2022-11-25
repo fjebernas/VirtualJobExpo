@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\CandidateInvited;
 use App\Models\JobApplication;
-use App\Models\Student;
 use App\Services\MailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class ShortlistedCandidateController extends Controller
 {

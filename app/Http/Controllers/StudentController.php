@@ -6,7 +6,6 @@ use App\Http\Requests\StudentProfileUpdateRequest;
 use App\Models\JobPost;
 use App\Models\Student;
 use App\Services\ProfilePictureService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
