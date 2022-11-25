@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentProfileRequest;
+use App\Http\Requests\StudentProfileStoreRequest;
 use App\Models\JobPost;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -66,23 +68,8 @@ class StudentController extends Controller
      * @param  \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student) 
+    public function update(StudentProfileRequest $request, Student $student) 
     {
-        $validated = $request->validate([
-            'first_name' => ['required', 'regex:/^[\pL\s\-]+$/u'],
-            'middle_name' => ['nullable', 'alpha'],
-            'last_name' => ['required', 'alpha'],
-            'birthdate' => ['nullable', 'date'],
-            'gender' => ['required', Rule::in([
-                                                'male',
-                                                'female',
-                                            ])],
-            'university' => ['required', 'regex:/^[\pL\s\-]+$/u'],
-            'contact_number' => ['required'],
-            'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
-            'about' => ['nullable'],
-        ]);
-
         $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
         $student->update([
@@ -145,9 +132,7 @@ class StudentController extends Controller
 
     public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
     {
-        $store_success = Storage::disk('local')->put('public/students/images/' . $new_profile_picture_name, 
-                        File::get($profile_picture)) ? true : false;
-
-        return $store_success;
+        return Storage::disk('local')->put('public/students/images/' . $new_profile_picture_name, 
+                                            File::get($profile_picture)) ? true : false;
     }
 }
