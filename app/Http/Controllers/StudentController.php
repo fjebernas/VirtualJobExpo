@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentProfileStoreRequest;
+use App\Http\Requests\StudentProfileUpdateRequest;
 use App\Models\JobPost;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -68,7 +69,7 @@ class StudentController extends Controller
      * @param  \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentProfileRequest $request, Student $student) 
+    public function update(StudentProfileUpdateRequest $request, Student $student) 
     {
         $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
