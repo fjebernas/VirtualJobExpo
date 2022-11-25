@@ -12,6 +12,10 @@
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>EDIT PROFILE</h1>
 
+        @foreach ($errors->all() as $error)
+            <p class="text-white">{{ $error }}</p>
+        @endforeach
+
         <div class="card mt-3 w-100">
             <form action={{ route('company.companies.update', $company->id) }} method="POST" enctype="multipart/form-data">
                 @csrf
@@ -20,27 +24,71 @@
                 <div class="card-body d-flex flex-column">
                     <div class="mb-3">
                         <label for="name" class="text-muted form-label fw-bold fs-5">Company name</label>
-                        <input name="name" value="@isset($company->name) {{ $company->name }} @endisset" type="text" class="form-control" id="name">
+                        <input name="name" 
+                                value="@isset($company->name) {{ $company->name }} @endisset" 
+                                type="text" 
+                                class="form-control @error('name') is-invalid @enderror" 
+                                id="name">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="industry" class="text-muted form-label fw-bold fs-5">Industry</label>
-                        <input name="industry" value="@isset($company->industry) {{ $company->industry }} @endisset" type="text" class="form-control" id="industry">
+                        <input name="industry" 
+                                value="@isset($company->industry) {{ $company->industry }} @endisset" 
+                                type="text" 
+                                class="form-control @error('industry') is-invalid @enderror" 
+                                id="industry">
+                        @error('industry')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="address" class="text-muted form-label fw-bold fs-5">Address</label>
-                        <input name="address" value="@isset($company->address) {{ $company->address }} @endisset" type="text" class="form-control" id="address">
+                        <input name="address" 
+                                value="@isset($company->address) {{ $company->address }} @endisset" 
+                                type="text" 
+                                class="form-control @error('address') is-invalid @enderror" 
+                                id="address">
+                        @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="contact_number" class="text-muted form-label fw-bold fs-5">Contact number</label>
-                        <input name="contact_number" value=@isset($company->contact_number) {{ $company->contact_number }} @else null @endisset type="number" class="form-control" id="contact_number">
+                        <input name="contact_number" 
+                                value=@isset($company->contact_number) {{ $company->contact_number }} @else null @endisset 
+                                type="number" 
+                                class="form-control @error('contact_number') is-invalid @enderror" 
+                                id="contact_number">
+                        @error('contact_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="text-muted form-label fw-bold fs-5" for="profile_picture">Profile picture</label>
-                        <input name="profile_picture" type="file" class="form-control" id="profile_picture" />
+                        <input name="profile_picture" 
+                                type="file" 
+                                class="form-control @error('profile_picture') is-invalid @enderror" 
+                                id="profile_picture" />
+                        @error('profile_picture')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3">

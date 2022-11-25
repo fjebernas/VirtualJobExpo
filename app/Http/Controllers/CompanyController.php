@@ -66,6 +66,15 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company) 
     {
+        $validated = $request->validate([
+            'name' => ['required'],
+            'industry' => ['required'],
+            'address' => ['required'],
+            'contact_number' => ['required'],
+            'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'about' => ['nullable'],
+        ]);
+
         $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
         $company->update([
