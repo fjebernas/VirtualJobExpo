@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyProfileUpdateRequest;
 use App\Models\Company;
 use App\Models\JobPost;
+use App\Services\ProfilePictureService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -65,9 +66,10 @@ class CompanyController extends Controller
      * @param  \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyProfileUpdateRequest $request, Company $company) 
+    public function update(CompanyProfileUpdateRequest $request, ProfilePictureService $profilePictureService, Company $company) 
     {
-        $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
+        $profilePictureService->handleProfilePicture($request->profile_picture);
+        $new_profile_picture_path = $profilePictureService->getFormattedProfilePictureName($request->profile_picture);
 
         $company->update([
             'name' => $request->name,
@@ -83,52 +85,5 @@ class CompanyController extends Controller
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
             ]);
-    }
-
-    public function getProfilePicturePath($profile_picture)
-    {
-        if (isset($profile_picture))
-        {
-            // custom image name
-            $new_profile_picture_name = $this->getFormattedProfilePictureName($profile_picture);
-
-            // if there is already a profile picture in public, delete it
-            $this->deleteProfilePictureIfExists($new_profile_picture_name);
-
-            // move the image file to public/img/profile-pictures
-            $this->storeProfilePictureToDisk($new_profile_picture_name, $profile_picture);
-
-            return $new_profile_picture_name;
-        } 
-        else 
-        {
-            return 'placeholder.png';
-        }
-    }
-
-    public function getFormattedProfilePictureName($profile_picture)
-    {
-        return 'company' .
-                '-' .  
-                Auth::user()->company->id . 
-                '.' .
-                $profile_picture->extension();
-    }
-
-    public function deleteProfilePictureIfExists($new_profile_picture_name)
-    {
-        $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
-        if (str_contains(Auth::user()->company->profile_picture_path, $new_profile_picture_name_without_extension)) 
-        {
-            Storage::disk('local')->delete('public/companies/images/' . Auth::user()->company->profile_picture_path);
-        }
-    }
-
-    public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
-    {
-        $store_success = Storage::disk('local')->put('public/companies/images/' . $new_profile_picture_name, 
-                        File::get($profile_picture)) ? true : false;
-
-        return $store_success;
     }
 }

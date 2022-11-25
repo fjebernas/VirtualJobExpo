@@ -40,15 +40,33 @@ class ProfilePictureService
     public function deleteProfilePictureIfExists($new_profile_picture_name)
     {
         $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
-        if (str_contains(Auth::user()->student->profile_picture_path, $new_profile_picture_name_without_extension)) 
+        if (Auth::user()->student)
         {
-            Storage::disk('local')->delete('public/students/images/' . Auth::user()->student->profile_picture_path);
+            if (str_contains(Auth::user()->student->profile_picture_path, $new_profile_picture_name_without_extension)) 
+            {
+                Storage::disk('local')->delete('public/' . 
+                                                Str::plural(Auth::user()->role) . 
+                                                Auth::user()->student->profile_picture_path);
+            }
+        }
+        else if (Auth::user()->company)
+        {
+            if (str_contains(Auth::user()->company->profile_picture_path, $new_profile_picture_name_without_extension)) 
+            {
+                Storage::disk('local')->delete('public/' . 
+                                                Str::plural(Auth::user()->role) . 
+                                                Auth::user()->student->profile_picture_path);
+            }
         }
     }
 
     public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
     {
-        return Storage::disk('local')->put('public/students/images/' . $new_profile_picture_name, 
-                                            File::get($profile_picture)) ? true : false;
+        Storage::disk('local')->put('public/' . 
+                                    Str::plural(Auth::user()->role) . 
+                                    '/images\/' . 
+                                    $new_profile_picture_name, 
+                                    
+                                    File::get($profile_picture));
     }
 }
