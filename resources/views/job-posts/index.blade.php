@@ -134,7 +134,7 @@
                         </ul>
                         <div class="d-flex flex-wrap buttons-container">
                             @if (Auth::check())
-                                @if (Auth::user()->role == 'student')
+                                @if (Auth::user()->student)
                                     @if ($job_post->jobApplications->contains('student_id', Auth::user()->student->id))
                                         <a href="#" 
                                             class="btn btn-secondary disabled" 
