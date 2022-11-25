@@ -47,14 +47,16 @@
                                         <tr>
                                             <td class="px-2">Received</td>
                                             <td class="px-2">Shortlisted</td>
-                                            <td class="px-2 text-nowrap">Not qualified</td>
+                                            <td class="px-2 text-nowrap border-secondary border-end">Not qualified</td>
+                                            <td class="px-2">Total</td>
                                         </tr>
                                     </thead>
                                     <tbody class="fs-4">
                                         <tr>
                                             <td>{{ $student->jobApplications->where('status', 'Received')->count() }}</td>
                                             <td>{{ $student->jobApplications->where('status', 'Shortlisted')->count() }}</td>
-                                            <td>{{ $student->jobApplications->where('status', 'Not qualified')->count() }}</td>
+                                            <td class="border-secondary border-end">{{ $student->jobApplications->where('status', 'Not qualified')->count() }}</td>
+                                            <td>{{ $student->jobApplications->count() }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
