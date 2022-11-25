@@ -105,11 +105,14 @@
 
                     <div class="mb-3">
                         <label for="contact_number" class="form-label fw-bold fs-5 text-muted">Contact number</label>
-                        <input name="contact_number" 
-                                value=@isset($student->contact_number) {{ $student->contact_number }} @else null @endisset 
-                                type="number" 
-                                class="form-control @error('university') is-invalid @enderror" 
-                                id="contact_number">
+                        <div class="input-group">
+                            <span class="input-group-text bg-dark text-white" id="basic-addon1">+639</span>
+                            <input type="text" 
+                                    name="contact_number"
+                                    class="form-control @error('university') is-invalid @enderror" 
+                                    value=@isset($student->contact_number) {{ $student->contact_number }} @endisset 
+                                    id="contact_number">
+                        </div>
                         @error('contact_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -85,7 +85,7 @@ class StudentController extends Controller
             'about' => $request->about,
         ]);
 
-        return redirect('/student/dashboard')
+        return redirect()->route('student.dashboard')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
                 'type' => 'success'
