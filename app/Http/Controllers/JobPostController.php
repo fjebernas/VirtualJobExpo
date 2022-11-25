@@ -72,12 +72,16 @@ class JobPostController extends Controller
         $validated = $request->validate([
             'position' => ['required'],
             'location' => ['required'],
-            'level' => ['required', Rule::in(['entry-level',
+            'level' => ['required', Rule::in([
+                                                'entry-level',
                                                 'intermediate',
                                                 'senior',
-                                                'internship',])],
-            'employment' => ['required', Rule::in(['full-time',
-                                                    'part-time',])],
+                                                'internship',
+                                            ])],
+            'employment' => ['required', Rule::in([
+                                                    'full-time',
+                                                    'part-time',
+                                                ])],
             'salary_range' => ['nullable'],
             'description' => ['nullable'],
         ]);

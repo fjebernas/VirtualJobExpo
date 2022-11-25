@@ -93,7 +93,16 @@
 
                     <div class="form-group mb-3">
                         <label for="about" class="text-muted form-label fw-bold fs-5">About</label>
-                        <textarea name="about" class="form-control" id="about" rows="3">@isset($company->about) {{ $company->about }}@endisset</textarea>
+                        <textarea name="about" 
+                                    class="form-control @error('about') is-invalid @enderror" 
+                                    id="about" 
+                                    rows="5"
+                        >@isset($company->about) {{ $company->about }}@endisset</textarea>
+                        @error('about')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <button name="" type="submit" class="btn btn-warning align-self-end">Save changes</button>

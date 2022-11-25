@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -68,6 +68,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student) 
     {
+        $validated = $request->validate([
+            'first_name' => ['required', 'regex:/^[\pL\s\-]+$/u'],
+            'middle_name' => ['nullable', 'alpha'],
+            'last_name' => ['required', 'alpha'],
+            'birthdate' => ['nullable', 'date'],
+            'gender' => ['required', Rule::in([
+                                                'male',
+                                                'female',
+                                            ])],
+            'university' => ['required', 'regex:/^[\pL\s\-]+$/u'],
+            'contact_number' => ['required'],
+            'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'about' => ['nullable'],
+        ]);
+
         $new_profile_picture_path = $this->getProfilePicturePath($request->profile_picture);
 
         $student->update([
