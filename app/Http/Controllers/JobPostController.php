@@ -10,6 +10,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class JobPostController extends Controller
 {
@@ -68,6 +69,19 @@ class JobPostController extends Controller
      */
     public function store(Request $request) 
     {
+        $validated = $request->validate([
+            'position' => ['required'],
+            'location' => ['required'],
+            'level' => ['required', Rule::in(['entry-level',
+                                                'intermediate',
+                                                'senior',
+                                                'internship',])],
+            'employment' => ['required', Rule::in(['full-time',
+                                                    'part-time',])],
+            'salary_range' => ['nullable'],
+            'description' => ['nullable'],
+        ]);
+
         JobPost::create([
             'position' => $request->position,
             'company' => Auth::user()->company->name,
