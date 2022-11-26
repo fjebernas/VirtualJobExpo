@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\ProfilePicture;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +26,8 @@ class ProfilePictureService
             $new_profile_picture_name = $this->getPathOf($profile_picture);
 
             $this->storeProfilePictureToDisk($new_profile_picture_name, $profile_picture);
+
+            $this->storeRecord($new_profile_picture_name);
         }
     }
 
@@ -57,6 +60,8 @@ class ProfilePictureService
                                             Str::plural(Auth::user()->role) . '/' .
                                             'images/' . 
                                             Auth::user()->profilePicture->path);
+
+            $this->deleteRecord();
         }
     }
 
@@ -65,14 +70,28 @@ class ProfilePictureService
      *
      * @param string $new_profile_picture_name
      * @param Illuminate\Http\UploadedFile $profile_picture
+     * @return bool
      */
     public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
     {
-        Storage::disk('local')->put('public/' . 
-                                    Str::plural(Auth::user()->role) . '/' .
-                                    'images/' . 
-                                    $new_profile_picture_name, 
-                                    
-                                    File::get($profile_picture));
+        return Storage::disk('local')->put('public/' . 
+                                            Str::plural(Auth::user()->role) . '/' .
+                                            'images/' . 
+                                            $new_profile_picture_name, 
+                                            
+                                            File::get($profile_picture));
+    }
+
+    public function storeRecord($new_profile_picture_name)
+    {
+        ProfilePicture::create([
+            'path' => $new_profile_picture_name,
+            'user_id' => Auth::user()->id,
+        ]);
+    }
+
+    public function deleteRecord()
+    {
+        ProfilePicture::where('user_id', Auth::user()->id)->delete();
     }
 }

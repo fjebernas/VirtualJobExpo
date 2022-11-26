@@ -18,7 +18,11 @@
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
                     <span>
-                        <img src={{ asset('storage/students/images/' . $student->user->profilePicture->path) }}
+                        <img src=@if ($student->user->profilePicture)
+                                    {{ asset('storage/students/images/' . $student->user->profilePicture->path) }}
+                                @else
+                                    {{ asset('storage/students/images/placeholder.png') }}
+                                @endif
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
