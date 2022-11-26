@@ -42,13 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function student() {
+    public function student() 
+    {
         return $this->hasOne(
             Student::class
         );
     }
 
-    public function company() {
+    public function company() 
+    {
         return $this->hasOne(
             Company::class
         );
