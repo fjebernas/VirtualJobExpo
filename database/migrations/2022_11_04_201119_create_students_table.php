@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('university')->nullable();
             $table->string('contact_number')->nullable();
-            $table->string('profile_picture_path')->default('placeholder.png')->nullable();
             $table->text('about')->nullable();
             $table->foreignId('user_id')
                 ->constrained()
