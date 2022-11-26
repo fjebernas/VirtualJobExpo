@@ -103,7 +103,11 @@
             @forelse ($job_posts as $job_post)
                 <div class="card mx-3 mt-3 job-post" style="width: 18rem; height: fit-content">
                     <div class="card-header border-0 d-flex mt-2 mb-0 pb-0" style="column-gap: 10px">
-                        <img src={{ asset('storage/companies/images/' . $job_post->company->user->profilePicture->path) }} 
+                        <img src=@if ($job_post->company->user->profilePicture)
+                                    {{ asset('storage/companies/images/' . $job_post->company->user->profilePicture->path) }}
+                                @else
+                                    {{ asset('storage/companies/images/placeholder.png') }}
+                                @endif
                             class="img-thumbnail" 
                             alt="profile picture"
                             id="profile-picture">
