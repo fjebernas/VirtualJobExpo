@@ -12,7 +12,7 @@ use Illuminate\Http\UploadedFile;
 class ProfilePictureService 
 {
     /**
-     * Display the specified resource.
+     * 
      *
      * @param Illuminate\Http\UploadedFile $profile_picture
      * @return string $new_profile_picture_name
@@ -32,7 +32,7 @@ class ProfilePictureService
     }
 
     /**
-     * Display the specified resource.
+     * 
      *
      * @param Illuminate\Http\UploadedFile $profile_picture
      * @return string
@@ -47,7 +47,7 @@ class ProfilePictureService
     }
 
     /**
-     * Display the specified resource.
+     * 
      *
      * @param string $new_profile_picture_name
      * @return void
@@ -66,7 +66,7 @@ class ProfilePictureService
     }
 
     /**
-     * Display the specified resource.
+     * 
      *
      * @param string $new_profile_picture_name
      * @param Illuminate\Http\UploadedFile $profile_picture
@@ -82,6 +82,11 @@ class ProfilePictureService
                                             File::get($profile_picture));
     }
 
+    /**
+     * 
+     * @param string $new_profile_picture_name
+     * @return void
+     */
     public function storeRecord($new_profile_picture_name)
     {
         ProfilePicture::create([
@@ -90,6 +95,11 @@ class ProfilePictureService
         ]);
     }
 
+    /**
+     * 
+     *
+     * @return void
+     */
     public function deleteRecord()
     {
         ProfilePicture::where('user_id', Auth::user()->id)->delete();
