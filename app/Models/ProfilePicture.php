@@ -11,6 +11,7 @@ class ProfilePicture extends Model
 
     protected $fillable = [
         'path',
+        'user_id',
     ];
 
     public function user()

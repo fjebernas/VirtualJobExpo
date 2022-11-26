@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentProfileUpdateRequest;
 use App\Models\JobPost;
+use App\Models\ProfilePicture;
 use App\Models\Student;
 use App\Services\ProfilePictureService;
 use Illuminate\Support\Facades\Auth;
@@ -66,20 +67,14 @@ class StudentController extends Controller
      */
     public function update(StudentProfileUpdateRequest $request, ProfilePictureService $profilePictureService, Student $student) 
     {
-        $profilePictureService->handleProfilePicture($request->profile_picture);
-        $new_profile_picture_path = $profilePictureService->getFormattedProfilePictureName($request->profile_picture);
+        $student->update($request->all());
 
-        $student->update([
-            'first_name' => $request->first_name,
-            'middle_name' => $request->middle_name,
-            'last_name' => $request->last_name,
-            'birthdate' => $request->birthdate,
-            'gender' => $request->gender,
-            'university' => $request->university,
-            'contact_number' => $request->contact_number,
-            'profile_picture_path' => $new_profile_picture_path,
-            'about' => $request->about,
-        ]);
+        $profilePictureService->handleProfilePicture($request->profile_picture);
+
+        ProfilePicture::updateOrCreate(
+            ['user_id' => Auth::user()->id],
+            ['path' => $profilePictureService->getPathOf($request->profile_picture)]
+        );
 
         return redirect()->route('student.dashboard')
             ->with('notification', [

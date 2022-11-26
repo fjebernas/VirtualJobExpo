@@ -14,24 +14,19 @@
 
         <div class="card mt-3 w-100">
             <div class="card-header d-flex justify-content-between">
-                {{-- <span>
-                    <a href={{ route('student.students.edit', $student) }}>
-                        Edit Profile
-                    </a>
-                </span> --}}
             </div>
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
-                    <span class="">
-                        <img src={{ asset('storage/students/images/' . $student->profile_picture_path) }} 
+                    <span>
+                        <img src={{ asset('storage/students/images/' . $student->user->profilePicture->path) }}
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">
                     </span>
-                    <span class="" style="width:400px">
+                    <span style="width:400px">
                         <h2 class="hello-plus-name">Hello! I'm @isset($student->first_name) 
-                                            {{ $student->first_name }}.
-                                        @endisset
+                                                                    {{ $student->first_name }}.
+                                                                @endisset
                         </h2>
                         <p>{{ $student->about }}</p>
                     </span>
