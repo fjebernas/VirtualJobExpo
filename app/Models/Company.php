@@ -14,7 +14,6 @@ class Company extends Model
         'industry',
         'address',
         'contact_number',
-        'profile_picture_path',
         'about',
         'user_id',
     ];
