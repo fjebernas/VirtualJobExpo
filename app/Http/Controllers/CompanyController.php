@@ -57,7 +57,8 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CompanyProfileUpdateRequest  $request
+     * @param  \App\Services\ProfilePictureService $profilePictureService
      * @param  \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */

@@ -23,6 +23,12 @@ class ShortlistedCandidateController extends Controller
                                                             ->all());
     }
 
+    /**
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Services\MailService $mailService
+     * @return \Illuminate\Http\Response
+     */
     public function sendInvitation(Request $request, MailService $mailService)
     {
         $mailService->sendInvitationMail($request->job_application_id);

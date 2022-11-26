@@ -6,9 +6,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 
 class ProfilePictureService 
 {
+    /**
+     * Display the specified resource.
+     *
+     * @param Illuminate\Http\UploadedFile $profile_picture
+     * @return string $new_profile_picture_name
+     */
     public function handleProfilePicture($profile_picture)
     {
         if (isset($profile_picture))
@@ -21,11 +28,15 @@ class ProfilePictureService
 
             // move the image file to public/img/profile-pictures
             $this->storeProfilePictureToDisk($new_profile_picture_name, $profile_picture);
-
-            return $new_profile_picture_name;
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param Illuminate\Http\UploadedFile $profile_picture
+     * @return string
+     */
     public function getFormattedProfilePictureName($profile_picture)
     {
         return isset($profile_picture) ? 'user' .
@@ -37,6 +48,12 @@ class ProfilePictureService
                                         : 'placeholder.png';
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param string $new_profile_picture_name
+     * @return void
+     */
     public function deleteProfilePictureIfExists($new_profile_picture_name)
     {
         $new_profile_picture_name_without_extension = Str::of($new_profile_picture_name)->before('.');
@@ -60,6 +77,12 @@ class ProfilePictureService
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param string $new_profile_picture_name
+     * @param Illuminate\Http\UploadedFile $profile_picture
+     */
     public function storeProfilePictureToDisk($new_profile_picture_name, $profile_picture)
     {
         Storage::disk('local')->put('public/' . 

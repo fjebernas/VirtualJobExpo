@@ -59,8 +59,9 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student $student
+     * @param \App\Http\Requests\StudentProfileUpdateRequest $request
+     * @param \App\Services\ProfilePictureService $profilePictureService
+     * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function update(StudentProfileUpdateRequest $request, ProfilePictureService $profilePictureService, Student $student) 
