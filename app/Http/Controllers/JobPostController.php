@@ -64,7 +64,6 @@ class JobPostController extends Controller
     {
         JobPost::create([
             'position' => $request->position,
-            'company' => Auth::user()->company->name,
             'location' => $request->location,
             'level' => $request->level,
             'employment' => $request->employment,
