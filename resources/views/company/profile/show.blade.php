@@ -14,16 +14,15 @@
 
         <div class="card mt-3 w-100" style="max-width: 42rem">
             <div class="card-header d-flex justify-content-between">
-                {{-- <span>
-                    <a href={{ route('student.students.edit', $company) }}>
-                        Edit Profile
-                    </a>
-                </span> --}}
             </div>
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-center flex-wrap" style="column-gap: 20px; row-gap: 10px">
                     <span class="">
-                        <img src={{ asset('storage/companies/images/' . $company->user->profilePicture->path) }} 
+                        <img src=@if ($company->user->profilePicture)
+                                    {{ asset('storage/companies/images/' . $company->user->profilePicture->path) }}
+                                @else
+                                    {{ asset('storage/companies/images/placeholder.png') }}
+                                @endif
                             class="img-thumbnail mb-2 align-self-center" 
                             alt="profile picture"
                             id="profile-picture">

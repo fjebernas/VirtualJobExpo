@@ -69,11 +69,6 @@ class CompanyController extends Controller
 
         $profilePictureService->handleProfilePicture($request->profile_picture);
 
-        ProfilePicture::updateOrCreate(
-            ['user_id' => Auth::user()->id],
-            ['path' => $profilePictureService->getPathOf($request->profile_picture)]
-        );
-
         return redirect('/company/dashboard')
             ->with('notification', [
                 'message' => 'Profile successfully updated',
