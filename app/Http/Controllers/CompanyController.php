@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyProfileUpdateRequest;
 use App\Models\Company;
+use App\Models\ProfilePicture;
 use App\Services\ProfilePictureService;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,17 +65,14 @@ class CompanyController extends Controller
      */
     public function update(CompanyProfileUpdateRequest $request, ProfilePictureService $profilePictureService, Company $company) 
     {
-        $profilePictureService->handleProfilePicture($request->profile_picture);
-        $new_profile_picture_path = $profilePictureService->getFormattedProfilePictureName($request->profile_picture);
+        $company->update($request->all());
 
-        $company->update([
-            'name' => $request->name,
-            'industry' => $request->industry,
-            'address' => $request->address,
-            'contact_number' => $request->contact_number,
-            'profile_picture_path' => $new_profile_picture_path,
-            'about' => $request->about,
-        ]);
+        $profilePictureService->handleProfilePicture($request->profile_picture);
+
+        ProfilePicture::updateOrCreate(
+            ['user_id' => Auth::user()->id],
+            ['path' => $profilePictureService->getPathOf($request->profile_picture)]
+        );
 
         return redirect('/company/dashboard')
             ->with('notification', [
