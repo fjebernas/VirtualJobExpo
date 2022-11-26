@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobApplicationStoreRequest;
 use App\Models\JobApplication;
 use App\Models\JobPost;
 use Illuminate\Http\Request;
@@ -40,14 +41,10 @@ class JobApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobApplicationStoreRequest $request)
     {
-        JobApplication::create([
-            'pitch' => $request->pitch,
-            'job_post_id' => $request->job_post_id,
-            'student_id' => Auth::user()->student->id,
-        ]);
-        
+        Auth::user()->student->jobApplications()->create($request->validated());
+
         return redirect('/job-posts')
             ->with('notification', [
                 'message' => 'Job application submitted',
