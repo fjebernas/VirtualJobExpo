@@ -55,4 +55,11 @@ class User extends Authenticatable
             Company::class
         );
     }
+
+    public function profilePicture()
+    {
+        return $this->hasOne(
+            ProfilePicture::class
+        );
+    }
 }
