@@ -96,7 +96,7 @@
                         <textarea name="about" 
                                     class="form-control @error('about') is-invalid @enderror" 
                                     id="about" 
-                                    rows="5"
+                                    rows="4"
                         >@isset($company->about) {{ $company->about }}@endisset</textarea>
                         @error('about')
                             <span class="invalid-feedback" role="alert">

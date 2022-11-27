@@ -43,7 +43,7 @@ class CompanyProfileUpdateRequest extends FormRequest
             'address' => ['required'],
             'contact_number' => ['nullable', 'numeric', 'min_digits:11', 'max_digits:11'],
             'profile_picture' => ['nullable', 'mimes:png,jpg,jpeg'],
-            'about' => ['nullable'],
+            'about' => ['nullable', 'string', 'min:20', 'max:300'],
         ];
     }
 }
