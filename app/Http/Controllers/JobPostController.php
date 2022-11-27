@@ -62,18 +62,7 @@ class JobPostController extends Controller
      */
     public function store(JobPostStoreRequest $request) 
     {
-        JobPost::create([
-            'position' => $request->position,
-            'location' => $request->location,
-            'level' => $request->level,
-            'employment' => $request->employment,
-            'salary_range' => [
-                                'low' => $request->salary_range[0],
-                                'high' => $request->salary_range[1],
-                            ],
-            'description' => $request->description,
-            'company_id' => Auth::user()->company->id,
-        ]);
+        Auth::user()->company->jobPosts()->create($request->all());
 
         return redirect('/company/dashboard')
             ->with('notification', [

@@ -28,6 +28,10 @@ class JobPostStoreRequest extends FormRequest
     {
         $this->merge([
             'position' => Str::title(Str::lower($this->position)),
+            'salary_range' => [
+                                'low' => $this->salary_range[0],
+                                'high' => $this->salary_range[1],
+                            ],
         ]);
     }
 
@@ -51,7 +55,7 @@ class JobPostStoreRequest extends FormRequest
                                                     'full-time',
                                                     'part-time',
                                                 ])],
-            'salary_range' => ['nullable'],
+            'salary_range' => ['nullable', 'array:low,high'],
             'description' => ['nullable'],
         ];
     }

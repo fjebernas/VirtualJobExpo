@@ -43,7 +43,7 @@ class JobApplicationController extends Controller
      */
     public function store(JobApplicationStoreRequest $request)
     {
-        Auth::user()->student->jobApplications()->create($request->validated());
+        Auth::user()->student->jobApplications()->create($request->all());
 
         return redirect('/job-posts')
             ->with('notification', [
