@@ -43,3 +43,12 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+
+/**
+ * Processing Static Assets With Vite
+ * 
+ */ 
+
+import.meta.glob([
+    '../images/**',
+]);

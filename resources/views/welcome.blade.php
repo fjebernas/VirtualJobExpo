@@ -23,7 +23,7 @@
             </h1>
         </div>
         <div class="col d-flex flex-column justify-content-center align-items-center d-none d-md-flex">
-            <img src="/img/buildings.png" class="img-fluid" alt="buildings" srcset="">
+            <img src="{{ Vite::asset('resources/images/buildings.png') }}" class="img-fluid" alt="buildings" srcset="">
         </div>
     </div>
     {{-- <div class="top-employers d-flex flex-column">

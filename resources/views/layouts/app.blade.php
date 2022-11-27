@@ -47,11 +47,10 @@
     </span>
 
     <div id="loader">
-        <img src="/img/ball-triangle.svg" alt="" srcset="">
+        <img src="{{ Vite::asset('resources/images/ball-triangle.svg') }}" alt="" srcset="">
     </div>
 
-    <img src="/img/background.jpg" alt="" style="display: none">
-    <div id="background-image"></div>
+    <img src="{{ Vite::asset('resources/images/background.jpg') }}" alt="" id="background-image">
 
     <div id="app" class="d-flex flex-column">
         <nav id="navbar" class="navbar navbar-expand-md shadow-sm fs-5 navbar-dark position-fixed w-100">
