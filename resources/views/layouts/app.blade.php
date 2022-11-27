@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- icon --}}
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon-16x16.png') }}">
+
     <!-- scss & scripts -->
     @vite(['resources/sass/app.scss', 
             'resources/js/app.js', 
