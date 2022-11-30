@@ -5,20 +5,30 @@ $(function () {
         }
     });
 
-    $(document).on('click', '.btn-delete-job-application', function (event) {
-        event.preventDefault();
-
-        $.ajax({
-            type: 'DELETE',
-            url: $(this).closest('span').attr('data-action-delete'),
-            dataType: 'json',
-            success: (data) => {
-                $(this).closest('.job-application').remove();
-                toast(data['report']);
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
+    $(document).on('click', '.btn-delete-job-application', (e) => {
+        Swal.fire({
+            title: 'Withdraw job application?',
+            text: "You can always apply again if the job is still available.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#c78100',
+            cancelButtonColor: '#5630bd',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: $(e.target).closest('span').attr('data-action-delete'),
+                    dataType: 'json',
+                    success: (data) => {
+                        $(e.target).closest('.job-application').remove();
+                        toast(data['report']);
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
             }
         });
     });
