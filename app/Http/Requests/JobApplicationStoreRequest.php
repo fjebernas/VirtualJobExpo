@@ -25,7 +25,7 @@ class JobApplicationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'pitch' => ['required'],
+            'pitch' => ['required', 'min:100', 'max:500'],
             'job_post_id' => ['required', 'numeric'],
         ];
     }

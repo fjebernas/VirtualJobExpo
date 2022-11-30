@@ -46,7 +46,17 @@
                 <div class="card-body d-flex flex-column">
                     <div class="form-label fw-bold fs-5">
                         <label for="floatingTextarea2"><span class="text-muted">Your pitch:</span></label>
-                        <textarea name="pitch" class="form-control mt-2" placeholder="Hint: Avoid generic pitches like 'I'm responsible'" id="floatingTextarea2" style="height: 150px; resize: none;"></textarea>
+                        <textarea name="pitch" 
+                                class="form-control mt-2 @error('pitch') is-invalid @enderror" 
+                                placeholder="Hint: Avoid generic pitches like 'I'm responsible'" 
+                                id="floatingTextarea2" 
+                                style="height: 150px; resize: none;"
+                        ></textarea>
+                        @error('pitch')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning align-self-end">Submit</button>
