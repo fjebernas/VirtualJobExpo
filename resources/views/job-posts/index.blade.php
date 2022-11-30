@@ -127,15 +127,16 @@
                         </div>
                     </div>
                     <div class="card-body mt-3 pt-0">
+                        <div class="d-flex mb-3" style="column-gap: 5px">
+                            <span class="badge bg-dark text-muted">{{ $job_post->level }}</span>
+                            <span class="badge bg-dark text-muted">{{ $job_post->employment }}</span>
+                        </div>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
-                        <ul>
-                            <li class="text-muted">{{ $job_post->level }}</li>
-                            <li class="text-muted">{{ $job_post->employment }}</li>
-                            <li class="text-muted">
-                                ₱{{ number_format($job_post->salary_range['low']) }} 
-                                to ₱{{ number_format($job_post->salary_range['high']) }}
-                            </li>
-                        </ul>
+                        <h6 class="mb-3 text-muted">
+                            ₱{{ number_format($job_post->salary_range['low']) }} 
+                            to ₱{{ number_format($job_post->salary_range['high']) }}
+                            monthly
+                        </h6>
                         <div class="d-flex flex-wrap buttons-container">
                             @if (Auth::check())
                                 @if (Auth::user()->student)
