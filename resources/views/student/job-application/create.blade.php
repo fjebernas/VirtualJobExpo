@@ -40,11 +40,13 @@
             <div class="card-header text-muted">
                 Job Application
             </div>
-            <form action={{ route('student.job_applications.store' ) }} method="POST">
+            <form action={{ route('student.job_applications.store' ) }} method="POST" id="form-submit">
                 @csrf
 
                 <div class="card-body d-flex flex-column">
                     <div class="form-label fw-bold fs-5">
+                        {{-- job post id --}}
+                        <input type="hidden" name="job_post_id" value="{{ $job_post->id }}">
                         <label for="floatingTextarea2"><span class="text-muted">Your pitch:</span></label>
                         <textarea name="pitch" 
                                 class="form-control mt-2 @error('pitch') is-invalid @enderror" 
@@ -58,8 +60,7 @@
                             </span>
                         @enderror
                     </div>
-
-                    <button name="job_post_id" value="{{ $job_post->id }}" type="submit" class="btn btn-warning align-self-end">Submit</button>
+                    <button type="submit" class="btn btn-warning align-self-end">Submit</button>
                 </div>
             </form>
         </div>
