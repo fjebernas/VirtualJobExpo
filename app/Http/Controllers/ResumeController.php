@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResumeStoreRequest;
 use App\Models\Resume;
 use App\Services\ResumeService;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class ResumeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ResumeService $resumeService)
+    public function store(ResumeStoreRequest $request, ResumeService $resumeService)
     {
         $resumeService->handleResume($request->resume);
     }
