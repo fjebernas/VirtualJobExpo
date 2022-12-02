@@ -14,6 +14,7 @@ $(function () {
         $('#employment').text(jobPost['employment']);
         $('#salary_range').text(`${formatter.format(jobPost['salary_range']['low'])} 
                             to ${formatter.format(jobPost['salary_range']['high'])}`);
+        $('#description').text(jobPost['description']);
     }
 
     $.ajaxSetup({

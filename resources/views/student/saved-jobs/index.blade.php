@@ -29,11 +29,13 @@
                         <div class="col d-flex flex-wrap align-items-center justify-content-end"
                             style="column-gap: 5px; row-gap:5px">
                             <button data-job-post='{{ $saved_job->jobPost }}' 
-                                    class="btn btn-primary btn-brief-details">
-                                View brief details
+                                    class="btn p-0 btn-brief-details">
+                                <box-icon type='solid' name='show' color='#5630bd' size='md'></box-icon>
                             </button>
                             <span data-action-delete={{ route('student.saved_jobs.destroy', $saved_job->jobPost->id) }}>
-                                <button class="btn btn-danger btn-delete-saved-job">Remove</button>
+                                <button class="btn p-0 btn-delete-saved-job">
+                                    <box-icon type='solid' name='trash' color='#dc3545'></box-icon>
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -42,30 +44,34 @@
                 <h2 class="text-center fs-4 text-muted fst-italic align-self-center">No saved jobs</h2>
             @endforelse
         </div>
-        <div class="job-details-panel order-xxl-last order-first p-4">
+        <div class="job-details-panel overflow-scroll order-xxl-last order-first p-4">
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Position:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Position:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="position"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Company:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Company:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="company"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Location:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Location:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="location"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Level:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Level:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="level"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Employment:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Employment:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="employment"></p>
             </div>
             <div class="d-flex mb-3">
-                <h4 class="text-muted">Salary range:&nbsp;</h4>
+                <h4 class="text-muted fs-5">Salary range:&nbsp;</h4>
                 <p class="fs-5 m-0 p-0" id="salary_range"></p>
+            </div>
+            <div class="d-flex mb-3">
+                <h4 class="text-muted fs-5">Description:&nbsp;</h4>
+                <p class="fs-5 m-0 p-0" id="description"></p>
             </div>
         </div>
     </div>

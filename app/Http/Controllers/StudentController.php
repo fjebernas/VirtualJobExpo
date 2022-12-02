@@ -54,7 +54,7 @@ class StudentController extends Controller
     public function edit(Student $student) 
     {
         return view('student.profile.edit')
-                ->with('student', $student);
+            ->with('student', $student);
     }
 
     /**
