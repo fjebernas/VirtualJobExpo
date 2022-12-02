@@ -9,7 +9,7 @@
 @endsection --}}
 
 @section('content')
-    <h1>MY RESUME</h1>
+    <h1>SHOW RESUME</h1>
 
     <div class="mb-3">
         <label for="formFile" class="form-label">Default file input example</label>

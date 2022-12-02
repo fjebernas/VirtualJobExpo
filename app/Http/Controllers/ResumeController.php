@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resume;
 use Illuminate\Http\Request;
 
 class ResumeController extends Controller
 {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() 
+    {
+        return view('student.resume.create');
+    }
+
     /**
      * Display the specified resource.
      *

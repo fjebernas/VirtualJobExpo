@@ -82,7 +82,8 @@
                 </div>
             </a>
 
-            <a href='#' class="text-decoration-none">
+            <a href={{ route('student.resumes.create') }} 
+                class="text-decoration-none">
                 <div class="card my-resume d-flex justify-content-center align-items-center border-0">
                     <box-icon type='solid' name='file-pdf' size='90px' color='white'></box-icon>
                     <h3 class="fs-5">My Resume</h3>
