@@ -20,14 +20,11 @@ class ResumeService
     {
         $this->deleteOldResumeIfExists();
 
-        if (isset($resume))
-        {
-            $new_resume_name = $this->createPathFor($resume);
+        $new_resume_name = $this->createPathFor($resume);
 
-            $this->storeResumeToDisk($new_resume_name, $resume);
+        $this->storeResumeToDisk($new_resume_name, $resume);
 
-            $this->storeRecord($new_resume_name);
-        }
+        $this->storeRecord($new_resume_name);
     }
 
     /**
@@ -38,11 +35,9 @@ class ResumeService
      */
     public function createPathFor($resume)
     {
-        return isset($resume) ? Auth::user()->student->id . 
+        return  Auth::user()->student->id . 
                                         '.' .
-                                        $resume->extension()
-
-                                        : null;
+                                        $resume->extension();
     }
 
     /**

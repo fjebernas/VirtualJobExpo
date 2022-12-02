@@ -28,6 +28,12 @@ class ResumeController extends Controller
     public function store(ResumeStoreRequest $request, ResumeService $resumeService)
     {
         $resumeService->handleResume($request->resume);
+
+        return redirect('/student/dashboard')
+            ->with('notification', [
+                'message' => 'Resume uploaded successfully',
+                'type' => 'success'
+            ]);
     }
 
     /**

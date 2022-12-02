@@ -25,7 +25,7 @@ class ResumeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'resume' => ['required', 'mimes:png,jpg,jpeg'],
+            'resume' => ['required', 'mimes:pdf'],
         ];
     }
 }

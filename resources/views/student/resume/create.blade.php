@@ -13,7 +13,7 @@
     <h1>MY RESUME</h1>
 
     <div class="card w-100 mt-3">
-        <form action='' method="post" enctype="multipart/form-data">
+        <form action={{ route('student.resumes.store') }} method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="card-body d-flex flex-column">
