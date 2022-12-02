@@ -128,8 +128,8 @@
                     </div>
                     <div class="card-body mt-3 pt-0">
                         <div class="d-flex mb-3" style="column-gap: 5px">
-                            <span class="badge bg-dark text-muted">{{ $job_post->level }}</span>
-                            <span class="badge bg-dark text-muted">{{ $job_post->employment }}</span>
+                            <span class="badge bg-dark text-white">{{ $job_post->level }}</span>
+                            <span class="badge bg-dark text-white">{{ $job_post->employment }}</span>
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $job_post->location }}</h6>
                         <h6 class="mb-3 text-muted">
