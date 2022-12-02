@@ -82,6 +82,13 @@
                 </div>
             </a>
 
+            <a href='#' class="text-decoration-none">
+                <div class="card my-resume d-flex justify-content-center align-items-center border-0">
+                    <box-icon type='solid' name='file-pdf' size='90px' color='white'></box-icon>
+                    <h3 class="fs-5">My Resume</h3>
+                </div>
+            </a>
+
             <a href={{ route('student.saved_jobs.index') }} class="text-decoration-none">
                 <div class="card saved-jobs d-flex justify-content-center align-items-center border-0">
                     <box-icon name='spreadsheet' size='90px' color='white'></box-icon>

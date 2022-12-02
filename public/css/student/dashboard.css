@@ -28,6 +28,11 @@
     background-color: rgba(163, 106, 0, 0.6);
 }
 
+.my-resume.card {
+    color: rgb(221, 245, 255);
+    background-color: rgba(0, 82, 129, 0.6);
+}
+
 .saved-jobs.card {
     color: rgb(250, 239, 255);
     background-color: rgba(138, 0, 138, 0.6);
