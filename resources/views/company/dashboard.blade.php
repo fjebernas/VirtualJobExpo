@@ -15,27 +15,21 @@
                 <h1 class="text-warning">Welcome, {{ Auth::user()->company->name }}.</h1>
                 <h2 class="fs-5 text-white">Lorem ipsum dolor sit amet consectetur.</h2>
             </div>
-            <div>
-                <div class="row">
-                    <div class="col text-nowrap">
-                        <h5 class="text-warning pb-0 mb-0">Job Posts</h5>
-                    </div>
-                    <div class="col text-nowrap">
-                        <h5 class="text-warning pb-0 mb-0">Job Applicants</h5>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <p class="fs-2 pb-0 mb-0 text-center text-white">
-                            {{ $company->jobPosts->count() }}
-                        </p>
-                    </div>
-                    <div class="col">
-                        <p class="fs-2 pb-0 mb-0 text-center text-white">
-                            {{ $company->jobApplicationsReceived->count() }}
-                        </p>
-                    </div>
-                </div>
+            <div class="table-responsive">
+                <table class="table table-borderless text-center mb-0">
+                    <thead class="text-warning fs-5">
+                        <tr>
+                            <td class="border-secondary border-end p-0 px-2">Job Posts</td>
+                            <td class="p-0 px-2">Job Applicants</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-white fs-3">
+                        <tr>
+                            <td class="border-secondary border-end p-0">{{ $company->jobPosts->count() }}</td>
+                            <td class="p-0">{{ $company->jobApplicationsReceived->count() }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
