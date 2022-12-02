@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="" id="sending-invitation-loader">
-        <img src="/img/ball-triangle.svg" alt="" srcset="">
+        <img src="{{ Vite::asset('resources/images/ball-triangle.svg') }}" alt="" srcset="">
         <h2 class="fs-4 mt-5 text-muted">Sending invitation</h2>
     </div>
 
@@ -23,7 +23,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Job Post</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" style="width: 15%">Send Invitation</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,11 +48,11 @@
                                 <input type="hidden" name="job_application_id" value='{{ $job_application->id }}'>
                                 <button type='button' 
                                         @if ($job_application->invited)
-                                            class="btn-send-invitation btn btn-secondary">
-                                            Send again
+                                            class="btn-send-invitation btn">
+                                            <box-icon name='mail-send' color='grey'></box-icon>
                                         @else
-                                            class="btn-send-invitation btn btn-warning">
-                                            Send invitation
+                                            class="btn-send-invitation btn">
+                                            <box-icon name='mail-send' color='#5630bd'></box-icon>
                                         @endif
                                 </button>
                             </form>

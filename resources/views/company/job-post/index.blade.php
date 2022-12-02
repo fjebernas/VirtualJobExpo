@@ -14,13 +14,15 @@
     @forelse ($job_posts as $job_post)
         <div class="py-3">
             <div class="card mt-3 w-100" style="">
-                <div class="card-header bg-dark text-muted d-flex justify-content-between">
+                <div class="card-header bg-dark text-muted d-flex justify-content-between pb-0">
                     <span>Job post ID: {{ $job_post->id }}</span>
                     <span>
                         <form action={{ route('company.job_posts.destroy', $job_post->id) }} method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-link text-danger fw-bold m-0 p-0">Delete job post</button>
+                            <button type="submit" class="btn m-0 p-0">
+                                <box-icon type='solid' name='trash' color='#dc3545'></box-icon>
+                            </button>
                         </form>
                     </span>
                 </div>

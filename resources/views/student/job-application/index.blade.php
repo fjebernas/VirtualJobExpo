@@ -55,7 +55,9 @@
                         </td>
                         <td>
                             <span data-action-delete={{ route('student.job_applications.destroy', $job_application->id) }}>
-                                <button class="btn btn-danger btn-delete-job-application">Withdraw</button>
+                                <button class="btn p-0 btn-delete-job-application">
+                                    <box-icon type='solid' name='trash' color='#dc3545'></box-icon>
+                                </button>
                             </span>
                         </td>
                     </tr>
