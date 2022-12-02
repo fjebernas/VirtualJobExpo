@@ -29,6 +29,13 @@ class Student extends Model
         );
     }
 
+    public function resume()
+    {
+        return $this->hasOne(
+            Resume::class
+        );
+    }
+
     public function savedJobs()
     {
         return $this->hasMany(
