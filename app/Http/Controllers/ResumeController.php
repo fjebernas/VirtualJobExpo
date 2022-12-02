@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resume;
+use App\Services\ResumeService;
 use Illuminate\Http\Request;
 
 class ResumeController extends Controller
@@ -18,6 +19,17 @@ class ResumeController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, ResumeService $resumeService)
+    {
+        $resumeService->handleResume($request->resume);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -26,17 +38,6 @@ class ResumeController extends Controller
     public function show($id)
     {
         return view('student.resume.show');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
