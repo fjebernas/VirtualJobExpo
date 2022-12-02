@@ -12,10 +12,6 @@
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
         <h1>EDIT PROFILE</h1>
 
-        @foreach ($errors->all() as $error)
-            <p class="text-white">{{ $error }}</p>
-        @endforeach
-
         <div class="card mt-3 w-100">
             <form action={{ route('company.companies.update', $company->id) }} method="POST" enctype="multipart/form-data">
                 @csrf

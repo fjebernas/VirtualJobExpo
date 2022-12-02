@@ -55,6 +55,7 @@
                                         <th scope="col" style="width: 15%">Name</th>
                                         <th scope="col" style="width: 15%">Email</th>
                                         <th scope="col">Pitch</th>
+                                        <th scope="col" style="width: 7%">Resume</th>
                                         <th scope="col" style="width: 15%">Date Submitted</th>
                                         <th scope="col" style="width: 10%">Status</th>
                                     </tr>
@@ -80,9 +81,20 @@
                                                     aria-controls="collapseExample">
                                                     Show pitch
                                                 </a>
-                                                <p class="collapse text-start text-wrap" id={{ 'pitch_' . $job_application->id }}>
+                                                <p class="collapse text-start text-wrap text-break" 
+                                                    id={{ 'pitch_' . $job_application->id }}>
                                                     {{ $job_application->pitch }}
                                                 </p>
+                                            </td>
+                                            <td>
+                                                @if ($job_application->student->resume)
+                                                    <a href="{{ asset('storage/students/resumes/' . $job_application->student->resume->path) }}"
+                                                        target="_blank">
+                                                        <box-icon type='solid' name='file-pdf' color='#5630bd'></box-icon>
+                                                    </a>
+                                                @else
+                                                    <box-icon type='solid' name='file-pdf' color='#495057'></box-icon>
+                                                @endif
                                             </td>
                                             <td>{{ $job_application->created_at }}</td>
                                             <td class="d-flex justify-content-center flex-wrap" style="row-gap: 5px">
