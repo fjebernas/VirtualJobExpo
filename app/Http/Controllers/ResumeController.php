@@ -14,7 +14,7 @@ class ResumeController extends Controller
      */
     public function show($id)
     {
-        
+        return view('student.resume.show');
     }
 
     /**

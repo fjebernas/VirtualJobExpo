@@ -4,6 +4,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FilteredJobPostController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobPostController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\ShortlistedCandidateController;
 use App\Http\Controllers\StudentController;
@@ -96,6 +97,15 @@ Route::middleware(['auth', 'details.set'])->group(function(){
             // Create-job-application route is separated because it needs the job post id
             Route::get('/job-applications/create/{job_post_id}', [JobApplicationController::class, 'create'])
                 ->name('job_applications.create');
+
+            /**
+             * Student routes managed by ResumeController
+             *
+             * 
+             */
+            Route::resource('resumes', ResumeController::class)->only([
+                'show', 'store', 'delete',
+            ]);
         });
     });
 
