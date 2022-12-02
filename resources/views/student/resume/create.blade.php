@@ -36,9 +36,15 @@
                     @enderror
                 </form>
             </div>
+            
             <div class="align-self-end d-flex" style="column-gap: 7px">
-                <button type="submit" form="store-resume" class="btn btn-primary">Upload</button>
+                <button type="submit" form="store-resume" class="btn btn-warning">Upload</button>
                 @if (Auth::user()->student->resume)
+                    <a href="{{ asset('storage/students/resumes/' . Auth::user()->student->resume->path) }}"
+                        target="_blank"
+                        class="btn btn-primary">
+                        View
+                    </a>
                     <form action={{ route('student.resumes.destroy', Auth::user()->student->resume) }} method='POST'>
                         @csrf
                         @method('delete')
@@ -48,6 +54,11 @@
                         </button>
                     </form>
                 @else
+                    <a href="#"
+                        target="_blank"
+                        class="btn btn-secondary disabled">
+                        View
+                    </a>
                     <button class="btn btn-secondary disabled">
                         Remove
                     </button>

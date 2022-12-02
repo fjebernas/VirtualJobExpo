@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResumeStoreRequest;
 use App\Models\Resume;
 use App\Services\ResumeService;
-use Illuminate\Http\Request;
 
 class ResumeController extends Controller
 {
@@ -53,10 +52,10 @@ class ResumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, ResumeService $resumeService)
+    public function destroy(Resume $resume, ResumeService $resumeService)
     {
         $resumeService->deleteOldResumeIfExists();
-        $resumeService->deleteRecord();
+        $resume->delete();
 
         return redirect()->back()
             ->with('notification', [
