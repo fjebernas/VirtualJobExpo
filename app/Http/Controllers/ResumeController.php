@@ -29,7 +29,7 @@ class ResumeController extends Controller
     {
         $resumeService->handleResume($request->resume);
 
-        return redirect('/student/dashboard')
+        return redirect()->back()
             ->with('notification', [
                 'message' => 'Resume uploaded successfully',
                 'type' => 'success'
@@ -53,8 +53,15 @@ class ResumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, ResumeService $resumeService)
     {
-        //
+        $resumeService->deleteOldResumeIfExists();
+        $resumeService->deleteRecord();
+
+        return redirect()->back()
+            ->with('notification', [
+                'message' => 'Resume removed successfully',
+                'type' => 'success'
+            ]);
     }
 }

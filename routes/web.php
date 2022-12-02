@@ -104,7 +104,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
              * 
              */
             Route::resource('resumes', ResumeController::class)->only([
-                'create', 'show', 'store', 'delete',
+                'create', 'show', 'store', 'destroy',
             ]);
         });
     });

@@ -13,11 +13,10 @@
     <h1>MY RESUME</h1>
 
     <div class="card w-100 mt-3">
-        <form action={{ route('student.resumes.store') }} method="post" enctype="multipart/form-data">
-            @csrf
-
-            <div class="card-body d-flex flex-column">
-                <div class="mb-3">
+        <div class="card-body d-flex flex-column">
+            <div class="mb-3">
+                <form id="store-resume" action={{ route('student.resumes.store') }} method="post" enctype="multipart/form-data">
+                @csrf
                     <label class="form-label fw-bold fs-5 text-muted" for="resume">
                         Resume status: 
                         @if (Auth::user()->student->resume)
@@ -35,14 +34,26 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
-
-                <div class="align-self-end d-flex" style="column-gap: 7px">
-                    <button type="submit" class="btn btn-primary">Upload</button>
-                    <button type="submit" class="btn btn-danger">Remove</button>
-                </div>
+                </form>
             </div>
-        </form>
+            <div class="align-self-end d-flex" style="column-gap: 7px">
+                <button type="submit" form="store-resume" class="btn btn-primary">Upload</button>
+                @if (Auth::user()->student->resume)
+                    <form action={{ route('student.resumes.destroy', Auth::user()->student->resume) }} method='POST'>
+                        @csrf
+                        @method('delete')
+                        <button type="submit" 
+                                class="btn btn-danger">
+                                Remove
+                        </button>
+                    </form>
+                @else
+                    <button class="btn btn-secondary disabled">
+                        Remove
+                    </button>
+                @endif
+            </div>
+        </div>
     </div>
 </div>
 @endsection
