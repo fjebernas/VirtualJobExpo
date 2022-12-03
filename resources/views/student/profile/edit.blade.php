@@ -24,7 +24,8 @@
                                 value="@isset($student->first_name) {{ $student->first_name }} @endisset" 
                                 type="text" 
                                 class="form-control @error('first_name') is-invalid @enderror" 
-                                id="first_name">
+                                id="first_name"
+                                placeholder="e.g. John">
                         @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,7 +39,8 @@
                                 value="@isset($student->middle_name) {{ $student->middle_name }} @endisset" 
                                 type="text" 
                                 class="form-control @error('middle_name') is-invalid @enderror" 
-                                id="middle_name">
+                                id="middle_name"
+                                placeholder="e.g. Ricker">
                         @error('middle_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -52,7 +54,8 @@
                                 value="@isset($student->last_name) {{ $student->last_name }} @endisset" 
                                 type="text" 
                                 class="form-control @error('last_name') is-invalid @enderror" 
-                                id="last_name">
+                                id="last_name"
+                                placeholder="e.g. Doe">
                         @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -95,7 +98,8 @@
                                 value="@isset($student->university) {{ $student->university }} @endisset" 
                                 type="text" 
                                 class="form-control @error('university') is-invalid @enderror" 
-                                id="university">
+                                id="university"
+                                placeholder="e.g. University of the Commoners">
                         @error('university')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -109,7 +113,8 @@
                                 value=@isset($student->contact_number) "{{ $student->contact_number }}" @else null @endisset 
                                 type="number" 
                                 class="form-control @error('contact_number') is-invalid @enderror" 
-                                id="contact_number">
+                                id="contact_number"
+                                placeholder='e.g. 09112233445'>
                         @error('contact_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -136,6 +141,7 @@
                                     class="form-control @error('about') is-invalid @enderror" 
                                     id="about" 
                                     rows="4"
+                                    placeholder="e.g. I am the most jolly good fellow!"
                         >@isset($student->about) {{ $student->about }}@endisset</textarea>
                         @error('about')
                             <span class="invalid-feedback" role="alert">
