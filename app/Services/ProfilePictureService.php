@@ -23,7 +23,7 @@ class ProfilePictureService
 
         if (isset($profile_picture))
         {
-            $new_profile_picture_name = $this->getPathOf($profile_picture);
+            $new_profile_picture_name = $this->createPathFor($profile_picture);
 
             $this->storeProfilePictureToDisk($new_profile_picture_name, $profile_picture);
 
@@ -37,7 +37,7 @@ class ProfilePictureService
      * @param Illuminate\Http\UploadedFile $profile_picture
      * @return string
      */
-    public function getPathOf($profile_picture)
+    public function createPathFor($profile_picture)
     {
         return isset($profile_picture) ? Auth::user()->id . 
                                         '.' .
