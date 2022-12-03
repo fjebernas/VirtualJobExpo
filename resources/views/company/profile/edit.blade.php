@@ -24,7 +24,8 @@
                                 value="@isset($company->name) {{ $company->name }} @endisset" 
                                 type="text" 
                                 class="form-control @error('name') is-invalid @enderror" 
-                                id="name">
+                                id="name"
+                                placeholder="e.g. Commoner's Company">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,7 +39,8 @@
                                 value="@isset($company->industry) {{ $company->industry }} @endisset" 
                                 type="text" 
                                 class="form-control @error('industry') is-invalid @enderror" 
-                                id="industry">
+                                id="industry"
+                                placeholder="e.g. Software development">
                         @error('industry')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -52,7 +54,8 @@
                                 value="@isset($company->address) {{ $company->address }} @endisset" 
                                 type="text" 
                                 class="form-control @error('address') is-invalid @enderror" 
-                                id="address">
+                                id="address"
+                                placeholder="Commoner's street, City">
                         @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -66,7 +69,8 @@
                                 value=@isset($company->contact_number) {{ $company->contact_number }} @else null @endisset 
                                 type="number" 
                                 class="form-control @error('contact_number') is-invalid @enderror" 
-                                id="contact_number">
+                                id="contact_number"
+                                placeholder='09112233445'>
                         @error('contact_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -93,6 +97,7 @@
                                     class="form-control @error('about') is-invalid @enderror" 
                                     id="about" 
                                     rows="4"
+                                    placeholder="e.g. We are the company who makes products that make life easier!"
                         >@isset($company->about) {{ $company->about }}@endisset</textarea>
                         @error('about')
                             <span class="invalid-feedback" role="alert">
