@@ -33,7 +33,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                                <input id="email" 
+                                        type="email" 
+                                        class="form-control @error('email') is-invalid @enderror" 
+                                        name="email" 
+                                        value="{{ old('email') }}" 
+                                        autocomplete="email"
+                                        placeholder="e.g. user@example.com">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -45,13 +51,31 @@
 
                         <div class="row mb-3">
                             <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-end">Role</label>
-                            <div class="col-md-6">
-                                <select name="role" class="form-control @error('role') is-invalid @enderror" value="{{ old('role') }}" autocomplete="role">
-                                    <option value="student">Student</option>
-                                    <option value="company">Company</option>
-                                </select>
+                            <div class="col-md-6 d-flex flex-column justify-content-center">
+                                <div class="d-flex align-items-center @error('role') is-invalid @enderror" style="column-gap: 15px">
+                                    <div class="form-check">
+                                        <input class="form-check-input" 
+                                                type="radio" 
+                                                name="role" 
+                                                value="student" 
+                                                id="student">
+                                        <label class="form-check-label text-muted" for="student">
+                                            Student
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" 
+                                                type="radio" 
+                                                name="role" 
+                                                value="company" 
+                                                id="company">
+                                        <label class="form-check-label text-muted" for="company">
+                                            Company
+                                        </label>
+                                    </div>
+                                </div>
                                 @error('role')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback align-self-center" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
