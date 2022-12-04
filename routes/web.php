@@ -26,15 +26,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**
- * For testing
- *
- * 
- */
-// Route::get('/exp', function(){
-//     dd(asset('storage/students/images/' . 'placeholder.png'));
-// });
-
 Route::get('/', function () {
     return view('welcome');
 });

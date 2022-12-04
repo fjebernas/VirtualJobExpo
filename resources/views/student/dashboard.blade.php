@@ -13,7 +13,7 @@
         <div class="greeting w-100 rounded d-flex flex-wrap align-items-center justify-content-between px-4 py-4">
             <div>
                 <h1 class="text-warning">Welcome, {{ Auth::user()->student->first_name }}.</h1>
-                <h2 class="fs-5 text-white">Lorem ipsum dolor sit amet consectetur.</h2>
+                <h2 class="fs-5 text-white">“A year from now you may wish you had started today.” —Karen Lamb</h2>
             </div>
             <div class="table-responsive">
                 <table>

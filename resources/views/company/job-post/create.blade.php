@@ -79,7 +79,7 @@
                         @enderror
                     </div>
 
-                    <h6 class="pb-2 m-0 text-muted fw-bold fs-5">Salary range:</h6>
+                    <h6 class="pb-2 m-0 text-muted fw-bold fs-5">Salary range(in ₱):</h6>
                     <fieldset class="row gx-2">
                         <div class="col input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">min</span>
@@ -92,7 +92,7 @@
                     </fieldset>
 
                     <div class="form-group mb-3">
-                        <label for="description" class="form-label fw-bold fs-5 text-muted">description</label>
+                        <label for="description" class="form-label fw-bold fs-5 text-muted">Description</label>
                         <textarea name="description" 
                                 class="form-control @error('description') is-invalid @enderror" 
                                 id="description" 
