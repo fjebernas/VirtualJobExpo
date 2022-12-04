@@ -1,9 +1,21 @@
 
 $(function () {
-    $(document).on('click', '.btn-send-invitation', function (event) {
-        $('#sending-invitation-loader').fadeIn();
-        $('#sending-invitation-loader').addClass('d-flex justify-content-center align-items-center flex-column');
+    $(document).on('click', '.btn-send-invitation', (e) => {
+        Swal.fire({
+            title: 'Send invitation email?',
+            text: "Invitation email is sent to the candidate's email.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#c78100',
+            cancelButtonColor: '#5630bd',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#sending-invitation-loader').fadeIn();
+                $('#sending-invitation-loader').addClass('d-flex justify-content-center align-items-center flex-column');
 
-        $(this).closest('form').trigger('submit');
+                $(e.target).closest('form').trigger('submit');
+            }
+        });
     });
 });

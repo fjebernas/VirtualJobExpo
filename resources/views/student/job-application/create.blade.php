@@ -30,7 +30,7 @@
                         <span class="fw-bold text-muted">Location: </span> {{ $job_post->location }}
                     </p>
                     <p>
-                        <span class="fw-bold text-muted">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} - {{ $job_post->salary_range['high'] }}
+                        <span class="fw-bold text-muted">Salary range: </span> ₱{{ $job_post->salary_range['low'] }} - ₱{{ $job_post->salary_range['high'] }}
                     </p>
                 </div>
             </div>
