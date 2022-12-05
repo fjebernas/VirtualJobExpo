@@ -128,7 +128,7 @@
         <footer id="footer" class="pb-2 m-0 text-center">
             <hr>
             <div class="d-flex justify-content-center flex-wrap pt-1">
-                <p class="text-muted p-0 m-0">&copy; 2022 Developed by <a href="https://github.com/fjebernas" 
+                <p class="text-muted p-0 m-0">&copy; 2022 Developed by <a href="https://github.com/fjebernas/VirtualJobExpo" 
                                                                         target="_blank"
                                                                         style="text-decoration: none; color: rgb(153, 153, 153)">
                                                                             <strong>Francis Bernas.</strong>
