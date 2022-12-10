@@ -69,38 +69,38 @@
 
     <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
         <a href='#' class="text-decoration-none">
-            <div class="card view-profile d-flex justify-content-center align-items-center border-0">
-                <box-icon name='news' size='90px' color='white'></box-icon>
-                <h3 class="fs-5">View Profile</h3>
+            <div class="card users d-flex justify-content-center align-items-center border-0">
+                <box-icon name='user' size='90px' color='white'></box-icon>
+                <h3 class="fs-5">Users</h3>
             </div>
         </a>
 
         <a href='#' class="text-decoration-none">
-            <div class="card edit-profile d-flex justify-content-center align-items-center border-0">
-                <box-icon name='edit-alt' size='90px' color='white'></box-icon>
-                <h3 class="fs-5">Edit Profile</h3>
+            <div class="card students d-flex justify-content-center align-items-center border-0">
+                <box-icon type='solid' name='graduation' size='90px' color='white'></box-icon>
+                <h3 class="fs-5">Students</h3>
             </div>
         </a>
 
         <a href='#'
             class="text-decoration-none">
-            <div class="card my-resume d-flex justify-content-center align-items-center border-0">
-                <box-icon type='solid' name='file-pdf' size='90px' color='white'></box-icon>
-                <h3 class="fs-5">My Resume</h3>
+            <div class="card companies d-flex justify-content-center align-items-center border-0">
+                <box-icon name='group' size='90px' color='white'></box-icon>
+                <h3 class="fs-5">Companies</h3>
             </div>
         </a>
 
         <a href='#' class="text-decoration-none">
-            <div class="card saved-jobs d-flex justify-content-center align-items-center border-0">
-                <box-icon name='spreadsheet' size='90px' color='white'></box-icon>
-                <h3 class="fs-5">Saved Jobs</h3>
+            <div class="card job-posts d-flex justify-content-center align-items-center border-0">
+                <box-icon type='solid' name='note' size='90px' color='white'></box-icon>
+                <h3 class="fs-5">Job Posts</h3>
             </div>
         </a>
 
         <a href='#' class="text-decoration-none">
-            <div class="card jobs-applied d-flex justify-content-center align-items-center border-0">
+            <div class="card jobs-applications d-flex justify-content-center align-items-center border-0">
                 <box-icon name='briefcase' size='90px' color='white'></box-icon>
-                <h3 class="fs-5">Jobs Applied</h3>
+                <h3 class="fs-5">Job Applications</h3>
             </div>
         </a>
     </div>
