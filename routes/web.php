@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FilteredJobPostController;
 use App\Http\Controllers\JobApplicationController;
@@ -155,4 +156,7 @@ Route::middleware(['auth', 'details.set'])->group(function(){
             });
         });
     });
+});
+
+Route::controller(AdminController::class)->group(function(){
 });
