@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         //     ->create();
 
         $this->call([
+            AdminSeeder::class,
             StudentSeeder::class,
             CompanySeeder::class,
-            AdminSeeder::class,
         ]);
     }
 }

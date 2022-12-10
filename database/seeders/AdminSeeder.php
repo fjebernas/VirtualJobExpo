@@ -25,7 +25,7 @@ class AdminSeeder extends Seeder
 
         Admin::create([
             'username' => 'superAdmin',
-            'user_id' => '3',
+            'user_id' => '1',
         ]);
     }
 }
