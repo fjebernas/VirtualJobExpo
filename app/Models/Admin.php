@@ -9,6 +9,11 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'username',
+        'user_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(
