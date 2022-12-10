@@ -62,4 +62,11 @@ class User extends Authenticatable
             ProfilePicture::class
         );
     }
+
+    public function admin() 
+    {
+        return $this->hasOne(
+            Admin::class
+        );
+    }
 }
