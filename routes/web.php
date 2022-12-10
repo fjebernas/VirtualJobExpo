@@ -159,4 +159,9 @@ Route::middleware(['auth', 'details.set'])->group(function(){
 });
 
 Route::controller(AdminController::class)->group(function(){
+    Route::name('admin.')->group(function(){
+        Route::prefix('admin')->group(function(){
+            Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        });
+    });
 });
