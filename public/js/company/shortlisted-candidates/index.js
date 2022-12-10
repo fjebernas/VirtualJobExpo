@@ -1,9 +1,22 @@
 
 $(function () {
     $(document).on('click', '.btn-send-invitation', (e) => {
+
+        var title;
+        var text;
+
+        // e.target.parentNode because e.target is the box icon
+        if ($(e.target.parentNode).hasClass('invited')) {
+            title = 'Send again?';
+            text = 'Candidate already invited through email.';
+        } else {
+            title = 'Send invitation email?';
+            text = "Invitation email is sent to the candidate's email.";
+        }
+
         Swal.fire({
-            title: 'Send invitation email?',
-            text: "Invitation email is sent to the candidate's email.",
+            title: title,
+            text: text,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#c78100',

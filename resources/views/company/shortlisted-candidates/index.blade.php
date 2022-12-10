@@ -48,7 +48,7 @@
                                 <input type="hidden" name="job_application_id" value='{{ $job_application->id }}'>
                                 <button type='button' 
                                         @if ($job_application->invited)
-                                            class="btn-send-invitation btn">
+                                            class="btn-send-invitation btn invited">
                                             <box-icon name='mail-send' color='grey'></box-icon>
                                         @else
                                             class="btn-send-invitation btn">
