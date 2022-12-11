@@ -1,12 +1,11 @@
 
 $(function () {
-    $(document).on('click', '.btn-send-invitation', (e) => {
+    $(document).on('click', '.btn-send-invitation', function(e) {
 
         var title;
         var text;
 
-        // e.target.parentNode because e.target is the box icon
-        if ($(e.target.parentNode).hasClass('invited')) {
+        if ($(this).hasClass('invited')) {
             title = 'Send again?';
             text = 'Candidate already invited through email.';
         } else {
@@ -27,7 +26,7 @@ $(function () {
                 $('#sending-invitation-loader').fadeIn();
                 $('#sending-invitation-loader').addClass('d-flex justify-content-center align-items-center flex-column');
 
-                $(e.target).closest('form').trigger('submit');
+                $(this).closest('form').trigger('submit');
             }
         });
     });
