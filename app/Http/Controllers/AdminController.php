@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\JobPost;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class AdminController extends Controller
 
     public function jobPostIndex()
     {
-
+        return view('admin.job-posts.index')
+            ->with('job_posts', JobPost::all());
     }
 
     public function jobApplicationIndex()
