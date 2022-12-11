@@ -20,30 +20,35 @@ class AdminController extends Controller
     public function userIndex()
     {
         return view('admin.users.index')
-            ->with('users', User::all());
+            ->with('users', User::orderBy('id', 'asc')
+                                ->paginate(10));
     }
 
     public function studentIndex()
     {
         return view('admin.students.index')
-            ->with('students', Student::all());
+            ->with('students', Student::orderBy('id', 'asc')
+                                    ->paginate(10));
     }
 
     public function companyIndex()
     {
         return view('admin.companies.index')
-            ->with('companies', Company::all());
+            ->with('companies', Company::orderBy('id', 'asc')
+                                    ->paginate(10));
     }
 
     public function jobPostIndex()
     {
         return view('admin.job-posts.index')
-            ->with('job_posts', JobPost::all());
+            ->with('job_posts', JobPost::orderBy('id', 'asc')
+                                    ->paginate(10));
     }
 
     public function jobApplicationIndex()
     {
         return view('admin.job-applications.index')
-            ->with('job_applications', JobApplication::all());
+            ->with('job_applications', JobApplication::orderBy('id', 'asc')
+                                                    ->paginate(10));
     }
 }

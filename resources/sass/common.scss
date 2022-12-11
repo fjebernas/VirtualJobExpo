@@ -55,6 +55,15 @@ h1 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.page-link {
+    background-color: #000 !important;
+    border: none !important;
+}
+
+.page-link:hover {
+    background-color: #fff !important;
+}
+
 /* custom scroll bar */
 ::-webkit-scrollbar {
     width: 6px;

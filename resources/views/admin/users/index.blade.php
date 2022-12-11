@@ -18,7 +18,7 @@
     <h1 class="text-center">ALL USERS</h1>
 
     <div class="table-responsive">
-        <table class="table table-dark text-center table-bordered mt-4">
+        <table class="table table-dark text-center table-bordered mt-4 text-nowrap">
             <thead class="bg-dark text-white">
                 <tr>
                     <td>ID</td>
@@ -44,5 +44,9 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <div class="mt-4 mx-5 d-md-block d-flex justify-content-center">
+        {{ $users->links() }}
     </div>
 @endsection

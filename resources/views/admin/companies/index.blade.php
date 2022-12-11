@@ -62,4 +62,7 @@
             </tbody>
         </table>
     </div>
+    <div class="mt-4 mx-5 d-md-block d-flex justify-content-center">
+        {{ $companies->links() }}
+    </div>
 @endsection
