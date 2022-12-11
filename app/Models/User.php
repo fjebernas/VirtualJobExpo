@@ -56,17 +56,17 @@ class User extends Authenticatable
         );
     }
 
-    public function profilePicture()
-    {
-        return $this->hasOne(
-            ProfilePicture::class
-        );
-    }
-
     public function admin() 
     {
         return $this->hasOne(
             Admin::class
+        );
+    }
+
+    public function profilePicture()
+    {
+        return $this->hasOne(
+            ProfilePicture::class
         );
     }
 }

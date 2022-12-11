@@ -161,7 +161,12 @@ Route::middleware(['auth', 'details.set'])->group(function(){
 Route::controller(AdminController::class)->group(function(){
     Route::name('admin.')->group(function(){
         Route::prefix('admin')->group(function(){
-            Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/users', 'userIndex')->name('users');
+            Route::get('/students', 'studentIndex')->name('students');
+            Route::get('/companies', 'companyIndex')->name('companies');
+            Route::get('/job-posts', 'jobPostIndex')->name('job-posts');
+            Route::get('/job-applications', 'jobApplicationIndex')->name('job-applications');
         });
     });
 });

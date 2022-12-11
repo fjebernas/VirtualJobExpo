@@ -11,4 +11,29 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function userIndex()
+    {
+
+    }
+
+    public function studentIndex()
+    {
+
+    }
+
+    public function companyIndex()
+    {
+
+    }
+
+    public function jobPostIndex()
+    {
+
+    }
+
+    public function jobApplicationIndex()
+    {
+        
+    }
 }

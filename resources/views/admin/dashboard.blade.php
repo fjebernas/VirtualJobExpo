@@ -68,21 +68,21 @@
     </div>
 
     <div class="cards-container d-flex justify-content-center flex-wrap mt-5">
-        <a href='#' class="text-decoration-none">
+        <a href={{ route('admin.users') }} class="text-decoration-none">
             <div class="card users d-flex justify-content-center align-items-center border-0">
                 <box-icon name='user' size='90px' color='white'></box-icon>
                 <h3 class="fs-5">Users</h3>
             </div>
         </a>
 
-        <a href='#' class="text-decoration-none">
+        <a href={{ route('admin.students') }} class="text-decoration-none">
             <div class="card students d-flex justify-content-center align-items-center border-0">
                 <box-icon type='solid' name='graduation' size='90px' color='white'></box-icon>
                 <h3 class="fs-5">Students</h3>
             </div>
         </a>
 
-        <a href='#'
+        <a href={{ route('admin.companies') }}
             class="text-decoration-none">
             <div class="card companies d-flex justify-content-center align-items-center border-0">
                 <box-icon name='group' size='90px' color='white'></box-icon>
@@ -90,14 +90,14 @@
             </div>
         </a>
 
-        <a href='#' class="text-decoration-none">
+        <a href={{ route('admin.job-posts') }} class="text-decoration-none">
             <div class="card job-posts d-flex justify-content-center align-items-center border-0">
                 <box-icon type='solid' name='note' size='90px' color='white'></box-icon>
                 <h3 class="fs-5">Job Posts</h3>
             </div>
         </a>
 
-        <a href='#' class="text-decoration-none">
+        <a href={{ route('admin.job-applications') }} class="text-decoration-none">
             <div class="card jobs-applications d-flex justify-content-center align-items-center border-0">
                 <box-icon name='briefcase' size='90px' color='white'></box-icon>
                 <h3 class="fs-5">Job Applications</h3>
