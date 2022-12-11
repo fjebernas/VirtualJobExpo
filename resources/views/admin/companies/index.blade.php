@@ -1,11 +1,11 @@
 @extends('layouts.app')
     
 @section('customcss')
-    <link rel="stylesheet" href="/css/admin/students/index.css">
+    <link rel="stylesheet" href="/css/admin/companys/index.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/admin/students/index.js" type="module"></script>
+    <script src="/js/admin/companys/index.js" type="module"></script>
 @endsection
 
 <style>
@@ -15,46 +15,40 @@
 </style>
 
 @section('content')
-    <h1 class="text-center">ALL STUDENTS</h1>
+    <h1 class="text-center">ALL COMPANIES</h1>
 
     <div class="table-responsive">
         <table class="table table-dark text-center table-bordered mt-4 text-nowrap">
             <thead class="bg-dark text-white">
                 <tr>
                     <td>ID</td>
-                    <td>First name</td>
-                    <td>Middle name</td>
-                    <td>Last name</td>
-                    <td>Birthdate</td>
-                    <td>Gender</td>
-                    <td>University</td>
+                    <td>Name</td>
+                    <td>Industry</td>
+                    <td>Address</td>
                     <td>Contact number</td>
                     <td>About</td>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($students as $student)
+                @forelse ($companies as $company)
                     <tr>
-                        <td>{{ $student->id }}</td>
-                        <td>{{ $student->first_name }}</td>
-                        <td>{{ $student->middle_name }}</td>
-                        <td>{{ $student->last_name }}</td>
-                        <td>{{ $student->birthdate }}</td>
-                        <td>{{ $student->gender }}</td>
-                        <td>{{ $student->university }}</td>
-                        <td>{{ $student->contact_number }}</td>
+                        <td>{{ $company->id }}</td>
+                        <td>{{ $company->name }}</td>
+                        <td>{{ $company->industry }}</td>
+                        <td>{{ $company->address }}</td>
+                        <td>{{ $company->contact_number }}</td>
                         <td class="text-center" style="min-width: 300px">
                             <a class="btn btn-link text-warning" 
                                 data-bs-toggle="collapse" 
-                                href={{ '#about_' . $student->id }} 
+                                href={{ '#about_' . $company->id }} 
                                 role="button" 
                                 aria-expanded="false" 
                                 aria-controls="collapseExample">
                                 Show about
                             </a>
                             <p class="collapse text-start text-wrap text-break" 
-                                id={{ 'about_' . $student->id }}>
-                                {{ $student->about }}
+                                id={{ 'about_' . $company->id }}>
+                                {{ $company->about }}
                             </p>
                         </td>
                     </tr>

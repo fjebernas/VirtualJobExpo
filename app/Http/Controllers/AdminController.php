@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class AdminController extends Controller
 
     public function companyIndex()
     {
-
+        return view('admin.companies.index')
+            ->with('companies', Company::all());
     }
 
     public function jobPostIndex()
