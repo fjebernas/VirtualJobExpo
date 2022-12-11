@@ -1,11 +1,11 @@
 @extends('layouts.app')
     
 @section('customcss')
-    <link rel="stylesheet" href="/css/admin/index.css">
+    <link rel="stylesheet" href="/css/admin/users/index.css">
 @endsection
     
 @section('customjs')
-    <script src="/js/admin/index.js" type="module"></script>
+    <script src="/js/admin/users/index.js" type="module"></script>
 @endsection
 
 <style>
