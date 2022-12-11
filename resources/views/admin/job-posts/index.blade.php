@@ -58,7 +58,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5">
+                        <td colspan="8">
                             <i class="text-muted">No data available</i>
                         </td>
                     </tr>
