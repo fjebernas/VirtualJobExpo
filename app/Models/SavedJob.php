@@ -22,4 +22,11 @@ class SavedJob extends Model
             JobPost::class
         );
     }
+
+    public function student()
+    {
+        return $this->belongsTo(
+            Student::class
+        );
+    }
 }

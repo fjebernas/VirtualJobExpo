@@ -97,7 +97,7 @@
             </div>
         </a>
 
-        <a href='#' class="text-decoration-none">
+        <a href={{ route('admin.saved-jobs') }} class="text-decoration-none">
             <div class="card saved-jobs d-flex justify-content-center align-items-center border-0">
                 <box-icon name='bookmarks' size='90px' color='white'></box-icon>
                 <h3 class="fs-5">Saved Jobs</h3>

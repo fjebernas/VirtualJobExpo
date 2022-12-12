@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\JobApplication;
 use App\Models\JobPost;
+use App\Models\SavedJob;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -42,6 +43,13 @@ class AdminController extends Controller
     {
         return view('admin.job-posts.index')
             ->with('job_posts', JobPost::orderBy('id', 'asc')
+                                    ->paginate(10));
+    }
+
+    public function savedJobIndex()
+    {
+        return view('admin.saved-jobs.index')
+            ->with('saved_jobs', SavedJob::orderBy('id', 'asc')
                                     ->paginate(10));
     }
 

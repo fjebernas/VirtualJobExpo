@@ -166,6 +166,7 @@ Route::controller(AdminController::class)->group(function(){
             Route::get('/students', 'studentIndex')->name('students');
             Route::get('/companies', 'companyIndex')->name('companies');
             Route::get('/job-posts', 'jobPostIndex')->name('job-posts');
+            Route::get('/saved-jobs', 'savedJobIndex')->name('saved-jobs');
             Route::get('/job-applications', 'jobApplicationIndex')->name('job-applications');
         });
     });
