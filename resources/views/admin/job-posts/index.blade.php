@@ -29,6 +29,7 @@
                     <td>Employment</td>
                     <td>Salary range</td>
                     <td>Description</td>
+                    <td>Deleted at</td>
                 </tr>
             </thead>
             <tbody>
@@ -55,10 +56,11 @@
                                 {{ $job_post->description }}
                             </p>
                         </td>
+                        <td>{{ $job_post->deleted_at }}</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8">
+                        <td colspan="9">
                             <i class="text-muted">No data available</i>
                         </td>
                     </tr>

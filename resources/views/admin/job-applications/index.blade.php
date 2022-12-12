@@ -27,6 +27,7 @@
                     <td>Company</td>
                     <td>Pitch</td>
                     <td>Status</td>
+                    <td>Deleted at</td>
                 </tr>
             </thead>
             <tbody>
@@ -51,10 +52,11 @@
                             </p>
                         </td>
                         <td>{{ $job_application->status }}</td>
+                        <td>{{ $job_application->deleted_at }}</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <i class="text-muted">No data available</i>
                         </td>
                     </tr>
