@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\JobPost;
+use App\Models\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,11 +22,11 @@ return new class extends Migration
                 ->default('Received');
             $table->boolean('invited')
                 ->default(false);
-            $table->foreignId('job_post_id')
+            $table->foreignIdFor(JobPost::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('student_id')
+            $table->foreignIdFor(Student::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
