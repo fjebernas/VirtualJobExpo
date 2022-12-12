@@ -32,7 +32,7 @@
             </thead>
             <tbody>
                 @forelse ($job_applications as $job_application)
-                    <tr>
+                    <tr @if ($job_application->deleted_at) class='text-muted' @endif>
                         <td>{{ $job_application->id }}</td>
                         <td>{{ $job_application->student->first_name }} {{ $job_application->student->last_name }}</td>
                         <td>{{ $job_application->jobPost->position }}</td>

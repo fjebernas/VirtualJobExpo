@@ -24,13 +24,13 @@
                     <td>ID</td>
                     <td>Position</td>
                     <td>Company</td>
-                    <td>Student</td>
+                    <td>Saved by</td>
                     <td>Deleted at</td>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($saved_jobs as $saved_job)
-                    <tr>
+                    <tr @if ($saved_job->deleted_at) class='text-muted' @endif>
                         <td>{{ $saved_job->id }}</td>
                         <td>{{ $saved_job->jobPost->position }}</td>
                         <td>{{ $saved_job->jobPost->company->name }}</td>

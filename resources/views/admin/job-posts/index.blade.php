@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 @forelse ($job_posts as $job_post)
-                    <tr>
+                    <tr @if ($job_post->deleted_at) class='text-muted' @endif>
                         <td>{{ $job_post->id }}</td>
                         <td>{{ $job_post->position }}</td>
                         <td>{{ $job_post->company->name }}</td>
