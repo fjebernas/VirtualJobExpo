@@ -42,21 +42,24 @@ class AdminController extends Controller
     public function jobPostIndex()
     {
         return view('admin.job-posts.index')
-            ->with('job_posts', JobPost::orderBy('id', 'asc')
+            ->with('job_posts', JobPost::withTrashed()
+                                    ->orderBy('id', 'asc')
                                     ->paginate(10));
     }
 
     public function savedJobIndex()
     {
         return view('admin.saved-jobs.index')
-            ->with('saved_jobs', SavedJob::orderBy('id', 'asc')
+            ->with('saved_jobs', SavedJob::withTrashed()
+                                    ->orderBy('id', 'asc')
                                     ->paginate(10));
     }
 
     public function jobApplicationIndex()
     {
         return view('admin.job-applications.index')
-            ->with('job_applications', JobApplication::orderBy('id', 'asc')
+            ->with('job_applications', JobApplication::withTrashed()
+                                                    ->orderBy('id', 'asc')
                                                     ->paginate(10));
     }
 }
