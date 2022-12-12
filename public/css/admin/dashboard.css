@@ -37,6 +37,12 @@
     color: rgb(250, 239, 255);
     background-color: rgba(138, 0, 138, 0.6);
 }
+
+.saved-jobs.card {
+    color: rgb(255, 218, 203);
+    background-color: rgba(136, 27, 8, 0.6);
+}
+
 .jobs-applications.card {
     color: #e8eeff;
     background-color: rgba(0, 0, 119, 0.6);

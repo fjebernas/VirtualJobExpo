@@ -97,6 +97,13 @@
             </div>
         </a>
 
+        <a href='#' class="text-decoration-none">
+            <div class="card saved-jobs d-flex justify-content-center align-items-center border-0">
+                <box-icon name='bookmarks' size='90px' color='white'></box-icon>
+                <h3 class="fs-5">Saved Jobs</h3>
+            </div>
+        </a>
+
         <a href={{ route('admin.job-applications') }} class="text-decoration-none">
             <div class="card jobs-applications d-flex justify-content-center align-items-center border-0">
                 <box-icon name='briefcase' size='90px' color='white'></box-icon>
